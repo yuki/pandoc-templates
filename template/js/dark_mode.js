@@ -32,7 +32,6 @@ const showActiveTheme = theme => {
     //this line doesn't work for me, so I changed a bit
     //const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
     const btnToActive = document.querySelector('[data-bs-theme-value="'+theme+'"]')
-    console.log(btnToActive)
     const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
 
     document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
