@@ -1,0 +1,23 @@
+/* from bootstrap web page */
+.bi{
+    width:1em;
+    height:1em;
+    vertical-align:-.125em;
+    fill:currentcolor
+}.icon-link{
+    display:flex;
+    align-items:center;
+    -webkit-text-decoration-color:rgba(13,110,253,0.5);
+    text-decoration-color:rgba(13,110,253,0.5);
+    text-underline-offset:.5rem;
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden
+}.icon-link
+.bi{
+    width:1.5em;
+    height:1.5em;
+    transition:.2s ease-in-out transform
+}.icon-link:hover
+.bi{
+    transform:translate3d(5px, 0, 0)
+}

@@ -1,0 +1,18 @@
+.sidebar {
+    position: fixed;
+    top: 10px;
+    /* rtl:raw:
+    right: 0;
+    */
+    bottom: 0;
+    /* rtl:remove */
+    /* left: 0; */
+    /* z-index: 100; Behind the navbar */
+    padding: 48px 0 0 0; /* Height of navbar */
+    /* box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1); */
+}
+.sidebar-sticky {
+    height: calc(100vh - 60px);
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
