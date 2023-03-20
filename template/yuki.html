@@ -58,77 +58,97 @@
       <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
     </symbol>
   </svg>
-
-  
-  <header id="title-block-header" class="navbar navbar-expand-lg bd-navbar sticky-top bg-danger">
-    <div class="container d-flex align-items-center">
-      <span class="navbar-brand text-white">
-        $if(title)$
-          <span class="fs-4">$title$</span>
-          $if(subtitle)$
-            <span class="subtitle"> - $subtitle$</span>
+  <header>
+    <nav class="navbar navbar-expand-md navbar-danger fixed-top bg-danger" aria-label="header">
+      <div class="container text-white align-items-center">
+        <span>
+          $if(title)$
+            <span class="fs-4">$title$</span>
+            $if(subtitle)$
+              <span class="subtitle"> - $subtitle$</span>
+            $endif$
           $endif$
-          $for(author)$
-            <span class="author"> - $author$</span>
-          $endfor$
-          $if(date)$
-            <span class="date"> - $date$</span>
-          $endif$
-          $if(abstract)$
-            <div class="abstract">
-              <div class="abstract-title">$abstract-title$</div>
-              $abstract$
-            </div>
-          $endif$
-        $endif$
-      </span>
-      <div class="collapse navbar-collapse" >
-        <ul class="navbar-nav flex-row flex-wrap ms-md-auto" id="theme-selector">
-          <li class="nav-item dropdown">
-            <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
-              <svg class="bi my-1 theme-icon-active"><use href="#moon-stars-fill"></use></svg>
-              <span class="d-lg-none ms-2">Toggle theme</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;">
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
-                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
-                  Light
-                </button>
-              </li>
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="dark">
-                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
-                  Dark
-                </button>
-              </li>
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto">
-                  <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
-                  Auto
-                </button>
-              </li>
-            </ul>
-          </li>
-        </ul>
+        </span>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".collapse" aria-controls="navbarCollapse navbar-toc" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <span class="fs-6 flex-wrap ms-md-auto">
+            $for(author)$
+              <span class="author">$author$ </span>
+            $endfor$
+            $if(date)$
+              <span class="date"> - $date$</span>
+            $endif$
+          </span>
+          
+          <ul class="navbar-nav flex-row flex-wrap" id="theme-selector">
+            <li class="nav-item dropdown">
+              <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <svg class="bi my-1 theme-icon-active"><use href="#moon-stars-fill"></use></svg>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;">
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+                    <svg class="bi me-2 opacity-50 theme-icon"><use href="#sun-fill"></use></svg>
+                    Light
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="dark">
+                    <svg class="bi me-2 opacity-50 theme-icon"><use href="#moon-stars-fill"></use></svg>
+                    Dark
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto">
+                    <svg class="bi me-2 opacity-50 theme-icon"><use href="#circle-half"></use></svg>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-      
-    </div>
+    </nav>
   </header>
-      
 
-  <main class="container-fluid">
+  <div class="container">
     <div class="row">
       $if(toc)$
-        <nav id="navbar-toc" class="sidebar-sticky col-md-3 col-lg-2 sticky-top">
-          $toc$
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-body-tertiary">
+          <div class="position-sticky sidebar-sticky">
+            <div id="navbar-toc">
+              <h5 class="p-2 mb-4 border-bottom">Índice</h5> 
+              $toc$
+            </div>
+          </div>
         </nav>
       $endif$
-      
-      <div id="book" class="col-md-9 ms-sm-auto col-lg-10 p-5" data-bs-spy="scroll" data-bs-target="#navbar-toc" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
+  
+      <!-- if TOC, the class properties changed -->
+      <main class="ms-sm-auto
+        $if(toc)$
+          col-md-9 col-lg-10 px-md-4
+        $endif$
+        " id="book">
+        <div class="justify-content-between align-items-center p-2" 
+          data-bs-spy="scroll" data-bs-target="#navbar-toc" data-bs-root-margin="0px 0px -85%" 
+          data-bs-smooth-scroll="true" tabindex="0">
           $if(abstract)$
-              <H1>$abstract-title$</H1>
-              $abstract$
+            <div id="abstract">
+              <div class="offset-lg-3 col-lg-6">
+                <h2 class="text-center">$abstract-title$</h2>
+                $abstract$
+                <div id="keywords">
+                  <span><strong>Keywords: </strong></span>
+                  $for(keywords)$
+                    <span class="author">$keywords$, </span>
+                  $endfor$
+                </div>
+              </div>
+            </div>
           $endif$
     
           $for(include-before)$
@@ -140,9 +160,10 @@
           $for(include-after)$
             $include-after$
           $endfor$
-      </div>
+        </div>
+      </main>
     </div>
-  </main>
+  </div>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
