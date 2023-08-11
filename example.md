@@ -4,6 +4,7 @@ subtitle:  'subtitle'
 author:
 - Author One
 date: '2020-01-01'
+lang: es
 keywords: [nothing, nothingness]
 abstract: |
   **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales. **Lorem ipsum** dolor sit amet, consectetur adipiscing elit. Nunc luctus bibendum felis dictum sodales.

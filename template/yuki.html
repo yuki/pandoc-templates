@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$"$if(dir)$ dir="$dir$"$endif$ data-bs-theme="auto">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx" $if(dir)$ dir="$dir$"$endif$ data-bs-theme="auto">
 <head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 
   <link href="https://cdn.jsdelivr.net/gh/yuki/pandoc-template-bootstrap5@main/template/css/theme_mode_switch.css" rel="stylesheet"  crossorigin="anonymous">
   <link href="https://cdn.jsdelivr.net/gh/yuki/pandoc-template-bootstrap5@main/template/css/style.css" rel="stylesheet"  crossorigin="anonymous">
 
   $for(author-meta)$
-    <meta name="author" content="$author-meta$" />
+    <meta name="author" content="$author-meta$">
   $endfor$
   $if(date-meta)$
-    <meta name="dcterms.date" content="$date-meta$" />
+    <meta name="dcterms.date" content="$date-meta$">
   $endif$
   $if(keywords)$
-    <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+    <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$">
   $endif$
   $if(description-meta)$
-    <meta name="description" content="$description-meta$" />
+    <meta name="description" content="$description-meta$">
   $endif$
     <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
     <!-- <style>
@@ -41,7 +41,12 @@
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-
+  <style>
+    img{
+      width: -webkit-fill-available;
+      width: -moz-available;
+    }
+  </style>
 
 </head>
 
@@ -59,6 +64,7 @@
     </symbol>
   </svg>
   <header>
+    <!-- HEADER -->
     <nav class="navbar navbar-expand-md navbar-danger fixed-top bg-danger" aria-label="header">
       <div class="container text-white align-items-center">
         <span>
@@ -117,6 +123,7 @@
   <div class="container">
     <div class="row">
       $if(toc)$
+        <!-- INDEX BAR MENU -->
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-body-tertiary">
           <div class="position-sticky sidebar-sticky">
             <div id="navbar-toc">
@@ -164,10 +171,11 @@
       </main>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/gh/yuki/pandoc-template-bootstrap5@main/template/js/dark_mode.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/gh/yuki/pandoc-template-bootstrap5@main/template/js/custom.js" crossorigin="anonymous"></script>
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-
-<script src="https://cdn.jsdelivr.net/gh/yuki/pandoc-template-bootstrap5@main/template/js/dark_mode.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/gh/yuki/pandoc-template-bootstrap5@main/template/js/custom.js" crossorigin="anonymous"></script>
 </html>
