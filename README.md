@@ -9,3 +9,10 @@ Then, you can use the example like:
 ```
 pandoc example.md -o "example.html"   --template=yuki.html --number-sections --toc
 ```
+
+## Example
+
+The result of using this template can be seen in [this page](example.html).
+
+## TO DO list
+Right now this is a proof of concept. The idea is to use this template with [my books](https://github.com/yuki/my-books) in order to create a web page whith the LaTeX and HTML results.
