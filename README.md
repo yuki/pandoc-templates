@@ -7,7 +7,7 @@ Copy the **template/yuki.html** file into your **~/.pandoc/templates/** director
 Then, you can use the example like:
 
 ```
-pandoc example.md -o "example.html"   --template=yuki.html --number-sections --toc
+pandoc -o "example.html"   --template=template/yuki.html --number-sections --toc < $(cat book.md)
 ```
 
 ## Example

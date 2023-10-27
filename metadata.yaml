@@ -1,0 +1,14 @@
+---
+title:  'This is the title: it contains a colon'
+subtitle:  'subtitle'
+author:
+- Author One
+date: '2020-01-01'
+lang: es
+keywords: [nothing, nothingness]
+abstract: |
+  Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum.
+
+  Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum.
+
+...

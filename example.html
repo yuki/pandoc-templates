@@ -10,7 +10,7 @@
   <meta name="keywords" content="nothing, nothingness">
   <title>This is the title: it contains a colon</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
   <style>
     /* html {
@@ -397,8 +397,8 @@ contains a colon</span>
               <div id="navbar-toc">
                 <h5 class="p-2 mb-4 border-bottom">Índice</h5> 
                 <ul>
-                <li><a href="#lorem-ipsum" id="toc-lorem-ipsum"><span
-                class="toc-section-number">1</span> Lorem ipsum</a>
+                <li><a href="#cap-1" id="toc-cap-1"><span
+                class="toc-section-number">1</span> Cap 1</a>
                 <ul>
                 <li><a href="#pyout" id="toc-pyout"><span
                 class="toc-section-number">1.1</span> Pyout</a>
@@ -407,8 +407,7 @@ contains a colon</span>
                 class="toc-section-number">1.1.1</span> Image</a></li>
                 </ul></li>
                 </ul></li>
-                <li><a href="#lorem-ipsum-1"
-                id="toc-lorem-ipsum-1"><span
+                <li><a href="#lorem-ipsum" id="toc-lorem-ipsum"><span
                 class="toc-section-number">2</span> Lorem ipsum</a>
                 <ul>
                 <li><a href="#pyout-1" id="toc-pyout-1"><span
@@ -445,8 +444,21 @@ contains a colon</span>
             </div>
               
           
-          <h1 data-number="1" id="lorem-ipsum"><span
-          class="header-section-number">1</span> Lorem ipsum</h1>
+          <h1 data-number="1" id="cap-1"><span
+          class="header-section-number">1</span> Cap 1</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Vivamus elementum tortor a nisi varius lacinia. Integer a
+          sagittis lacus. Ut ipsum augue, aliquet eu tellus in, rutrum
+          imperdiet nulla. Nulla ac egestas tellus. Mauris a dolor
+          faucibus, convallis ligula imperdiet, sollicitudin nunc.</p>
+          <p>Vivamus pulvinar ante ex, eu dictum arcu semper ut.
+          Praesent faucibus nisi mauris, non convallis leo pharetra sed.
+          Mauris nibh purus, viverra ut ligula ac, rhoncus congue sem.
+          Phasellus sed eros a sem laoreet eleifend. Sed laoreet, ligula
+          et fermentum vehicula, augue massa cursus nulla, porttitor
+          ullamcorper enim erat sed lectus. Quisque congue, urna a
+          placerat commodo, mauris urna mattis enim, eget finibus mi
+          eros non urna.# Lorem ipsum</p>
           <p>El paso clásico “Lorem ipsum dolor sit amet…” se atribuye a
           una remixación del texto de De Finibus Bonorum et Malorum (“En
           los extremos del bien y del mal”), del filósofo romano
@@ -470,7 +482,7 @@ contains a colon</span>
           <p><strong>Lorem ipsum</strong> dolor sit amet, consectetur
           adipiscing elit. Nunc luctus bibendum felis dictum
           sodales.</p>
-          <h1 data-number="2" id="lorem-ipsum-1"><span
+          <h1 data-number="2" id="lorem-ipsum"><span
           class="header-section-number">2</span> Lorem ipsum</h1>
           <p><strong>Lorem ipsum</strong> dolor sit amet, consectetur
           adipiscing elit. Nunc luctus bibendum felis dictum
@@ -492,26 +504,27 @@ contains a colon</span>
       </main>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
     <script>
       sidebarMenu = document.querySelector('#navbar-toc')
-  
+
       links = sidebarMenu.getElementsByTagName('a')
       for(let i = 0;i < links.length; i++){
           links[i].setAttribute('class','nav-link')
       }
-  
+
       /*!
       * Color mode toggler for Bootstrap's docs (https://getbootstrap.com/)
       * Copyright 2011-2022 The Bootstrap Authors
       * Licensed under the Creative Commons Attribution 3.0 Unported License.
       */
-  
+
       (() => {
       'use strict'
-  
+
       const storedTheme = localStorage.getItem('theme')
-  
+
       const getPreferredTheme = () => {
           if (storedTheme) {
           return storedTheme
@@ -519,7 +532,7 @@ contains a colon</span>
   
           return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
       }
-  
+
       const setTheme = function (theme) {
           if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
           document.documentElement.setAttribute('data-bs-theme', 'dark')
@@ -527,9 +540,9 @@ contains a colon</span>
           document.documentElement.setAttribute('data-bs-theme', theme)
           }
       }
-  
+
       setTheme(getPreferredTheme())
-  
+
       const showActiveTheme = theme => {
           const activeThemeIcon = document.querySelector('.theme-icon-active use')
           //this line doesn't work for me, so I changed a bit
@@ -544,13 +557,13 @@ contains a colon</span>
           btnToActive.classList.add('active')
           activeThemeIcon.setAttribute('href', svgOfActiveBtn)
       }
-  
+
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
           if (storedTheme !== 'light' || storedTheme !== 'dark') {
           setTheme(getPreferredTheme())
           }
       })
-  
+
       window.addEventListener('DOMContentLoaded', () => {
           showActiveTheme(getPreferredTheme())
   
