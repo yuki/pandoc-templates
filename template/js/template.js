@@ -8,32 +8,28 @@ for(let i = 0;i < links.length; i++){
 (() => {
     // TABLES
     for (const element of document.getElementsByTagName('table')) {
-        element.setAttribute('class','table table-striped table-hover')
+        element.setAttribute('class','table table-striped table-hover table-bordered ')
     }
 
     for (const element of document.getElementsByTagName('thead')) {
-        element.setAttribute('class','table-dark')
+        element.setAttribute('class','table-primary')
+    }
+
+    for (const element of document.getElementsByTagName('tbody')) {
+        element.setAttribute('class','table-group-divider')
     }
 
     // CUSTOM BOXES
-    for (const element of document.getElementsByClassName('infobox')) {
-        element.getElementsByTagName('p')[0].setAttribute('class','d-flex align-items-center')
-    }
-
-    for (const element of document.getElementsByClassName('warnbox')) {
-        element.getElementsByTagName('p')[0].setAttribute('class','d-flex align-items-center')
-    }
-
-    for (const element of document.getElementsByClassName('errorbox')) {
-        element.getElementsByTagName('p')[0].setAttribute('class','d-flex align-items-center')
-    }
-
-    for (const element of document.getElementsByClassName('questionbox')) {
-        element.getElementsByTagName('p')[0].setAttribute('class','d-flex align-items-center')
-    }
-
-    for (const element of document.getElementsByClassName('exercisebox')) {
-        element.getElementsByTagName('p')[0].setAttribute('class','d-flex align-items-center')
+    const boxes = [['infobox','Información'], ['warnbox','¡Atención!'], ['errorbox','¡Cuidado!'], ['questionbox','Pregunta'], ['exercisebox','Ejercicio']]
+    for (let index = 0; index < boxes.length; index++) {
+        // for every custom boxes, we add the header with its title
+        for (const element of document.getElementsByClassName(boxes[index][0])) {
+            const p = document.createElement("p")
+            p.setAttribute('class',boxes[index][0]+'-header')
+            p.innerHTML = boxes[index][1]
+            element.prepend(p)
+            element.getElementsByTagName('p')[1].setAttribute('class','d-flex align-items-center')
+        }
     }
 
 })()

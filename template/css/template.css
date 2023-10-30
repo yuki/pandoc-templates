@@ -105,43 +105,62 @@ figcaption{
   font-weight: normal;
   font-style: normal;
   display: inline-block;
-  content: "\f05a";
   padding: 0 0.5em;
   font-size: 3rem;
 }
 
+.infobox-header, .warnbox-header, .errorbox-header, .questionbox-header, .exercisebox-header {
+  border-radius: 5px 5px 0 0;
+  color: var(--bs-body-bg)!important;
+  font-weight: bold;
+  padding: 0.1em 1em;
+  margin-bottom: 0;
+}
+
 
 .infobox {
-  border: 2px solid var(--bs-info-border-subtle);
+  border: 2px solid var(--bs-info-text-emphasis);
   background-color: var(--bs-info-bg-subtle);
 }
 
-.infobox > p {
+.infobox-header {
+  background-color: var(--bs-info-text-emphasis);
+}
+
+.infobox p {
   margin:auto;
   color: var(--bs-info-text-emphasis);
 }
 
-.infobox > p::before {
+.infobox p:last-child::before {
   content: "\f05a";
 }
 
 .warnbox {
   border: 2px solid var(--bs-orange);
-  background-color: var(--bs-warning-bg-subtle);
+  background-color: #fd7e1405;
 }
 
-.warnbox > p {
+.warnbox-header {
+  background-color: var(--bs-orange);
+}
+
+.warnbox p {
   margin:auto;
   color: var(--bs-orange);
 }
 
-.warnbox > p::before {
+.warnbox p:last-child::before  {
   content: "\f06a";
 }
 
 .errorbox {
-  border: 2px solid var(--bs-danger-border-subtle);
+  border: 2px solid var(--bs-danger-text-emphasis);
   background-color: var(--bs-danger-bg-subtle);
+}
+
+.errorbox-header {
+  background-color: var(--bs-danger-text-emphasis);
 }
 
 .errorbox > p {
@@ -149,13 +168,17 @@ figcaption{
   color: var(--bs-danger-text-emphasis);
 }
 
-.errorbox > p::before {
+.errorbox p:last-child::before  {
   content: "\f071";
 }
 
 .questionbox {
-  border: 2px solid var(--bs-warning-border-subtle);
+  border: 2px solid var(--bs-warning-text-emphasis);
   background-color: var(--bs-warning-bg-subtle);
+}
+
+.questionbox-header {
+  background-color: var(--bs-warning-text-emphasis);
 }
 
 .questionbox > p {
@@ -163,13 +186,17 @@ figcaption{
   color: var(--bs-warning-text-emphasis);
 }
 
-.questionbox > p::before {
+.questionbox p:last-child::before  {
   content: "\f059";
 }
 
 .exercisebox {
-  border: 2px solid var(--bs-success-border-subtle);
+  border: 2px solid var(--bs-success-text-emphasis);
   background-color: var(--bs-success-bg-subtle);
+}
+
+.exercisebox-header {
+  background-color: var(--bs-success-text-emphasis);
 }
 
 .exercisebox > p {
@@ -177,7 +204,7 @@ figcaption{
   color: var(--bs-success-text-emphasis);
 }
 
-.exercisebox > p::before {
+.exercisebox p:last-child::before  {
   content: "\f013";
 }
 
