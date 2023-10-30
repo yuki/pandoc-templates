@@ -28,18 +28,22 @@
     setTheme(getPreferredTheme())
     
     const showActiveTheme = theme => {
-        const activeThemeIcon = document.querySelector('.theme-icon-active use')
+        const activeThemeIcon = document.querySelector('.theme-icon-active')
         //this line doesn't work for me, so I changed a bit
         //const btnToActive = document.querySelector(`[data-bs-theme-value="${theme}"]`)
         const btnToActive = document.querySelector('[data-bs-theme-value="'+theme+'"]')
-        const svgOfActiveBtn = btnToActive.querySelector('svg use').getAttribute('href')
+        const svgOfActiveBtn = btnToActive.getAttribute('href')
     
         document.querySelectorAll('[data-bs-theme-value]').forEach(element => {
-        element.classList.remove('active')
+            element.classList.remove('active')
         })
     
         btnToActive.classList.add('active')
+        activeThemeIcon.setHTML('')
         activeThemeIcon.setAttribute('href', svgOfActiveBtn)
+        const i = document.createElement("i")
+        i.setAttribute('class','fa-solid opacity-50 theme-icon '+svgOfActiveBtn)
+        activeThemeIcon.append(i)
     }
     
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
