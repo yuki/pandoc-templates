@@ -10,6 +10,15 @@ Then, you can use the example like:
 pandoc -o "example.html"   --template=template/yuki.html --number-sections --toc < $(cat book.md)
 ```
 
+Or using Docker container:
+
+```
+docker run --rm \
+       --volume "$(pwd):/data" \
+       --user $(id -u):$(id -g) \
+       pandoc/extra:edge  -o example.html -s --listings --filter pandoc-latex-environment --template=template/yuki.html --toc -N --embed-resources --resource-path=.  $(cat book.md)
+```
+
 ## Example
 
 The result of using this template can be seen in [this page](example.html).

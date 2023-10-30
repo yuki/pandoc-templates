@@ -1,0 +1,66 @@
+#book {
+  text-align: justify;
+  padding: 56px 0px;
+}
+
+#abstract {
+  padding-bottom: 2rem;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  padding: 56px 0 0;
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-sticky {
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.navbar ul {
+  margin-top: 0em;
+}
+
+#navbar-toc > ul {
+  padding-left: 0em;
+}
+
+#navbar-toc li {
+  list-style: none;
+}
+
+#navbar-toc li a {
+  padding: 5px;
+  padding-left: 15px;
+}
+#navbar-toc a.nav-link.active {
+  border: 3px solid;
+  border-radius: 5px;
+}
+
+/* ESTO ES EL FICHERO */
+.center {
+    text-align: center;
+}
+
+img {
+  padding: 10px;
+}
+
+figcaption{
+  font-size: 0.8rem;
+  width: fit-content;
+  margin:auto;
+}
+
+.float-left figure{
+  float: left;
+  width: 30%;
+  padding-right: 10px;
+}
