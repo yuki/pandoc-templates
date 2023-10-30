@@ -44,7 +44,7 @@
   border-radius: 5px;
 }
 
-/* ESTO ES EL FICHERO */
+/* For images */
 .center {
     text-align: center;
 }
@@ -63,4 +63,35 @@ figcaption{
   float: left;
   width: 30%;
   padding-right: 10px;
+}
+
+/* For custom-box */
+
+#book .mycode {
+  border: 2px solid black;
+  border-radius: 10px;
+  margin-bottom: 2em;
+}
+
+#book .mycode > p {
+  background-color: black;
+  border-radius: 5px 5px 0 0;
+  color: white;
+  padding: 0.1em 1em;
+  margin-bottom: 0;
+}
+
+#book .mycode div.sourceCode {
+  margin: 1em;
+}
+
+#book .infobox {
+  border: 2px solid #4384a1;
+  background-color: #f3fbff;
+  border-radius: 10px;
+  margin-bottom: 2em;
+}
+
+#book .infobox > p {
+  padding: 0.1em 1em;
 }
