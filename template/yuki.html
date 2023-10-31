@@ -25,7 +25,7 @@ $endif$
   <style>
     /* $styles.html()$  */
   </style>
-  <link href="template/css/dark.css" rel="stylesheet">
+  <link href="template/css/dark_mode.css" rel="stylesheet">
   <link href="template/css/template.css" rel="stylesheet">
 
 $for(css)$
@@ -82,20 +82,20 @@ $endif$
                   <i class="fas fa-moon"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;">
-                  <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" href="fa-sun">
+                  <li href="fa-sun" data-bs-theme-value="light">
+                    <button type="button" class="dropdown-item d-flex align-items-center">
                       <i class="fa-solid fa-sun opacity-50 theme-icon"></i>
                       Light
                     </button>
                   </li>
-                  <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="dark" href="fa-moon">
+                  <li href="fa-moon" data-bs-theme-value="dark">
+                    <button type="button" class="dropdown-item d-flex align-items-center">
                       <i class="fa-solid fa-moon opacity-50 theme-icon"></i>
                       Dark
                     </button>
                   </li>
-                  <li>
-                    <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="auto" href="fa-circle-half-stroke">
+                  <li href="fa-circle-half-stroke" data-bs-theme-value="auto">
+                    <button type="button" class="dropdown-item d-flex align-items-center">
                       <i class="fa-solid fa-circle-half-stroke opacity-50 theme-icon"></i>
                       Auto
                     </button>

@@ -1,11 +1,19 @@
-sidebarMenu = document.querySelector('#navbar-toc')
-
-links = sidebarMenu.getElementsByTagName('a')
-for(let i = 0;i < links.length; i++){
-    links[i].setAttribute('class','nav-link')
-}
-
 (() => {
+
+    sidebarMenu = document.querySelector('#navbar-toc')
+
+    links = sidebarMenu.getElementsByTagName('a')
+    for(let i = 0;i < links.length; i++){
+        links[i].setAttribute('class','nav-link')
+    }
+
+    // PARTS
+    var part = 0
+    for (const element of document.getElementsByClassName('part')) {
+        part = part + 1
+        element.setAttribute('id','part-'+part)
+    }
+
     // TABLES
     for (const element of document.getElementsByTagName('table')) {
         element.setAttribute('class','table table-striped table-hover table-bordered ')

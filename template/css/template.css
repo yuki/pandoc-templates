@@ -7,6 +7,8 @@
   padding-bottom: 2rem;
 }
 
+/* SIDEBAR */
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -22,6 +24,8 @@
   overflow-y: auto;
   overflow-x: auto;
 }
+
+/* NAVBAR */
 
 .navbar ul {
   margin-top: 0em;
@@ -41,16 +45,52 @@
 }
 #navbar-toc a.nav-link.active {
   border: 3px solid;
-  border-radius: 5px;
+  border-radius: 0.5rem;
+  background-color: var(--bs-danger);
+  color: var(--bs-body-color);
 }
 
-/* For images */
+#theme-selector {
+  padding-left: 1rem;
+}
+
+#theme-selector li.active {
+  border-radius: 0.25rem;
+  background-color: var(--bs-danger)!important;
+  margin: 0 0.5rem;
+}
+
+/* TODO: create hover option  */
+/* #theme-selector button:hover {
+  border-radius: 0.25rem;
+  background-color: var(--bs-info)!important;
+  margin: 0 0.5rem;
+} */
+
+.theme-icon {
+  width: 1rem;
+  padding-right: 0.5rem;
+}
+
+/* PARTS */
+
+.part {
+  font-size: 3rem;
+  text-align: center;
+  background-color: var(--bs-danger);
+  color: var(--bs-gray-100);
+  margin: 6rem 0 3rem 0;
+  border-radius: 0.5rem;
+}
+
+
+/* IMAGES */
 .center {
     text-align: center;
 }
 
 img {
-  padding: 10px;
+  padding: 1rem;
 }
 
 figcaption{
@@ -62,14 +102,14 @@ figcaption{
 .float-left figure{
   float: left;
   width: 30%;
-  padding-right: 10px;
+  padding-right: 1rem;
 }
 
 /* For custom-box */
 
 .mycode {
   border: 2px solid var(--bs-gray-700);
-  border-radius: 10px;
+  border-radius: 0.5rem;
   margin-bottom: 2em;
 }
 
@@ -96,7 +136,7 @@ figcaption{
 
 
 .infobox, .warnbox, .errorbox, .questionbox, .exercisebox {
-  border-radius: 10px;
+  border-radius: 0.5rem;
   margin-bottom: 2em;
 }
 
