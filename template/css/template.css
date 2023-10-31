@@ -54,18 +54,18 @@
   padding-left: 1rem;
 }
 
-#theme-selector li.active {
-  border-radius: 0.25rem;
-  background-color: var(--bs-danger)!important;
-  margin: 0 0.5rem;
+#theme-selector-menu {
+  padding: 0;
 }
 
-/* TODO: create hover option  */
-/* #theme-selector button:hover {
+#theme-selector li {
+  margin: 0.25rem;
+}
+
+#theme-selector li.active, #theme-selector-menu button:focus, #theme-selector-menu button:hover {
   border-radius: 0.25rem;
-  background-color: var(--bs-info)!important;
-  margin: 0 0.5rem;
-} */
+  background-color: var(--bs-danger);
+}
 
 .theme-icon {
   width: 1rem;
@@ -105,7 +105,7 @@ figcaption{
   padding-right: 1rem;
 }
 
-/* For custom-box */
+/* CUSTOM BOXES */
 
 .mycode {
   border: 2px solid var(--bs-gray-700);
@@ -134,10 +134,58 @@ figcaption{
   margin: 1em;
 }
 
+.inlineconsole, .commandbox, .configfile, .configdir {
+  border: 2px solid var(--bs-black);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--bs-gray-700);
+  color: var(--bs-white);
+}
+
+.commandbox::before, .configfile::before, .configdir::before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  padding-right: 1em;
+}
+
+.commandbox::before {
+  content: "\f120";
+}
+
+.configfile::before {
+  content: "\f15b";
+}
+
+.configdir::before {
+  content: "\f07c";
+}
+
+.movie {
+  border: 2px solid var(--bs-warning);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.movie::before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  content: "\f1c8";
+  padding-right: 1em;
+}
+
 
 .infobox, .warnbox, .errorbox, .questionbox, .exercisebox {
   border-radius: 0.5rem;
   margin-bottom: 2em;
+}
+
+.infobox strong, .warnbox strong, .errorbox strong, .questionbox strong, .exercisebox strong {
+  /* TODO: no entiendo por qué tengo que poner esto  */
+  margin-left: 0.2em;
 }
 
 .infobox > p::before, .warnbox > p::before, .errorbox > p::before, .questionbox > p::before, .exercisebox > p::before {

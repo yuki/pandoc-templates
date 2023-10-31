@@ -288,7 +288,7 @@ contains a colon</span>
                 <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center theme-icon-active" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" href="fa-moon">
                   <i class="fas fa-moon"></i>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;">
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;" id="theme-selector-menu">
                   <li href="fa-sun" data-bs-theme-value="light">
                     <button type="button" class="dropdown-item d-flex align-items-center">
                       <i class="fa-solid fa-sun opacity-50 theme-icon"></i>
@@ -408,11 +408,11 @@ contains a colon</span>
           files. The idea is to use it to create static HTML files from
           <a href="https://github.com/yuki/my-books">my books</a>. This
           template uses <a href="https://getbootstrap.com/">Bootstrap
-          5</a>.</p>
+          5</a> and <a href="https://fontawesome.com/">Font
+          Awesome</a>.</p>
           <h1 data-number="2" id="example-of-uses"><span
           class="header-section-number">2</span> Example of uses</h1>
-          <p>Here there are some examples of how to use this
-          template:</p>
+          <p>Here few examples of how to use this template:</p>
           <h2 data-number="2.1" id="images"><span
           class="header-section-number">2.1</span> Images</h2>
           <p>Here few examples of with images.</p>
@@ -518,21 +518,33 @@ contains a colon</span>
           <div class="sourceCode" id="cb2"><pre
           class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">root@1b29e46c10ae:/var/www/html#</span> php artisan make:model Post <span class="at">-crms</span></span></code></pre></div>
           </div>
-          <p>This is an infobox:</p>
+          <p>Sometimes we need inline console code like <code
+          class="commandbox">ls path</code> , other times we need to
+          talk about some configuration file like <code
+          class="configfile">/etc/hosts</code> , config directory <code
+          class="configdir">/etc</code> inline text <code
+          class="inlineconsole">help</code> or a movie <a
+          href="https://www.imdb.com/title/tt2084970/" class="movie">The
+          Imitation Game</a>.</p>
+          <p>This is an <strong>infobox</strong>:</p>
           <div class="infobox">
-          <p>This is an info box!</p>
+          <p>This is an <strong>infobox</strong>!</p>
           </div>
+          <p>This is an <strong>warnbox</strong>:</p>
           <div class="warnbox">
-          <p>This is an warning box!</p>
+          <p>This is an <strong>warningbox</strong>!</p>
           </div>
+          <p>This is an <strong>errorbox</strong>:</p>
           <div class="errorbox">
-          <p>This is an error box!</p>
+          <p>This is an <strong>errorbox</strong>!</p>
           </div>
+          <p>This is an <strong>questionbox</strong>:</p>
           <div class="questionbox">
-          <p>This is an question box!</p>
+          <p>This is an <strong>questionbox</strong>!</p>
           </div>
+          <p>This is an <strong>exercisebox</strong>:</p>
           <div class="exercisebox">
-          <p>This is an exercise box!</p>
+          <p>This is an <strong>exercisebox</strong>!</p>
           </div>
           <div class="part">
           <p>Parte 2</p>
