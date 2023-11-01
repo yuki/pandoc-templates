@@ -41,7 +41,7 @@
         })
     
         btnToActive.classList.add('active')
-        activeThemeIcon.setHTML('')
+        activeThemeIcon.innerHTML=""
         activeThemeIcon.setAttribute('href', svgOfActiveBtn)
         const i = document.createElement("i")
         i.setAttribute('class','fa-solid opacity-50 theme-icon '+svgOfActiveBtn)
