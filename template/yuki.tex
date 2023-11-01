@@ -407,6 +407,7 @@ $endif$
 $if(verbatim-in-note)$
     \VerbatimFootnotes % allow verbatim text in footnotes
 $endif$
+
 \hypersetup{
     $if(title-meta)$
       pdftitle={$title-meta$},
@@ -466,6 +467,66 @@ $if(beamer)$
         \logo{\includegraphics{$logo$}}
     $endif$
 $endif$
+
+
+%--------------------------------------------------------------------------
+% Custom color BOXES
+%--------------------------------------------------------------------------
+% \RequirePackage[svgnames,table]{xcolor}
+% \definecolor{inline-bg-color}{HTML}{404040}
+
+\definecolor{error-color}{HTML}{9e0000}
+
+\RequirePackage{fontawesome5}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{raster,fitting,many,listings,breakable,skins}
+\usetikzlibrary{decorations.pathmorphing}
+% \usemintedstyle{friendly}
+% \newtcolorbox{infobox}{colback=cyan!5!white,arc=0pt,outer arc=0pt,colframe=cyan!60!black}
+\newenvironment{custombox}[4]{
+  \begin{tcolorbox}[
+      colframe=#1, colbacktitle=#1,
+      colupper=#1, colback=#2,
+      enhanced, sidebyside, segmentation hidden,
+      lefthand width=1.2cm,
+      title=\textbf{#3},]
+    \centering
+    \color{#1}
+    \fontsize{30pt}{-10pt}#4
+    \tcblower
+    \color{#1}
+}{
+  \end{tcolorbox}
+}
+%% Inspired on awesomebox
+\newenvironment{infobox}{
+  \begin{custombox}{cyan!60!black}{cyan!5!white}{Información}{\faInfoCircle}
+}{
+  \end{custombox}
+}
+
+\newenvironment{warnbox}{
+  \begin{custombox}{orange!80!black}{orange!5!white}{¡Atención!}{\faExclamationCircle}
+}{
+  \end{custombox}
+}
+
+\newenvironment{errorbox}{
+  \begin{custombox}{error-color}{red!4!white}{¡Cuidado!}{\faExclamationTriangle}
+}{
+  \end{custombox}
+}
+
+% \newcommand{\errorbox}[1]{
+%     \custombox{error-color}{red!4!white}{¡Cuidado!}{\faExclamationTriangle}{#1}
+% }
+
+
+%%%%%%%%%%%%%%%%
+%
+% Start the document
+%
+%%%%%%%%%%%%%%%%
 
 \begin{document}
 $if(has-frontmatter)$

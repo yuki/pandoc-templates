@@ -1,0 +1,6 @@
+---
+pandoc-latex-environment:
+  infobox: [infobox]
+  warnbox: [warnbox]
+  errorbox: [errorbox]
+...
