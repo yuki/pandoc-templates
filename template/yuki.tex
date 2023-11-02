@@ -223,7 +223,7 @@ $endif$
 $if(verbatim-in-note)$
     \usepackage{fancyvrb}
 $endif$
-\usepackage{xcolor}
+\usepackage[dvipsnames,svgnames,x11names,table]{xcolor}
 $if(geometry)$
     $if(beamer)$
         \geometry{$for(geometry)$$geometry$$sep$,$endfor$}
@@ -474,8 +474,10 @@ $endif$
 %--------------------------------------------------------------------------
 % \RequirePackage[svgnames,table]{xcolor}
 % \definecolor{inline-bg-color}{HTML}{404040}
+% \PassOptionsToPackage{dvipsnames,svgnames,x11names,table}{xcolor}
 
 \definecolor{error-color}{HTML}{9e0000}
+\definecolor{inline-bg-color}{HTML}{404040}
 
 \RequirePackage{fontawesome5}
 \RequirePackage{tcolorbox}
@@ -517,9 +519,42 @@ $endif$
   \end{custombox}
 }
 
-% \newcommand{\errorbox}[1]{
-%     \custombox{error-color}{red!4!white}{¡Cuidado!}{\faExclamationTriangle}{#1}
-% }
+\newenvironment{questionbox}{
+  \begin{custombox}{Goldenrod}{white}{Pregunta}{\faQuestionCircle}
+}{
+  \end{custombox}
+}
+
+\newenvironment{exercisebox}{
+  \begin{custombox}{teal}{teal!4!white}{Ejercicio}{\faCog}
+}{
+  \end{custombox}
+}
+
+
+% \DeclareTotalTCBox{\inlineconsole}{ v }
+%   {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faTerminal\hspace{0pt}  #1}
+
+  \DeclareTotalTCBox{\inlineconsole}{ v }
+  {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{#1}
+
+\DeclareTotalTCBox{\commandbox}{ v }
+  {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faTerminal\hspace{0pt}  #1}
+
+\DeclareTotalTCBox{\configfile}{ v }
+  {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faFile\hspace{0pt}  #1}
+
+\DeclareTotalTCBox{\configdir}{ v }
+  {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faFolderOpen\hspace{0pt}  #1}
+
+\DeclareTotalTCBox{\configlink}{ v }
+  {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faLink\hspace{0pt}  #1}
+
+
+\definecolor{imdb}{HTML}{f5c518}
+\DeclareTotalTCBox{\movie}{ v v}
+{verbatim,colback=white,colframe=imdb,enhanced}{\faFileVideo\hspace{0pt}  \href{#1}{#2}}
+
 
 
 %%%%%%%%%%%%%%%%

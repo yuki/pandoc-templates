@@ -1,8 +1,8 @@
-# Custom Pandoc templates
-Custom Pandoc templates to create HTML (using [Bootstrap 5](https://getbootstrap.com/) with dark-mode, and [Font Awesome](https://fontawesome.com/)) and PDF format files using LaTeX.
+# My custom Pandoc templates
+Here you can get my custom Pandoc templates to create HTML (using [Bootstrap 5](https://getbootstrap.com/) with dark-mode, and [Font Awesome](https://fontawesome.com/)) and PDF format files using LaTeX.
 
 ## How templates works
-There are two templates, one to generate HTML and one to create a custom PDF using LaTeX.
+There are two templates, the first one to generate HTML and the other to create a custom PDF using LaTeX.
 
 ### HTML template
 The template is [yuki.html](template/yuki.html), and it uses some files and dependencies from internet:
@@ -20,10 +20,13 @@ The template is [yuki.html](template/yuki.html), and it uses some files and depe
 ### LaTeX template
 The template is [yuki.tex](template/yuki.tex), which is a modification from my custom [yukibook.cls](https://github.com/yuki/yukibook.cls) class, that I have used to create [my books](https://github.com/yuki/my-books).
 
+The idea is to deprecate [yukibook.cls](https://github.com/yuki/yukibook.cls) and convert my books from LaTeX into Markdown, and use those templates to generate both versions.
 
-<br /> <br />
+
+<br />
+
 ## How to use the templates
-Copy the **template/yuki.html** and **template/yukibook.tex** files into your **~/.pandoc/templates/** directory. Or you can use those templates cloning this repository.
+Copy the **template/yuki.html** and **template/yuki.tex** files into your **~/.pandoc/templates/** directory. Or you can use those templates cloning this repository.
 
 In this repository there are few files to create an example HTML and PDF file:
 - **1.md**: Contains examples of custom images with captions, boxes, ...
@@ -31,18 +34,17 @@ In this repository there are few files to create an example HTML and PDF file:
 - **metadata.yaml**: netadata file to add author, date, title...
 - **book.md**: file which contains in each line previous filenames. The idea is to use this file as a dependency file, to create the generated HTML o PDF.
 
-```
-pandoc -o "example.html"   --template=template/yuki.html --number-sections --toc < $(cat book.md)
-```
-
-Or using Docker container:
+To create the HTML file:
 
 ```
-docker run --rm \
-       --volume "$(pwd):/data" \
-       --user $(id -u):$(id -g) \
-       pandoc/extra:edge  -o example.html -s --listings --filter pandoc-latex-environment --template=template/yuki.html --toc -N --embed-resources --resource-path=.  $(cat book.md)
+pandoc -o "example.html" --toc -N  --template=template/yuki.html --resource-path=.  $(cat book.md)
 ```
+
+To create the PDF file: 
+```
+pandoc -o "example.pdf" --toc -N  --template=template/yuki.tex --resource-path=. --lua-filter=template/filter.lua $(cat book.md)
+```
+
 
 ## Example
 
