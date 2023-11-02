@@ -2,7 +2,10 @@ if FORMAT:match 'latex' then
   function Span(el)
     beg_v = ""
     end_v = ""
-    if el.classes[1] == "inlineconsole" then
+    if el.classes[1] == "part" then
+      beg_v = "\\part{"
+      end_v = "}"
+    elseif el.classes[1] == "inlineconsole" then
       beg_v = "\\inlineconsole{"
       end_v = "}"
     elseif el.classes[1] == "commandbox" then

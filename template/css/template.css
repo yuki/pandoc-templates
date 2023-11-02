@@ -75,6 +75,7 @@
 /* PARTS */
 
 .part {
+  display:block;
   font-size: 3rem;
   text-align: center;
   background-color: var(--bs-danger);

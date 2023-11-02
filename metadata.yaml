@@ -1,9 +1,12 @@
 ---
 title:  'This is the title'
 subtitle:  'subtitle'
-author:
-- Author One
-date: '2020-01-01'
+degree: 'The Degree'
+author: 'Author One'
+date: '2023-10-15'
+maincolor: dc3545
+catch-phrase: ''
+catch-phrase-author: ''
 lang: es
 keywords: [nothing, nothingness]
 abstract: |
