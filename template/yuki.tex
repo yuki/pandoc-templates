@@ -1,212 +1,283 @@
-% Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
-\PassOptionsToPackage{hyphens}{url}
-$if(colorlinks)$
-    \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
-$endif$
-$if(CJKmainfont)$
-    \PassOptionsToPackage{space}{xeCJK}
-$endif$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Yuki's LaTeX template for Pandoc.
 %
-\documentclass[
-$if(fontsize)$
-  $fontsize$,
-$endif$
-$if(papersize)$
-  $papersize$paper,
-$endif$
-$if(beamer)$
-  ignorenonframetext,
-    $if(handout)$
-        handout,
-    $endif$
-    $if(aspectratio)$
-      aspectratio=$aspectratio$,
-    $endif$
-$endif$
-$for(classoption)$
-  $classoption$$sep$,
-$endfor$
-]{$documentclass$}
-$if(beamer)$
-    $if(background-image)$
-        \usebackgroundtemplate{%
-          \includegraphics[width=\paperwidth]{$background-image$}%
-        }
-    $endif$
-    \usepackage{pgfpages}
-    \setbeamertemplate{caption}[numbered]
-    \setbeamertemplate{caption label separator}{: }
-    \setbeamercolor{caption name}{fg=normal text.fg}
-    \beamertemplatenavigationsymbols$if(navigation)$$navigation$$else$empty$endif$
-    $for(beameroption)$
-        \setbeameroption{$beameroption$}
-    $endfor$
-    % Prevent slide breaks in the middle of a paragraph
-    \widowpenalties 1 10000
-    \raggedbottom
-    $if(section-titles)$
-        \setbeamertemplate{part page}{
-          \centering
-          \begin{beamercolorbox}[sep=16pt,center]{part title}
-            \usebeamerfont{part title}\insertpart\par
-          \end{beamercolorbox}
-        }
-        \setbeamertemplate{section page}{
-          \centering
-          \begin{beamercolorbox}[sep=12pt,center]{part title}
-            \usebeamerfont{section title}\insertsection\par
-          \end{beamercolorbox}
-        }
-        \setbeamertemplate{subsection page}{
-          \centering
-          \begin{beamercolorbox}[sep=8pt,center]{part title}
-            \usebeamerfont{subsection title}\insertsubsection\par
-          \end{beamercolorbox}
-        }
-        \AtBeginPart{
-          \frame{\partpage}
-        }
-        \AtBeginSection{
-          \ifbibliography
-          \else
-            \frame{\sectionpage}
-          \fi
-        }
-        \AtBeginSubsection{
-          \frame{\subsectionpage}
-        }
-    $endif$
-$endif$
-$if(beamerarticle)$
-    \usepackage{beamerarticle} % needs to be loaded first
-$endif$
-\usepackage{amsmath,amssymb}
-$if(linestretch)$
-    \usepackage{setspace}
-$endif$
+% Authors:
+%   Rubén Gómez Olivencia (rugoli@gmail.com)
+%     https://twitter.com/rugoli
+%     https://github.com/yuki/yukibook.cls
+%
+% License:
+%   CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%--------------------------------------------------------------------------
+% Class configuration
+%--------------------------------------------------------------------------
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,titlepage,twoside,openany]{book}
+
+%--------------------------------------------------------------------------
+% Language
+%--------------------------------------------------------------------------
+\RequirePackage[spanish]{babel}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage{csquotes}
+\RequirePackage{pifont}
+\RequirePackage[none]{hyphenat}
+\sloppy
+
+%--------------------------------------------------------------------------
+% Geometry
+%--------------------------------------------------------------------------
+\RequirePackage[a4paper,margin=2cm,footskip=1.4cm]{geometry}
+
+
+%--------------------------------------------------------------------------
+% Paragraph's style
+%--------------------------------------------------------------------------
+\setlength{\parindent}{0em} % identation
+\setlength{\parskip}{1.2em}
+\renewcommand{\baselinestretch}{1.4}
+
+
+%--------------------------------------------------------------------------
+% Fonts
+%--------------------------------------------------------------------------
+\RequirePackage{fontspec}
+\RequirePackage[default]{sourcesanspro}
+\RequirePackage{sourcecodepro}
+
+
+% %--------------------------------------------------------------------------
+% % Color definitions
+% %--------------------------------------------------------------------------
+% \RequirePackage[svgnames,table]{xcolor}
+% \definecolor{inline-bg-color}{HTML}{404040}
+
+% \definecolor{error-color}{HTML}{9e0000}
+% \definecolor{headerscolor}{HTML}{28436c}
+
+
+
+
+
+
+
+
+
+
+
+% Options for packages loaded elsewhere
+% \PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
+% \PassOptionsToPackage{hyphens}{url}
+% $if(colorlinks)$
+%     \PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+% $endif$
+% $if(CJKmainfont)$
+%     \PassOptionsToPackage{space}{xeCJK}
+% $endif$
+%
+% \documentclass[
+% $if(fontsize)$
+%   $fontsize$,
+% $endif$
+% $if(papersize)$
+%   $papersize$paper,
+% $endif$
+% $if(beamer)$
+%   ignorenonframetext,
+%     $if(handout)$
+%         handout,
+%     $endif$
+%     $if(aspectratio)$
+%       aspectratio=$aspectratio$,
+%     $endif$
+% $endif$
+% $for(classoption)$
+%   $classoption$$sep$,
+% $endfor$
+% ]{$documentclass$}
+% $if(beamer)$
+%     $if(background-image)$
+%         \usebackgroundtemplate{%
+%           \includegraphics[width=\paperwidth]{$background-image$}%
+%         }
+%     $endif$
+%     \usepackage{pgfpages}
+%     \setbeamertemplate{caption}[numbered]
+%     \setbeamertemplate{caption label separator}{: }
+%     \setbeamercolor{caption name}{fg=normal text.fg}
+%     \beamertemplatenavigationsymbols$if(navigation)$$navigation$$else$empty$endif$
+%     $for(beameroption)$
+%         \setbeameroption{$beameroption$}
+%     $endfor$
+%     % Prevent slide breaks in the middle of a paragraph
+%     \widowpenalties 1 10000
+%     \raggedbottom
+%     $if(section-titles)$
+%         \setbeamertemplate{part page}{
+%           \centering
+%           \begin{beamercolorbox}[sep=16pt,center]{part title}
+%             \usebeamerfont{part title}\insertpart\par
+%           \end{beamercolorbox}
+%         }
+%         \setbeamertemplate{section page}{
+%           \centering
+%           \begin{beamercolorbox}[sep=12pt,center]{part title}
+%             \usebeamerfont{section title}\insertsection\par
+%           \end{beamercolorbox}
+%         }
+%         \setbeamertemplate{subsection page}{
+%           \centering
+%           \begin{beamercolorbox}[sep=8pt,center]{part title}
+%             \usebeamerfont{subsection title}\insertsubsection\par
+%           \end{beamercolorbox}
+%         }
+%         \AtBeginPart{
+%           \frame{\partpage}
+%         }
+%         \AtBeginSection{
+%           \ifbibliography
+%           \else
+%             \frame{\sectionpage}
+%           \fi
+%         }
+%         \AtBeginSubsection{
+%           \frame{\subsectionpage}
+%         }
+%     $endif$
+% $endif$
+% $if(beamerarticle)$
+%     \usepackage{beamerarticle} % needs to be loaded first
+% $endif$
+% \usepackage{amsmath,amssymb}
+% $if(linestretch)$
+%     \usepackage{setspace}
+% $endif$
+
 \usepackage{iftex}
-\ifPDFTeX
-  \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
-  \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provide euro and other symbols
-\else % if luatex or xetex
-    $if(mathspec)$
-      \ifXeTeX
-        \usepackage{mathspec} % this also loads fontspec
-      \else
-        \usepackage{unicode-math} % this also loads fontspec
-      \fi
-    $else$
-      \usepackage{unicode-math} % this also loads fontspec
-    $endif$
-    \defaultfontfeatures{Scale=MatchLowercase}$-- must come before Beamer theme
-    \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
-\fi
-$if(fontfamily)$
-$else$
-    $-- Set default font before Beamer theme so the theme can override it
-    \usepackage{lmodern}
-$endif$
-$-- Set Beamer theme before user font settings so they can override theme
-$if(beamer)$
-    $if(theme)$
-        \usetheme[$for(themeoptions)$$themeoptions$$sep$,$endfor$]{$theme$}
-    $endif$
-    $if(colortheme)$
-        \usecolortheme{$colortheme$}
-    $endif$
-    $if(fonttheme)$
-        \usefonttheme{$fonttheme$}
-    $endif$
-    $if(mainfont)$
-        \usefonttheme{serif} % use mainfont rather than sansfont for slide text
-    $endif$
-    $if(innertheme)$
-        \useinnertheme{$innertheme$}
-    $endif$
-    $if(outertheme)$
-        \useoutertheme{$outertheme$}
-    $endif$
-$endif$
-$-- User font settings (must come after default font and Beamer theme)
-$if(fontfamily)$
-    \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
-$endif$
-\ifPDFTeX\else
-    % xetex/luatex font selection
-    $if(mainfont)$
-      \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
-    $endif$
-    $if(sansfont)$
-      \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
-    $endif$
-    $if(monofont)$
-      \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}
-    $endif$
-    $for(fontfamilies)$
-      \newfontfamily{$fontfamilies.name$}[$for(fontfamilies.options)$$fontfamilies.options$$sep$,$endfor$]{$fontfamilies.font$}
-    $endfor$
-    $if(mathfont)$
-        $if(mathspec)$
-          \ifXeTeX
-            \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-          \else
-            \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-          \fi
-        $else$
-          \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
-        $endif$
-    $endif$
-    $if(CJKmainfont)$
-      \ifXeTeX
-        \usepackage{xeCJK}
-        \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
-        $if(CJKsansfont)$
-          \setCJKsansfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKsansfont$}
-        $endif$
-        $if(CJKmonofont)$
-          \setCJKmonofont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmonofont$}
-        $endif$
-      \fi
-    $endif$
-    $if(luatexjapresetoptions)$
-      \ifLuaTeX
-        \usepackage[$for(luatexjapresetoptions)$$luatexjapresetoptions$$sep$,$endfor$]{luatexja-preset}
-      \fi
-    $endif$
-    $if(CJKmainfont)$
-      \ifLuaTeX
-        \usepackage[$for(luatexjafontspecoptions)$$luatexjafontspecoptions$$sep$,$endfor$]{luatexja-fontspec}
-        \setmainjfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
-      \fi
-    $endif$
-\fi
-$if(zero-width-non-joiner)$
-    %% Support for zero-width non-joiner characters.
-    \makeatletter
-    \def\zerowidthnonjoiner{%
-      % Prevent ligatures and adjust kerning, but still support hyphenating.
-      \texorpdfstring{%
-        \TextOrMath{\nobreak\discretionary{-}{}{\kern.03em}%
-          \ifvmode\else\nobreak\hskip\z@skip\fi}{}%
-      }{}%
-    }
-    \makeatother
-    \ifPDFTeX
-      \DeclareUnicodeCharacter{200C}{\zerowidthnonjoiner}
-    \else
-      \catcode`^^^^200c=\active
-      \protected\def ^^^^200c{\zerowidthnonjoiner}
-    \fi
-    %% End of ZWNJ support
-$endif$
+% \ifPDFTeX
+%   \usepackage[$if(fontenc)$$fontenc$$else$T1$endif$]{fontenc}
+%   \usepackage[utf8]{inputenc}
+%   \usepackage{textcomp} % provide euro and other symbols
+% \else % if luatex or xetex
+%     $if(mathspec)$
+%       \ifXeTeX
+%         \usepackage{mathspec} % this also loads fontspec
+%       \else
+%         \usepackage{unicode-math} % this also loads fontspec
+%       \fi
+%     $else$
+%       \usepackage{unicode-math} % this also loads fontspec
+%     $endif$
+%     \defaultfontfeatures{Scale=MatchLowercase}$-- must come before Beamer theme
+%     \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+% \fi
+% $if(fontfamily)$
+% $else$
+%     $-- Set default font before Beamer theme so the theme can override it
+%     \usepackage{lmodern}
+% $endif$
+% $-- Set Beamer theme before user font settings so they can override theme
+% $if(beamer)$
+%     $if(theme)$
+%         \usetheme[$for(themeoptions)$$themeoptions$$sep$,$endfor$]{$theme$}
+%     $endif$
+%     $if(colortheme)$
+%         \usecolortheme{$colortheme$}
+%     $endif$
+%     $if(fonttheme)$
+%         \usefonttheme{$fonttheme$}
+%     $endif$
+%     $if(mainfont)$
+%         \usefonttheme{serif} % use mainfont rather than sansfont for slide text
+%     $endif$
+%     $if(innertheme)$
+%         \useinnertheme{$innertheme$}
+%     $endif$
+%     $if(outertheme)$
+%         \useoutertheme{$outertheme$}
+%     $endif$
+% $endif$
+% $-- User font settings (must come after default font and Beamer theme)
+% $if(fontfamily)$
+%     \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
+% $endif$
+% \ifPDFTeX\else
+%     % xetex/luatex font selection
+%     $if(mainfont)$
+%       \setmainfont[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+%     $endif$
+%     $if(sansfont)$
+%       \setsansfont[$for(sansfontoptions)$$sansfontoptions$$sep$,$endfor$]{$sansfont$}
+%     $endif$
+%     $if(monofont)$
+%       \setmonofont[$for(monofontoptions)$$monofontoptions$$sep$,$endfor$]{$monofont$}
+%     $endif$
+%     $for(fontfamilies)$
+%       \newfontfamily{$fontfamilies.name$}[$for(fontfamilies.options)$$fontfamilies.options$$sep$,$endfor$]{$fontfamilies.font$}
+%     $endfor$
+%     $if(mathfont)$
+%         $if(mathspec)$
+%           \ifXeTeX
+%             \setmathfont(Digits,Latin,Greek)[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+%           \else
+%             \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+%           \fi
+%         $else$
+%           \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
+%         $endif$
+%     $endif$
+%     $if(CJKmainfont)$
+%       \ifXeTeX
+%         \usepackage{xeCJK}
+%         \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+%         $if(CJKsansfont)$
+%           \setCJKsansfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKsansfont$}
+%         $endif$
+%         $if(CJKmonofont)$
+%           \setCJKmonofont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmonofont$}
+%         $endif$
+%       \fi
+%     $endif$
+%     $if(luatexjapresetoptions)$
+%       \ifLuaTeX
+%         \usepackage[$for(luatexjapresetoptions)$$luatexjapresetoptions$$sep$,$endfor$]{luatexja-preset}
+%       \fi
+%     $endif$
+%     $if(CJKmainfont)$
+%       \ifLuaTeX
+%         \usepackage[$for(luatexjafontspecoptions)$$luatexjafontspecoptions$$sep$,$endfor$]{luatexja-fontspec}
+%         \setmainjfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
+%       \fi
+%     $endif$
+% \fi
+% $if(zero-width-non-joiner)$
+%     %% Support for zero-width non-joiner characters.
+%     \makeatletter
+%     \def\zerowidthnonjoiner{%
+%       % Prevent ligatures and adjust kerning, but still support hyphenating.
+%       \texorpdfstring{%
+%         \TextOrMath{\nobreak\discretionary{-}{}{\kern.03em}%
+%           \ifvmode\else\nobreak\hskip\z@skip\fi}{}%
+%       }{}%
+%     }
+%     \makeatother
+%     \ifPDFTeX
+%       \DeclareUnicodeCharacter{200C}{\zerowidthnonjoiner}
+%     \else
+%       \catcode`^^^^200c=\active
+%       \protected\def ^^^^200c{\zerowidthnonjoiner}
+%     \fi
+%     %% End of ZWNJ support
+% $endif$
 % Use upquote if available, for straight quotes in verbatim environments
-\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-\IfFileExists{microtype.sty}{% use microtype if available
-  \usepackage[$for(microtypeoptions)$$microtypeoptions$$sep$,$endfor$]{microtype}
-  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
-}{}
+% \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% \IfFileExists{microtype.sty}{% use microtype if available
+%   \usepackage[$for(microtypeoptions)$$microtypeoptions$$sep$,$endfor$]{microtype}
+%   \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+% }{}
 $if(indent)$
 $else$
     \makeatletter
@@ -224,41 +295,41 @@ $if(verbatim-in-note)$
     \usepackage{fancyvrb}
 $endif$
 \usepackage[dvipsnames,svgnames,x11names,table]{xcolor}
-$if(geometry)$
-    $if(beamer)$
-        \geometry{$for(geometry)$$geometry$$sep$,$endfor$}
-    $else$
-        \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
-    $endif$
-$endif$
-$if(beamer)$
-    \newif\ifbibliography
-$endif$
+% $if(geometry)$
+%     $if(beamer)$
+%         \geometry{$for(geometry)$$geometry$$sep$,$endfor$}
+%     $else$
+%         \usepackage[$for(geometry)$$geometry$$sep$,$endfor$]{geometry}
+%     $endif$
+% $endif$
+% $if(beamer)$
+%     \newif\ifbibliography
+% $endif$
 $if(listings)$
     \usepackage{listings}
     \newcommand{\passthrough}[1]{#1}
     \lstset{defaultdialect=[5.3]Lua}
     \lstset{defaultdialect=[x86masm]Assembler}
 $endif$
-$if(lhs)$
-    \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
-$endif$
+% $if(lhs)$
+%     \lstnewenvironment{code}{\lstset{language=Haskell,basicstyle=\small\ttfamily}}{}
+% $endif$
 $if(highlighting-macros)$
     $highlighting-macros$
 $endif$
 $if(tables)$
     \usepackage{longtable,booktabs,array}
-    $if(multirow)$
-        \usepackage{multirow}
-    $endif$
-    \usepackage{calc} % for calculating minipage widths
-    $if(beamer)$
-        \usepackage{caption}
-        % Make caption package work with longtable
-        \makeatletter
-        \def\fnum@table{\tablename~\thetable}
-        \makeatother
-    $else$
+    % $if(multirow)$
+    %     \usepackage{multirow}
+    % $endif$
+    % \usepackage{calc} % for calculating minipage widths
+    % $if(beamer)$
+    %     \usepackage{caption}
+    %     % Make caption package work with longtable
+    %     \makeatletter
+    %     \def\fnum@table{\tablename~\thetable}
+    %     \makeatother
+    % $else$
         % Correct order of tables after \paragraph or \subparagraph
         \usepackage{etoolbox}
         \makeatletter
@@ -267,206 +338,474 @@ $if(tables)$
         % Allow footnotes in longtable head/foot
         \IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
         \makesavenoteenv{longtable}
-    $endif$
+    % $endif$
 $endif$
-$if(graphics)$
-    \usepackage{graphicx}
-    \makeatletter
-    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-    \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-    \makeatother
-    % Scale images if necessary, so that they will not overflow the page
-    % margins by default, and it is still possible to overwrite the defaults
-    % using explicit options in \includegraphics[width, height, ...]{}
-    \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-    % Set default figure placement to htbp
-    \makeatletter
-    \def\fps@figure{htbp}
-    \makeatother
-$endif$
-$if(svg)$
+% $if(graphics)$
+%     \usepackage{graphicx}
+%     \makeatletter
+%     \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+%     \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+%     \makeatother
+%     % Scale images if necessary, so that they will not overflow the page
+%     % margins by default, and it is still possible to overwrite the defaults
+%     % using explicit options in \includegraphics[width, height, ...]{}
+%     \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+%     % Set default figure placement to htbp
+%     \makeatletter
+%     \def\fps@figure{htbp}
+%     \makeatother
+% $endif$
+%$if(svg)$
     \usepackage{svg}
-$endif$
-$if(strikeout)$
-    $-- also used for underline
-    \usepackage{soul}
-$endif$
-\setlength{\emergencystretch}{3em} % prevent overfull lines
-\providecommand{\tightlist}{%
-  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-$if(numbersections)$
-    \setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
-$else$
-    \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
-$endif$
-$if(subfigure)$
-    \usepackage{subcaption}
-$endif$
-$if(beamer)$
-$else$
-    $if(block-headings)$
-        % Make \paragraph and \subparagraph free-standing
-        \ifx\paragraph\undefined\else
-          \let\oldparagraph\paragraph
-          \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-        \fi
-        \ifx\subparagraph\undefined\else
-          \let\oldsubparagraph\subparagraph
-          \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-        \fi
-    $endif$
-$endif$
-$if(pagestyle)$
-    \pagestyle{$pagestyle$}
-$endif$
-$if(csl-refs)$
-    \newlength{\cslhangindent}
-    \setlength{\cslhangindent}{1.5em}
-    \newlength{\csllabelwidth}
-    \setlength{\csllabelwidth}{3em}
-    \newlength{\cslentryspacingunit} % times entry-spacing
-    \setlength{\cslentryspacingunit}{\parskip}
-    \newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
-     {% don't indent paragraphs
-      \setlength{\parindent}{0pt}
-      % turn on hanging indent if param 1 is 1
-      \ifodd #1
-      \let\oldpar\par
-      \def\par{\hangindent=\cslhangindent\oldpar}
-      \fi
-      % set entry spacing
-      \setlength{\parskip}{#2\cslentryspacingunit}
-     }%
-     {}
-    \usepackage{calc}
-    \newcommand{\CSLBlock}[1]{#1\hfill\break}
-    \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
-    \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
-    \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
-$endif$
-$if(lang)$
-    \ifLuaTeX
-        \usepackage[bidi=basic]{babel}
-    \else
-        \usepackage[bidi=default]{babel}
-    \fi
-    $if(babel-lang)$
-        \babelprovide[main,import]{$babel-lang$}
-        $if(mainfont)$
-            \ifPDFTeX
-            \else
-                \babelfont[$babel-lang$]{rm}{$mainfont$}
-            \fi
-        $endif$
-    $endif$
-    $for(babel-otherlangs)$
-        \babelprovide[import]{$babel-otherlangs$}
-    $endfor$
-    % get rid of language-specific shorthands (see #6817):
-    \let\LanguageShortHands\languageshorthands
-    \def\languageshorthands#1{}
-$endif$
-$for(header-includes)$
-    $header-includes$
-$endfor$
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
-$if(dir)$
-    \ifPDFTeX
-      \TeXXeTstate=1
-      \newcommand{\RL}[1]{\beginR #1\endR}
-      \newcommand{\LR}[1]{\beginL #1\endL}
-      \newenvironment{RTL}{\beginR}{\endR}
-      \newenvironment{LTR}{\beginL}{\endL}
-    \fi
-$endif$
-$if(natbib)$
-    \usepackage[$natbiboptions$]{natbib}
-    \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
-$endif$
-$if(biblatex)$
-    \usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
-    $for(bibliography)$
-        \addbibresource{$bibliography$}
-    $endfor$
-$endif$
+%$endif$
+% $if(strikeout)$
+%     $-- also used for underline
+%     \usepackage{soul}
+% $endif$
+% \setlength{\emergencystretch}{3em} % prevent overfull lines
+% \providecommand{\tightlist}{%
+%   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+% $if(numbersections)$
+%     \setcounter{secnumdepth}{$if(secnumdepth)$$secnumdepth$$else$5$endif$}
+% $else$
+%     \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+% $endif$
+% $if(subfigure)$
+%     \usepackage{subcaption}
+% $endif$
+% $if(beamer)$
+% $else$
+%     $if(block-headings)$
+%         % Make \paragraph and \subparagraph free-standing
+%         \ifx\paragraph\undefined\else
+%           \let\oldparagraph\paragraph
+%           \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+%         \fi
+%         \ifx\subparagraph\undefined\else
+%           \let\oldsubparagraph\subparagraph
+%           \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+%         \fi
+%     $endif$
+% $endif$
+% $if(pagestyle)$
+%     \pagestyle{$pagestyle$}
+% $endif$
+% $if(csl-refs)$
+%     \newlength{\cslhangindent}
+%     \setlength{\cslhangindent}{1.5em}
+%     \newlength{\csllabelwidth}
+%     \setlength{\csllabelwidth}{3em}
+%     \newlength{\cslentryspacingunit} % times entry-spacing
+%     \setlength{\cslentryspacingunit}{\parskip}
+%     \newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+%      {% don't indent paragraphs
+%       \setlength{\parindent}{0pt}
+%       % turn on hanging indent if param 1 is 1
+%       \ifodd #1
+%       \let\oldpar\par
+%       \def\par{\hangindent=\cslhangindent\oldpar}
+%       \fi
+%       % set entry spacing
+%       \setlength{\parskip}{#2\cslentryspacingunit}
+%      }%
+%      {}
+%     \usepackage{calc}
+%     \newcommand{\CSLBlock}[1]{#1\hfill\break}
+%     \newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+%     \newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+%     \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+% $endif$
+% $if(lang)$
+%     \ifLuaTeX
+%         \usepackage[bidi=basic]{babel}
+%     \else
+%         \usepackage[bidi=default]{babel}
+%     \fi
+%     $if(babel-lang)$
+%         \babelprovide[main,import]{$babel-lang$}
+%         $if(mainfont)$
+%             \ifPDFTeX
+%             \else
+%                 \babelfont[$babel-lang$]{rm}{$mainfont$}
+%             \fi
+%         $endif$
+%     $endif$
+%     $for(babel-otherlangs)$
+%         \babelprovide[import]{$babel-otherlangs$}
+%     $endfor$
+%     % get rid of language-specific shorthands (see #6817):
+%     \let\LanguageShortHands\languageshorthands
+%     \def\languageshorthands#1{}
+% $endif$
+% $for(header-includes)$
+%     $header-includes$
+% $endfor$
+% \ifLuaTeX
+%   \usepackage{selnolig}  % disable illegal ligatures
+% \fi
+% $if(dir)$
+%     \ifPDFTeX
+%       \TeXXeTstate=1
+%       \newcommand{\RL}[1]{\beginR #1\endR}
+%       \newcommand{\LR}[1]{\beginL #1\endL}
+%       \newenvironment{RTL}{\beginR}{\endR}
+%       \newenvironment{LTR}{\beginL}{\endL}
+%     \fi
+% $endif$
+% $if(natbib)$
+%     \usepackage[$natbiboptions$]{natbib}
+%     \bibliographystyle{$if(biblio-style)$$biblio-style$$else$plainnat$endif$}
+% $endif$
+% $if(biblatex)$
+%     \usepackage[$if(biblio-style)$style=$biblio-style$,$endif$$for(biblatexoptions)$$biblatexoptions$$sep$,$endfor$]{biblatex}
+%     $for(bibliography)$
+%         \addbibresource{$bibliography$}
+%     $endfor$
+% $endif$
+
 $if(nocite-ids)$
     \nocite{$for(nocite-ids)$$it$$sep$, $endfor$}
 $endif$
 $if(csquotes)$
     \usepackage{csquotes}
 $endif$
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\urlstyle{$if(urlstyle)$$urlstyle$$else$same$endif$}
-$if(links-as-notes)$
-    % Make links footnotes instead of hotlinks:
-    \DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
-$endif$
-$if(verbatim-in-note)$
-    \VerbatimFootnotes % allow verbatim text in footnotes
+% \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+% \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+% \urlstyle{$if(urlstyle)$$urlstyle$$else$same$endif$}
+% $if(links-as-notes)$
+%     % Make links footnotes instead of hotlinks:
+%     \DeclareRobustCommand{\href}[2]{#2\footnote{\url{#1}}}
+% $endif$
+% $if(verbatim-in-note)$
+%     \VerbatimFootnotes % allow verbatim text in footnotes
+% $endif$
+
+% \hypersetup{
+%     $if(title-meta)$
+%       pdftitle={$title-meta$},
+%     $endif$
+%     $if(author-meta)$
+%       pdfauthor={$author-meta$},
+%     $endif$
+%     $if(lang)$
+%       pdflang={$lang$},
+%     $endif$
+%     $if(subject)$
+%       pdfsubject={$subject$},
+%     $endif$
+%     $if(keywords)$
+%       pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+%     $endif$
+%     $if(colorlinks)$
+%       colorlinks=true,
+%       linkcolor={$if(linkcolor)$$linkcolor$$else$Maroon$endif$},
+%       filecolor={$if(filecolor)$$filecolor$$else$Maroon$endif$},
+%       citecolor={$if(citecolor)$$citecolor$$else$Blue$endif$},
+%       urlcolor={$if(urlcolor)$$urlcolor$$else$Blue$endif$},
+%     $else$
+%        $if(boxlinks)$
+%        $else$
+%          hidelinks,
+%        $endif$
+%     $endif$
+%   pdfcreator={LaTeX via pandoc}
+% }
+
+%  $if(title)$
+%      \title{$title$$degree$$if(thanks)$\thanks{$thanks$}$endif$}
+%  $endif$
+% $if(subtitle)$
+%     $if(beamer)$
+%     $else$
+%         \usepackage{etoolbox}
+%         \makeatletter
+%         \providecommand{\subtitle}[1]{% add subtitle to \maketitle
+%           \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+%         }
+%         \makeatother
+%     $endif$
+%     \subtitle{$subtitle$}
+% $endif$
+% \author{$for(author)$$author$$sep$ \and $endfor$}
+% \date{$date$}
+% $if(beamer)$
+%     $if(institute)$
+%         \institute{$for(institute)$$institute$$sep$ \and $endfor$}
+%     $endif$
+%     $if(titlegraphic)$
+%         \titlegraphic{\includegraphics{$titlegraphic$}}
+%     $endif$
+%     $if(logo)$
+%         \logo{\includegraphics{$logo$}}
+%     $endif$
+% $endif$
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Start my custom styles
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+$if(maincolor)$
+  \definecolor{maincolor}{HTML}{$maincolor$}
+$else$
+  \definecolor{maincolor}{HTML}{28436c}
 $endif$
 
+%--------------------------------------------------------------------------
+% Links
+%--------------------------------------------------------------------------
+\RequirePackage[final,linktoc=all]{hyperref}
+\urlstyle{same}
 \hypersetup{
-    $if(title-meta)$
-      pdftitle={$title-meta$},
-    $endif$
-    $if(author-meta)$
-      pdfauthor={$author-meta$},
-    $endif$
-    $if(lang)$
-      pdflang={$lang$},
-    $endif$
-    $if(subject)$
-      pdfsubject={$subject$},
-    $endif$
-    $if(keywords)$
-      pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
-    $endif$
-    $if(colorlinks)$
-      colorlinks=true,
-      linkcolor={$if(linkcolor)$$linkcolor$$else$Maroon$endif$},
-      filecolor={$if(filecolor)$$filecolor$$else$Maroon$endif$},
-      citecolor={$if(citecolor)$$citecolor$$else$Blue$endif$},
-      urlcolor={$if(urlcolor)$$urlcolor$$else$Blue$endif$},
-    $else$
-       $if(boxlinks)$
-       $else$
-         hidelinks,
-       $endif$
-    $endif$
-  pdfcreator={LaTeX via pandoc}
+    colorlinks=true,
+    % allcolors=maincolor,
+    bookmarks=true,
+    bookmarksopen=true
+}
+\RequirePackage{href-ul}
+
+%--------------------------------------------------------------------------
+% TOC
+%--------------------------------------------------------------------------
+\RequirePackage{titletoc}
+
+\makeatletter
+\renewcommand\tableofcontents{
+  \begingroup
+    \hypersetup{hidelinks} % hide links in TOC, too much blue in it
+    \pagestyle{toc}
+    %\chapter*{\contentsname}
+    \setcounter{tocdepth}{2}    % add to TOC subsubsections
+    \setcounter{secnumdepth}{4} % add to subsubsections labels
+    \setlength{\parskip}{0em}
+    \@starttoc{toc}
+    \setlength{\parskip}{1.2em}
+  \endgroup
+  \thispagestyle{toc} % TODO: don't know why I need this here
+  \clearpage
+}
+\makeatother
+
+% inspired by https://www.latextemplates.com/template/the-legrand-orange-book
+% Styling of unnumbered parts in the table of contents
+\newcommand{\tocentrypartunnumbered}[1]{%
+    \setlength\fboxsep{0pt}% Remove box padding
+    \contentslabel[%
+    % Part title box
+    \colorbox{maincolor}{% Background color
+        \strut\parbox[c][.7cm]{\linewidth}{% Box size
+            \centering\Large\sffamily #1% Part title
+        }%
+    }%
+    ]{1.25cm}
 }
 
-$if(title)$
-    \title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
-$endif$
-$if(subtitle)$
-    $if(beamer)$
-    $else$
-        \usepackage{etoolbox}
-        \makeatletter
-        \providecommand{\subtitle}[1]{% add subtitle to \maketitle
-          \apptocmd{\@title}{\par {\large #1 \par}}{}{}
-        }
-        \makeatother
-    $endif$
-    \subtitle{$subtitle$}
-$endif$
-\author{$for(author)$$author$$sep$ \and $endfor$}
-\date{$date$}
-$if(beamer)$
-    $if(institute)$
-        \institute{$for(institute)$$institute$$sep$ \and $endfor$}
-    $endif$
-    $if(titlegraphic)$
-        \titlegraphic{\includegraphics{$titlegraphic$}}
-    $endif$
-    $if(logo)$
-        \logo{\includegraphics{$logo$}}
-    $endif$
-$endif$
+
+\titlecontents{part} % Section type being modified
+[1.25cm] % Left indentation
+{\addvspace{20pt}\color{white}\Large\sffamily\bfseries\hypersetup{linkcolor=white}} % Before code
+{} % Formatting of numbered sections of this type
+{\tocentrypartunnumbered} % Formatting of numberless sections of this type
+{} % Formatting of the filler to the right of the heading and the page number
+[] % After code
+
+
+%--------------------------------------------------------------------------
+% Header and footer styling
+%--------------------------------------------------------------------------
+\RequirePackage{tikz}
+\RequirePackage{fancyhdr}
+\RequirePackage{extramarks}
+\pagestyle{fancy}
+
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0pt} %remove the header's rule
+
+
+% de https://tex.stackexchange.com/questions/13387/how-to-get-part-name-in-latex
+% esta función tiene que estar aquí para que funcionen las cabeceras de la izquierda
+% FIXME: esto ahora no funciona 
+\directlua{partcount = 0}
+\newcommand*\partnumber{}
+\newcommand*\parttitle{}
+\let\origpart\part
+\renewcommand*{\part}[2][]{%
+    \ifx\\#1\\% optional argument not present?
+    \origpart{#2}%
+    \renewcommand*\parttitle{#2}%
+    \else
+    \origpart[#1]{#2}%
+    \renewcommand*\parttitle{#1}%
+    \fi
+    \directlua{partcount = partcount + 1}%
+    \renewcommand*\partnumber{\uppercase\expandafter{\romannumeral\directlua{tex.sprint(partcount)}}}%
+}
+
+
+%\partnumber and \parttitle are commands defined in line ~270
+\fancyhead[LE]{
+    \color{maincolor}\footnotesize\textit{\partnumber. \parttitle}
+    \vspace{-5pt}
+
+    \color{maincolor}\hrulefill
+}
+
+\fancyhead[RO]{
+    \color{maincolor}\footnotesize\textit{\nouppercase\firstleftmark}
+    \vspace{-5pt}
+
+    \color{maincolor}\hrulefill
+}
+
+\fancyfoot{} % clear all footer fields
+\fancyfoot[LE]{
+    \begin{tikzpicture}
+        \path [fill=maincolor] (0, 0) rectangle (0.8, 0.8);
+        \node [white] at (0.4,0.4) {\textbf{\thepage}};
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \path (0, 0);
+        \node at (0,0.35){\color{maincolor}\footnotesize\textit{$degree$}};
+    \end{tikzpicture}
+}
+\fancyfoot[RO]{
+    \begin{tikzpicture}
+        \path (0, 0);
+        \node at (0,0.35){\color{maincolor}\footnotesize\textit{$title$}};
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \path [fill=maincolor] (0, 0) rectangle (0.8, 0.8);
+        \node [white] at (0.4,0.4) {\textbf{\thepage}};
+    \end{tikzpicture}%
+}
+
+% for TOC
+\fancypagestyle{toc}[fancy]{%
+    \fancyhead[LE,RO]{
+        \color{maincolor}\footnotesize\textit{Índice}
+        \vspace{-5pt}
+
+        \color{maincolor}\hrulefill
+    }
+}
+
+%--------------------------------------------------------------------------
+% Chapters and Titles definitions
+%--------------------------------------------------------------------------
+\RequirePackage[
+explicit, % Specify section names explicitly in \titleformat with #1
+%    newparttoc, % Required for writing the part toc entry number in a standard way (overriding default LaTeX behavior) so the titletoc package can style it
+]{titlesec}
+
+% Command to create and output the parts pages
+% Inspired by “The Legrand Orange Book”: https://www.latextemplates.com/template/the-legrand-orange-book
+\newcommand{\outputpartpage}[2]{
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=center, rectangle, fill=maincolor, inner sep=0pt, minimum height=\paperheight, minimum width=\paperwidth] at (current page.center) {}; % Background color
+    \end{tikzpicture}
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[anchor=north west, inner ysep=0pt] at (current page.north west) {\fontsize{220pt}{220pt}\selectfont\sffamily\bfseries\textcolor{maincolor!40}{#1}}; % Part number
+    \end{tikzpicture}
+    \begin{center}
+        %part title
+        \fontsize{70pt}{70pt}\selectfont\sffamily\bfseries\textcolor{white}{#2}
+    \end{center}
+}
+
+\titleformat{\part}[block] % Shape type, can be: hang, block, display, runin, leftmargin, rightmargin, drop, wrap, frame
+    {\outputpartpage{\thepart}{#1}} % format of title
+    {} % label before title
+    {0em} % Space between the title and label
+    {} % before-code hook
+
+
+
+
+
+\titleclass{\chapter}{straight} % removes page break after new chapter
+
+\titleformat{\chapter}[block]
+    {\huge\bfseries\color{maincolor}} % format of title
+    {\thechapter. #1} % label before title
+    {0pt} % length of separation between label and title
+    {}    % before-code hook
+\titlespacing{\chapter} {0pt}{0pt}{0pt} % with 0pt maintains \parskip space
+
+
+\titleformat{\section}
+    {\fontsize{16pt}{16pt}\bfseries\color{maincolor}}
+    {\thesection. #1}
+    {0pt}
+    {}
+\titlespacing*{\section} {0pt}{0pt}{0pt}
+
+
+\titleformat{\subsection}
+    {\fontsize{14pt}{14pt}\bfseries\color{maincolor}}
+    {\thesubsection. #1}
+    {0pt}
+    {}
+
+\titleformat{name=\subsection,numberless}
+    {\fontsize{14pt}{14pt}\bfseries\color{maincolor}}
+    {#1}
+    {0pt}
+    {}
+
+\titlespacing*{\subsection} {0pt}{0pt}{0pt}
+
+
+\titleformat{\subsubsection}
+    {\fontsize{12pt}{12pt}\bfseries\color{maincolor}}
+    {\thesubsubsection. #1}
+    {0pt}
+    {}
+
+\titleformat{name=\subsubsection,numberless}
+    {\fontsize{12pt}{12pt}\bfseries\color{maincolor}}
+    {#1}
+    {0pt}
+    {}
+
+\titlespacing*{\subsubsection}{0pt}{0pt}{0pt}
+
+
+\titleformat{\paragraph}
+    {\fontsize{11pt}{11pt}\bfseries\color{maincolor}}
+    {\theparagraph. #1}
+    {0pt}
+    {\uline}
+\titlespacing*{\paragraph}{0pt}{0pt}{-1em}
+
+
+\makeatletter
+\@addtoreset{chapter}{part}
+\makeatother
+
+
+
+\RequirePackage{pmboxdraw} % for Systemctl's "box" unicode symbols
+\RequirePackage{graphicx}
+\RequirePackage{svg} % for svg images
+
+\RequirePackage[export]{adjustbox} % frames in graphics
+\RequirePackage{wrapfig}
+
+\RequirePackage{caption}
+\captionsetup{labelformat=empty,textfont={scriptsize}}
+\RequirePackage[shortcuts]{extdash}
+
+\RequirePackage{enumitem}
+\setlist{topsep=-5pt}
+
+% to include other files sections by tags
+\usepackage{catchfilebetweentags}
 
 
 %--------------------------------------------------------------------------
@@ -531,11 +870,33 @@ $endif$
   \end{custombox}
 }
 
+\newenvironment{mycode}[1]{
+  \begin{tcolorbox}[
+    title=\faTerminal \hspace{10pt}\textbf{#1},
+      breakable=true,enhanced jigsaw
+  ]
+}{
+  \end{tcolorbox}
+}
+% OLD style
+% {mycode}[1]{
+%     listing only,adjusted title={\faTerminal \hspace{10pt}#1}, listing engine=minted,minted language=#2,
+%     breakable=true,enhanced jigsaw,
+%     minted options={fontsize=#3},colback=white,
+%     list entry={\protect\numberline{\thetcbcounter}#1}
+% }
+
+%\newenvironment{mycode}[1]{
+%  \begin{codebox}{#1}
+%}{
+%  \end{codebox}
+%}
+
 
 % \DeclareTotalTCBox{\inlineconsole}{ v }
 %   {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faTerminal\hspace{0pt}  #1}
 
-  \DeclareTotalTCBox{\inlineconsole}{ v }
+\DeclareTotalTCBox{\inlineconsole}{ v }
   {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{#1}
 
 \DeclareTotalTCBox{\commandbox}{ v }
@@ -557,6 +918,34 @@ $endif$
 
 
 
+
+\newcommand{\itemimage}[6]{
+    % #1 item text
+    % #2 l / r : left or right position of the image
+    % #3 size of the image
+    % #4 image
+    % #5 caption
+    % #6 text
+    \vspace{-1.7em}
+    \parbox[t]{\dimexpr\textwidth-\leftmargin}{%
+        \item[#1]
+        \begin{wrapfigure}{#2}{#3\textwidth}
+            \vspace{-12pt}
+            \includegraphics[width=\linewidth]{#4}
+            \vspace{-29pt}\caption{#5}\vspace{-30pt}
+        \end{wrapfigure}
+        \setlength{\parskip}{0.8em}
+        #6
+    }
+}
+
+\RequirePackage{blindtext}
+
+
+
+
+
+
 %%%%%%%%%%%%%%%%
 %
 % Start the document
@@ -564,96 +953,226 @@ $endif$
 %%%%%%%%%%%%%%%%
 
 \begin{document}
-$if(has-frontmatter)$
-    \frontmatter
-$endif$
-$if(title)$
-    $if(beamer)$
-        \frame{\titlepage}
-    $else$
-    \maketitle
-    $endif$
-    $if(abstract)$
-        \begin{abstract}
-            $abstract$
-        \end{abstract}
-    $endif$
-$endif$
 
-$for(include-before)$
-    $include-before$
+% \coverpage
+\thispagestyle{empty}
+\newgeometry{margin=0pt}
+%---------------------------------------------------
+% Cover inspired by O'reilly books
+% and from https://github.com/johnjohnlin/oreilly_cover
+%---------------------------------------------------
+\begin{tcolorbox}[
+    boxrule=0mm,
+    arc=0mm,
+    colframe=maincolor,
+    colback=maincolor,
+    fit to={\paperwidth} and 2.5cm,
+    fit basedim=130pt,
+    halign=flush center,
+    valign=center,
+    top=1mm,bottom=1mm
+    ]
+    \color{white}\textbf{\textit{$degree$}}
+\end{tcolorbox}
 
-$endfor$
-$if(toc)$
-    $if(toc-title)$
-        \renewcommand*\contentsname{$toc-title$}
-    $endif$
-    $if(beamer)$
-        \begin{frame}[allowframebreaks]
-            $if(toc-title)$
-              \frametitle{$toc-title$}
-            $endif$
-            \tableofcontents[hideallsubsections]
-        \end{frame}
-    $else$
-        {
-        $if(colorlinks)$
-            \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
-        $endif$
-        \setcounter{tocdepth}{$toc-depth$}
-        \tableofcontents
-        }
-    $endif$
-$endif$
-$if(lof)$
-    \listoffigures
-$endif$
-$if(lot)$
-    \listoftables
-$endif$
-$if(linestretch)$
-    \setstretch{$linestretch$}
-$endif$
-$if(has-frontmatter)$
-    \mainmatter
-$endif$
+ \begin{tcolorbox}[
+     boxrule=0mm,
+     arc=0mm,
+     colframe=white,
+     colback=white,
+     fit to={\paperwidth} and 12.5cm,
+     halign=flush center,
+     valign=center,
+     space to=\myspace,
+     ]
+     \includegraphics[width=\linewidth,height=13cm,keepaspectratio]{img/cover.png}
+ \end{tcolorbox}
+
+ \begin{tcolorbox}[
+     boxrule=0mm,
+     arc=0mm,
+     colframe=maincolor,
+     colback=maincolor,
+     fit to={\paperwidth} and 8cm,
+     fit basedim=130pt,
+     halign=flush center,
+     valign=center,
+     top=1cm,bottom=1cm,
+     ]
+     \color{white}\textbf{\textit{$title$}}
+ \end{tcolorbox}
+
+ \begin{tcolorbox}[
+     boxrule=0mm,
+     colframe=white,
+     colback=white,
+     fit to={\paperwidth} and 2cm,
+     halign=flush right,
+     valign=top,
+     left=8cm,
+     right=1cm
+     ]
+     \Large{\color{maincolor}\textit{$phrase$}} \\
+     \small{\color{maincolor}\textit{$phrase-author$}}
+ \end{tcolorbox}
+
+ \begin{tcolorbox}[
+     before skip=0cm,
+     boxrule=0mm,
+     colframe=white,
+     colback=white,
+     fit to={\paperwidth} and 2.6cm,
+     fit basedim=210pt,
+     halign=flush left,
+     left=1cm,
+     valign=top
+     ]
+     \color{maincolor}\textbf{$author$} \linebreak
+     \color{maincolor}\textbf{$date$}
+ \end{tcolorbox}
+
+
+\restoregeometry
+\clearpage
+%---------------------------------------------------
+% First page with book license
+%---------------------------------------------------
+% remove header
+\thispagestyle{empty}
+
+\null
+\vfill
+\begin{flushleft}
+    \includesvg[]{img/seal.svg}
+
+    Copyright \textcopyright \ $author$ \hspace{1pt} (\href{mailto:me@somewhere.com}{r.gomezolivencia@irakasle.eus})
+    \begin{itemize}
+        \item Github: \href{https://github.com/yuki}{https://github.com/yuki}
+        \item Twitter: \href{https://twitter.com/rugoli}{https://twitter.com/rugoli}
+    \end{itemize}
+
+
+    \vspace{5mm}
+    \textbf{Licencia: } \href{https://creativecommons.org/licenses/by-sa/4.0/deed.es}{Creative Commons BY-SA 4.0}
+
+
+    Este libro se ha relizado teniendo en cuenta la cultura libre. Puedes utilizarlo, modificarlo y compartirlo teniendo en cuenta la licencia \href{https://creativecommons.org/licenses/by-sa/4.0/}{Attribution-ShareAlike} de \textbf{Creative Commons}. Es por eso que:
+
+    \begin{itemize}
+        \item \textbf{Atribución}: Debes darme crédito de manera adecuada e incluir un enlace a la licencia e indicar si se han realizado cambios.
+        \item \textbf{CompartirIgual}: Si reutilizas, modificas o creas a partir de este material, debes distribuir el trabajo bajo la misma licencia.
+    \end{itemize}
+
+
+    Puedes encontrar la última versión de este libro en la siguiente URL (\href{https://github.com/yuki/my-books}{https://github.com/yuki/my-books}), así como otros libros que he creado. También podrás descargar el código fuente en formato \LaTeX{}.
+
+    \begin{infobox}
+        Por favor, ponte en contacto conmigo si encuentras algún fallo, falta de ortografía o quieres mejorar de alguna manera este libro. Gracias.
+    \end{infobox}
+    \vspace{5mm}
+\end{flushleft}
+
+\clearpage
+
+
+% $if(has-frontmatter)$
+%     \frontmatter
+% $endif$
+% $if(title)$
+%     $if(beamer)$
+%         \frame{\titlepage}
+%     $else$
+%     \maketitle
+%     $endif$
+%     $if(abstract)$
+%         \begin{abstract}
+%             $abstract$
+%         \end{abstract}
+%     $endif$
+% $endif$
+
+% $for(include-before)$
+%     $include-before$
+
+% $endfor$
+% $if(toc)$
+%     $if(toc-title)$
+%         \renewcommand*\contentsname{$toc-title$}
+%     $endif$
+%     $if(beamer)$
+%         \begin{frame}[allowframebreaks]
+%             $if(toc-title)$
+%               \frametitle{$toc-title$}
+%             $endif$
+%             \tableofcontents[hideallsubsections]
+%         \end{frame}
+%     $else$
+%         {
+%         $if(colorlinks)$
+%             \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
+%         $endif$
+%         \setcounter{tocdepth}{$toc-depth$}
+%         \tableofcontents
+%         }
+%     $endif$
+% $endif$
+% $if(lof)$
+%     \listoffigures
+% $endif$
+% $if(lot)$
+%     \listoftables
+% $endif$
+% $if(linestretch)$
+%     \setstretch{$linestretch$}
+% $endif$
+% $if(has-frontmatter)$
+%     \mainmatter
+% $endif$
+
+\makeatletter
+\renewcommand\@dotsep{200}
+\makeatother
+\tableofcontents
+
 
 $body$
 
-$if(has-frontmatter)$
-    \backmatter
-$endif$
-$if(natbib)$
-    $if(bibliography)$
-        $if(biblio-title)$
-            $if(has-chapters)$
-                \renewcommand\bibname{$biblio-title$}
-            $else$
-                \renewcommand\refname{$biblio-title$}
-            $endif$
-        $endif$
-        $if(beamer)$
-            \begin{frame}[allowframebreaks]{$biblio-title$}
-              \bibliographytrue
-              $endif$
-              \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-              $if(beamer)$
-            \end{frame}
-        $endif$
-    $endif$
-$endif$
-$if(biblatex)$
-    $if(beamer)$
-        \begin{frame}[allowframebreaks]{$biblio-title$}
-          \bibliographytrue
-          \printbibliography[heading=none]
-        \end{frame}
-    $else$
-        \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-    $endif$
-    
-$endif$
-$for(include-after)$
-    $include-after$
-$endfor$
+% $if(has-frontmatter)$
+%     \backmatter
+% $endif$
+
+% $if(natbib)$
+%     $if(bibliography)$
+%         $if(biblio-title)$
+%             $if(has-chapters)$
+%                 \renewcommand\bibname{$biblio-title$}
+%             $else$
+%                 \renewcommand\refname{$biblio-title$}
+%             $endif$
+%         $endif$
+%         $if(beamer)$
+%             \begin{frame}[allowframebreaks]{$biblio-title$}
+%               \bibliographytrue
+%               $endif$
+%               \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+%               $if(beamer)$
+%             \end{frame}
+%         $endif$
+%     $endif$
+% $endif$
+% $if(biblatex)$
+%     $if(beamer)$
+%         \begin{frame}[allowframebreaks]{$biblio-title$}
+%           \bibliographytrue
+%           \printbibliography[heading=none]
+%         \end{frame}
+%     $else$
+%         \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+%     $endif$
+% $endif$
+
+% $for(include-after)$
+%     $include-after$
+% $endfor$
+
 \end{document}

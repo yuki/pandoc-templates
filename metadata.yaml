@@ -5,12 +5,8 @@ degree: 'The Degree'
 author: 'Author One'
 date: '2023-10-15'
 maincolor: dc3545
-catch-phrase: ''
-catch-phrase-author: ''
+phrase: 'This is a good phrase'
+phrase-author: 'Phrase author'
 lang: es
 keywords: [nothing, nothingness]
-abstract: |
-  Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum.
-
-  Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum.
 ...
