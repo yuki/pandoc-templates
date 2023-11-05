@@ -1,4 +1,14 @@
 if FORMAT:match 'latex' then
+  title = ""
+
+  function Para(el)
+    if (el.c[1].t == "Span" and el.c[1].classes[1] == "title") then
+      -- get mycode block's title, and put in global variable
+      title = pandoc.utils.stringify(el.c[1])
+      return ""
+    end
+  end
+
   function Span(el)
     beg_v = ""
     end_v = ""
@@ -48,6 +58,11 @@ if FORMAT:match 'latex' then
     elseif el.classes[1] == "exercisebox" then
       beg_v = "\\begin{exercisebox}"
       end_v = "\\end{exercisebox}"
+    elseif el.classes[1] == "mycode" then
+      -- get mycode block's title
+      beg_v = "\\begin{mycode}{"..title.."}"
+      title = ""
+      end_v = "\\end{mycode}"
     end
 
     table.insert(el.content, 1, pandoc.RawInline("latex", beg_v))
