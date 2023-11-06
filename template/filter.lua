@@ -11,33 +11,28 @@ if FORMAT:match 'latex' then
 
   function Span(el)
     beg_v = ""
-    end_v = ""
+
     if el.classes[1] == "part" then
       beg_v = "\\part{"
-      end_v = "}"
     elseif el.classes[1] == "inlineconsole" then
       beg_v = "\\inlineconsole{"
-      end_v = "}"
     elseif el.classes[1] == "commandbox" then
       beg_v = "\\commandbox{"
-      end_v = "}"
     elseif el.classes[1] == "configfile" then
       beg_v = "\\configfile{"
-      end_v = "}"
     elseif el.classes[1] == "configdir" then
       beg_v = "\\configdir{"
-      end_v = "}"
     elseif el.classes[1] == "configlink" then
       beg_v = "\\configlink{"
-      end_v = "}"
     elseif el.classes[1] == "movie" then
       beg_v = "\\movie{"
-      end_v = "}"
     end
 
-    table.insert(el.content, 1, pandoc.RawInline("latex", beg_v))
-    table.insert(el.content, pandoc.RawInline("latex", end_v))
-    return el
+    if (beg_v == nil or beg_v == "") then
+      return el
+    else
+      return pandoc.RawInline("latex", beg_v..pandoc.utils.stringify(el).."}")
+    end
   end
 
   function Div(el)

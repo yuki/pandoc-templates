@@ -605,94 +605,15 @@ $endif$
     ]{1.25cm}
 }
 
-
 \titlecontents{part} % Section type being modified
-[1.25cm] % Left indentation
-{\addvspace{20pt}\color{white}\Large\sffamily\bfseries\hypersetup{linkcolor=white}} % Before code
-{} % Formatting of numbered sections of this type
-{\tocentrypartunnumbered} % Formatting of numberless sections of this type
-{} % Formatting of the filler to the right of the heading and the page number
-[] % After code
+  [1.25cm] % Left indentation
+  {\addvspace{20pt}\color{white}\Large\sffamily\bfseries\hypersetup{linkcolor=white}} % Before code
+  {} % Formatting of numbered sections of this type
+  {\tocentrypartunnumbered} % Formatting of numberless sections of this type
+  {} % Formatting of the filler to the right of the heading and the page number
+  [] % After code
 
 
-%--------------------------------------------------------------------------
-% Header and footer styling
-%--------------------------------------------------------------------------
-\RequirePackage{tikz}
-\RequirePackage{fancyhdr}
-\RequirePackage{extramarks}
-\pagestyle{fancy}
-
-\fancyhead{} % clear all header fields
-\renewcommand{\headrulewidth}{0pt} %remove the header's rule
-
-
-% de https://tex.stackexchange.com/questions/13387/how-to-get-part-name-in-latex
-% esta función tiene que estar aquí para que funcionen las cabeceras de la izquierda
-% FIXME: esto ahora no funciona 
-\directlua{partcount = 0}
-\newcommand*\partnumber{}
-\newcommand*\parttitle{}
-\let\origpart\part
-\renewcommand*{\part}[2][]{%
-    \ifx\\#1\\% optional argument not present?
-    \origpart{#2}%
-    \renewcommand*\parttitle{#2}%
-    \else
-    \origpart[#1]{#2}%
-    \renewcommand*\parttitle{#1}%
-    \fi
-    \directlua{partcount = partcount + 1}%
-    \renewcommand*\partnumber{\uppercase\expandafter{\romannumeral\directlua{tex.sprint(partcount)}}}%
-}
-
-
-%\partnumber and \parttitle are commands defined in line ~270
-\fancyhead[LE]{
-    \color{maincolor}\footnotesize\textit{\partnumber. \parttitle}
-    \vspace{-5pt}
-
-    \color{maincolor}\hrulefill
-}
-
-\fancyhead[RO]{
-    \color{maincolor}\footnotesize\textit{\nouppercase\firstleftmark}
-    \vspace{-5pt}
-
-    \color{maincolor}\hrulefill
-}
-
-\fancyfoot{} % clear all footer fields
-\fancyfoot[LE]{
-    \begin{tikzpicture}
-        \path [fill=maincolor] (0, 0) rectangle (0.8, 0.8);
-        \node [white] at (0.4,0.4) {\textbf{\thepage}};
-    \end{tikzpicture}
-    \begin{tikzpicture}
-        \path (0, 0);
-        \node at (0,0.35){\color{maincolor}\footnotesize\textit{$degree$}};
-    \end{tikzpicture}
-}
-\fancyfoot[RO]{
-    \begin{tikzpicture}
-        \path (0, 0);
-        \node at (0,0.35){\color{maincolor}\footnotesize\textit{$title$}};
-    \end{tikzpicture}
-    \begin{tikzpicture}
-        \path [fill=maincolor] (0, 0) rectangle (0.8, 0.8);
-        \node [white] at (0.4,0.4) {\textbf{\thepage}};
-    \end{tikzpicture}%
-}
-
-% for TOC
-\fancypagestyle{toc}[fancy]{%
-    \fancyhead[LE,RO]{
-        \color{maincolor}\footnotesize\textit{Índice}
-        \vspace{-5pt}
-
-        \color{maincolor}\hrulefill
-    }
-}
 
 %--------------------------------------------------------------------------
 % Chapters and Titles definitions
@@ -723,10 +644,6 @@ explicit, % Specify section names explicitly in \titleformat with #1
     {} % label before title
     {0em} % Space between the title and label
     {} % before-code hook
-
-
-
-
 
 \titleclass{\chapter}{straight} % removes page break after new chapter
 
@@ -783,12 +700,95 @@ explicit, % Specify section names explicitly in \titleformat with #1
     {\uline}
 \titlespacing*{\paragraph}{0pt}{0pt}{-1em}
 
-
 \makeatletter
 \@addtoreset{chapter}{part}
 \makeatother
 
 
+
+
+%--------------------------------------------------------------------------
+% Header and footer styling
+%--------------------------------------------------------------------------
+\RequirePackage{tikz}
+\RequirePackage{fancyhdr}
+\RequirePackage{extramarks}
+\pagestyle{fancy}
+
+\fancyhead{} % clear all header fields
+\renewcommand{\headrulewidth}{0pt} %remove the header's rule
+
+
+\directlua{partcount = 0}
+\newcommand*\partnumber{}
+\newcommand*\parttitle{}
+
+\let\origpart\part
+
+\renewcommand*{\part}[2][]{%
+    \ifx\\#1\\% optional argument not present?
+        \origpart{#2}%
+        \renewcommand*\parttitle{#2}%
+    \else
+        \origpart[#1]{#2}%
+        \renewcommand*\parttitle{#1}%
+    \fi
+    \directlua{partcount = partcount + 1}%
+    \renewcommand*\partnumber{\uppercase\expandafter{\romannumeral\directlua{tex.sprint(partcount)}}}%
+}
+
+
+%\partnumber and \parttitle are commands defined in line ~270
+\fancyhead[LE]{
+    \color{maincolor}\footnotesize\textit{\partnumber. \parttitle}
+    \vspace{-5pt}
+
+    \color{maincolor}\hrulefill
+}
+
+\fancyhead[RO]{
+    \color{maincolor}\footnotesize\textit{\nouppercase\firstleftmark}
+    \vspace{-5pt}
+
+    \color{maincolor}\hrulefill
+}
+
+\fancyfoot{} % clear all footer fields
+\fancyfoot[LE]{
+    \begin{tikzpicture}
+        \path [fill=maincolor] (0, 0) rectangle (0.8, 0.8);
+        \node [white] at (0.4,0.4) {\textbf{\thepage}};
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \path (0, 0);
+        \node at (0,0.35){\color{maincolor}\footnotesize\textit{$degree$}};
+    \end{tikzpicture}
+}
+\fancyfoot[RO]{
+    \begin{tikzpicture}
+        \path (0, 0);
+        \node at (0,0.35){\color{maincolor}\footnotesize\textit{$title$}};
+    \end{tikzpicture}
+    \begin{tikzpicture}
+        \path [fill=maincolor] (0, 0) rectangle (0.8, 0.8);
+        \node [white] at (0.4,0.4) {\textbf{\thepage}};
+    \end{tikzpicture}%
+}
+
+% for TOC
+\fancypagestyle{toc}[fancy]{%
+    \fancyhead[LE,RO]{
+        \color{maincolor}\footnotesize\textit{Índice}
+        \vspace{-5pt}
+
+        \color{maincolor}\hrulefill
+    }
+}
+
+
+%--------------------------------------------------------------------------
+% Other required packges
+%--------------------------------------------------------------------------
 
 \RequirePackage{pmboxdraw} % for Systemctl's "box" unicode symbols
 \RequirePackage{graphicx}
@@ -878,23 +878,6 @@ explicit, % Specify section names explicitly in \titleformat with #1
 }{
   \end{tcolorbox}
 }
-% OLD style
-% {mycode}[1]{
-%     listing only,adjusted title={\faTerminal \hspace{10pt}#1}, listing engine=minted,minted language=#2,
-%     breakable=true,enhanced jigsaw,
-%     minted options={fontsize=#3},colback=white,
-%     list entry={\protect\numberline{\thetcbcounter}#1}
-% }
-
-%\newenvironment{mycode}[1]{
-%  \begin{codebox}{#1}
-%}{
-%  \end{codebox}
-%}
-
-
-% \DeclareTotalTCBox{\inlineconsole}{ v }
-%   {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faTerminal\hspace{0pt}  #1}
 
 \DeclareTotalTCBox{\inlineconsole}{ v }
   {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{#1}
@@ -954,7 +937,7 @@ explicit, % Specify section names explicitly in \titleformat with #1
 
 \begin{document}
 
-% \coverpage
+
 \thispagestyle{empty}
 \newgeometry{margin=0pt}
 %---------------------------------------------------
@@ -1033,7 +1016,8 @@ explicit, % Specify section names explicitly in \titleformat with #1
 
 
 \restoregeometry
-\clearpage
+\clearpage % end cover page
+
 %---------------------------------------------------
 % First page with book license
 %---------------------------------------------------
@@ -1072,7 +1056,7 @@ explicit, % Specify section names explicitly in \titleformat with #1
     \vspace{5mm}
 \end{flushleft}
 
-\clearpage
+\clearpage %end license page
 
 
 % $if(has-frontmatter)$
