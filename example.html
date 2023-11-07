@@ -91,17 +91,6 @@ blockquote {
   border-left: 2px solid #e6e6e6;
   color: #606060;
 }
-div.abstract {
-  margin: 2em 2em 2em 2em;
-  text-align: left;
-  font-size: 85%;
-}
-div.abstract-title {
-  font-weight: bold;
-  text-align: center;
-  padding: 0;
-  margin-bottom: 0.5em;
-}
 code {
   font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
   font-size: 85%;
@@ -323,40 +312,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
                 id="toc-example-of-uses"><span
                 class="toc-section-number">2</span> Example of uses</a>
                 <ul>
+                <li><a href="#custom-boxes" id="toc-custom-boxes"><span
+                class="toc-section-number">2.1</span> Custom
+                boxes</a></li>
+                </ul></li>
                 <li><a href="#images" id="toc-images"><span
-                class="toc-section-number">2.1</span> Images</a>
+                class="toc-section-number">3</span> Images</a>
                 <ul>
                 <li><a href="#centered-image-with-caption"
                 id="toc-centered-image-with-caption"><span
-                class="toc-section-number">2.1.1</span> Centered image
+                class="toc-section-number">3.1</span> Centered image
                 with caption</a></li>
                 <li><a href="#float-image-in-the-left-side"
                 id="toc-float-image-in-the-left-side"><span
-                class="toc-section-number">2.1.2</span> Float image in
-                the left side</a></li>
+                class="toc-section-number">3.2</span> Float image in the
+                left side</a></li>
                 </ul></li>
                 <li><a href="#tables" id="toc-tables"><span
-                class="toc-section-number">2.2</span> Tables</a></li>
-                <li><a href="#custom-boxes" id="toc-custom-boxes"><span
-                class="toc-section-number">2.3</span> Custom
-                boxes</a></li>
-                </ul></li>
+                class="toc-section-number">4</span> Tables</a></li>
                 <li><a href="#lorem-ipsum" id="toc-lorem-ipsum"><span
-                class="toc-section-number">3</span> Lorem ipsum</a>
+                class="toc-section-number">5</span> Lorem ipsum</a>
                 <ul>
                 <li><a href="#pyout" id="toc-pyout"><span
-                class="toc-section-number">3.1</span> Pyout</a>
+                class="toc-section-number">5.1</span> Pyout</a>
                 <ul>
                 <li><a href="#image" id="toc-image"><span
-                class="toc-section-number">3.1.1</span> Image</a></li>
+                class="toc-section-number">5.1.1</span> Image</a></li>
                 </ul></li>
                 </ul></li>
                 <li><a href="#lorem-ipsum-1"
                 id="toc-lorem-ipsum-1"><span
-                class="toc-section-number">4</span> Lorem ipsum</a>
+                class="toc-section-number">6</span> Lorem ipsum</a>
                 <ul>
                 <li><a href="#pyout-1" id="toc-pyout-1"><span
-                class="toc-section-number">4.1</span> Pyout</a></li>
+                class="toc-section-number">6.1</span> Pyout</a></li>
                 </ul></li>
                 </ul>
               </div>
@@ -371,22 +360,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         <div class="justify-content-between align-items-center p-2" 
           data-bs-spy="scroll" data-bs-target="#navbar-toc" data-bs-root-margin="0px 0px -85%" 
           data-bs-smooth-scroll="true" tabindex="0">
-                      <div id="abstract">
-              <div class="offset-lg-3 col-lg-6">
-                <h2 class="text-center">Resumen</h2>
-                <p>Lorem Ipsum comenzó como un latín revuelto y sin
-                sentido derivado del texto de Cicerón del siglo I aC De
-                Finibus Bonorum et Malorum.</p>
-                <p>Lorem Ipsum comenzó como un latín revuelto y sin
-                sentido derivado del texto de Cicerón del siglo I aC De
-                Finibus Bonorum et Malorum.</p>
-                <div id="keywords">
-                  <span><strong>Keywords: </strong></span>
-                                      <span class="author">nothing, </span>
-                                      <span class="author">nothingness, </span>
-                                  </div>
-              </div>
-            </div>
               
           
           <p><span class="part">Parte 1</span></p>
@@ -403,12 +376,69 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <h1 data-number="2" id="example-of-uses"><span
           class="header-section-number">2</span> Example of uses</h1>
           <p>Here few examples of how to use this template:</p>
-          <h2 data-number="2.1" id="images"><span
-          class="header-section-number">2.1</span> Images</h2>
+          <h2 data-number="2.1" id="custom-boxes"><span
+          class="header-section-number">2.1</span> Custom boxes</h2>
+          <p>Here few custom boxes with code:</p>
+          <div class="mycode">
+          <p><span class="title">Title of the custom box</span></p>
+          <div class="sourceCode" id="cb1"><pre
+          class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">I</span>lluminate\<span class="cn">D</span>atabase\<span class="cn">M</span>igrations\<span class="cn">M</span>igration<span class="ot">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">I</span>lluminate\<span class="cn">D</span>atabase\<span class="cn">S</span>chema\<span class="cn">B</span>lueprint<span class="ot">;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">I</span>lluminate\<span class="cn">S</span>upport\<span class="cn">F</span>acades\<span class="cn">S</span>chema<span class="ot">;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> <span class="kw">new</span> <span class="kw">class</span> <span class="kw">extends</span> <span class="cn">M</span>igration {</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> up()<span class="ot">:</span> <span class="dt">void</span> {</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cn">S</span>chema::create(<span class="st">&#39;users&#39;</span><span class="ot">,</span> <span class="kw">function</span> (<span class="cn">B</span>lueprint <span class="va">$table</span>) {</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;id()<span class="ot">;</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;<span class="dt">string</span>(<span class="st">&#39;name&#39;</span>)<span class="ot">;</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="co">//...</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        })<span class="ot">;</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}<span class="ot">;</span></span></code></pre></div>
+          </div>
+          <p>Another example for console:</p>
+          <div class="mycode">
+          <p><span class="title">Title 2</span></p>
+          <div class="sourceCode" id="cb2"><pre
+          class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">root@1b29e46c10ae:/var/www/html#</span> php artisan make:model Post <span class="at">-crms</span></span></code></pre></div>
+          </div>
+          <p>Sometimes we need inline console code like <span
+          class="commandbox">ls path</span> , other times we need to
+          talk about some configuration file like <span
+          class="configfile">/etc/hosts</span> , config directory <span
+          class="configdir">/etc</span> inline text <span
+          class="inlineconsole">help</span> or a movie <span
+          class="movie"><a
+          href="https://www.imdb.com/title/tt2084970/">The Imitation
+          Game</a></span>.</p>
+          <p>This is an <strong>infobox</strong>:</p>
+          <div class="infobox">
+          <p>This is an <strong>infobox</strong>!</p>
+          </div>
+          <p>This is an <strong>warnbox</strong>:</p>
+          <div class="warnbox">
+          <p>This is an <strong>warningbox</strong>!</p>
+          </div>
+          <p>This is an <strong>errorbox</strong>:</p>
+          <div class="errorbox">
+          <p>This is an <strong>errorbox</strong>!</p>
+          </div>
+          <p>This is an <strong>questionbox</strong>:</p>
+          <div class="questionbox">
+          <p>This is an <strong>questionbox</strong>!</p>
+          </div>
+          <p>This is an <strong>exercisebox</strong>:</p>
+          <div class="exercisebox">
+          <p>This is an <strong>exercisebox</strong>!</p>
+          </div>
+          <p><span class="part">Parte 2</span></p>
+          <h1 data-number="3" id="images"><span
+          class="header-section-number">3</span> Images</h1>
           <p>Here few examples of with images.</p>
-          <h3 data-number="2.1.1" id="centered-image-with-caption"><span
-          class="header-section-number">2.1.1</span> Centered image with
-          caption</h3>
+          <h2 data-number="3.1" id="centered-image-with-caption"><span
+          class="header-section-number">3.1</span> Centered image with
+          caption</h2>
           <div class="center">
           <figure>
           <img src="img/cover.png" style="width:30%"
@@ -416,10 +446,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <figcaption aria-hidden="true">this is a dragon</figcaption>
           </figure>
           </div>
-          <h3 data-number="2.1.2"
-          id="float-image-in-the-left-side"><span
-          class="header-section-number">2.1.2</span> Float image in the
-          left side</h3>
+          <h2 data-number="3.2" id="float-image-in-the-left-side"><span
+          class="header-section-number">3.2</span> Float image in the
+          left side</h2>
           <div class="float-left">
           <figure>
           <img src="img/cover.png" alt="this is a dragon" />
@@ -444,8 +473,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           un latín revuelto y sin sentido derivado del texto de Cicerón
           del siglo I aC De Finibus Bonorum et Malorum.</p>
           </div>
-          <h2 data-number="2.2" id="tables"><span
-          class="header-section-number">2.2</span> Tables</h2>
+          <h1 data-number="4" id="tables"><span
+          class="header-section-number">4</span> Tables</h1>
           <p>A normal table:</p>
           <table>
           <thead>
@@ -481,64 +510,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </tr>
           </tbody>
           </table>
-          <h2 data-number="2.3" id="custom-boxes"><span
-          class="header-section-number">2.3</span> Custom boxes</h2>
-          <p>Here few custom boxes with code:</p>
-          <div class="mycode">
-          <p><span class="title">Title of the custom box</span></p>
-          <div class="sourceCode" id="cb1"><pre
-          class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">I</span>lluminate\<span class="cn">D</span>atabase\<span class="cn">M</span>igrations\<span class="cn">M</span>igration<span class="ot">;</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">I</span>lluminate\<span class="cn">D</span>atabase\<span class="cn">S</span>chema\<span class="cn">B</span>lueprint<span class="ot">;</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">I</span>lluminate\<span class="cn">S</span>upport\<span class="cn">F</span>acades\<span class="cn">S</span>chema<span class="ot">;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">return</span> <span class="kw">new</span> <span class="kw">class</span> <span class="kw">extends</span> <span class="cn">M</span>igration {</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> up()<span class="ot">:</span> <span class="dt">void</span> {</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="cn">S</span>chema::create(<span class="st">&#39;users&#39;</span><span class="ot">,</span> <span class="kw">function</span> (<span class="cn">B</span>lueprint <span class="va">$table</span>) {</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;id()<span class="ot">;</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;<span class="dt">string</span>(<span class="st">&#39;name&#39;</span>)<span class="ot">;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="co">//...</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        })<span class="ot">;</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}<span class="ot">;</span></span></code></pre></div>
-          </div>
-          <p>Another example for console:</p>
-          <div class="mycode">
-          <p><span class="title">Title 2</span></p>
-          <div class="sourceCode" id="cb2"><pre
-          class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">root@1b29e46c10ae:/var/www/html#</span> php artisan make:model Post <span class="at">-crms</span></span></code></pre></div>
-          </div>
-          <p>Sometimes we need inline console code like <span
-          class="commandbox">ls path</span> , other times we need to
-          talk about some configuration file like <span
-          class="configfile">/etc/hosts</span> , config directory <span
-          class="configdir">/etc</span> inline text <span
-          class="inlineconsole">help</span> or a movie <a
-          href="https://www.imdb.com/title/tt2084970/" class="movie">The
-          Imitation Game</a>.</p>
-          <p>This is an <strong>infobox</strong>:</p>
-          <div class="infobox">
-          <p>This is an <strong>infobox</strong>!</p>
-          </div>
-          <p>This is an <strong>warnbox</strong>:</p>
-          <div class="warnbox">
-          <p>This is an <strong>warningbox</strong>!</p>
-          </div>
-          <p>This is an <strong>errorbox</strong>:</p>
-          <div class="errorbox">
-          <p>This is an <strong>errorbox</strong>!</p>
-          </div>
-          <p>This is an <strong>questionbox</strong>:</p>
-          <div class="questionbox">
-          <p>This is an <strong>questionbox</strong>!</p>
-          </div>
-          <p>This is an <strong>exercisebox</strong>:</p>
-          <div class="exercisebox">
-          <p>This is an <strong>exercisebox</strong>!</p>
-          </div>
-          <p><span class="part">Parte 2</span></p>
-          <h1 data-number="3" id="lorem-ipsum"><span
-          class="header-section-number">3</span> Lorem ipsum</h1>
+          <h1 data-number="5" id="lorem-ipsum"><span
+          class="header-section-number">5</span> Lorem ipsum</h1>
           <p>El paso clásico “Lorem ipsum dolor sit amet…” se atribuye a
           una remixación del texto de De Finibus Bonorum et Malorum (“En
           los extremos del bien y del mal”), del filósofo romano
@@ -547,8 +520,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           la parte más notable extraída a continuación:</p>
           <div class="sourceCode" id="cb3"><pre
           class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
-          <h2 data-number="3.1" id="pyout"><span
-          class="header-section-number">3.1</span> Pyout</h2>
+          <h2 data-number="5.1" id="pyout"><span
+          class="header-section-number">5.1</span> Pyout</h2>
           <div class="sourceCode" id="cb4"><pre
           class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>HTML(<span class="st">&quot;&quot;&quot;</span></span>
@@ -557,20 +530,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/script&gt;</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;b&gt;HTML&lt;/b&gt;</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;&quot;&quot;</span>)</span></code></pre></div>
-          <h3 data-number="3.1.1" id="image"><span
-          class="header-section-number">3.1.1</span> Image</h3>
+          <h3 data-number="5.1.1" id="image"><span
+          class="header-section-number">5.1.1</span> Image</h3>
           <p><strong>Lorem ipsum</strong> dolor sit amet, consectetur
           adipiscing elit. Nunc luctus bibendum felis dictum
           sodales.</p>
-          <h1 data-number="4" id="lorem-ipsum-1"><span
-          class="header-section-number">4</span> Lorem ipsum</h1>
+          <h1 data-number="6" id="lorem-ipsum-1"><span
+          class="header-section-number">6</span> Lorem ipsum</h1>
           <p><strong>Lorem ipsum</strong> dolor sit amet, consectetur
           adipiscing elit. Nunc luctus bibendum felis dictum
           sodales.</p>
           <div class="sourceCode" id="cb5"><pre
           class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
-          <h2 data-number="4.1" id="pyout-1"><span
-          class="header-section-number">4.1</span> Pyout</h2>
+          <h2 data-number="6.1" id="pyout-1"><span
+          class="header-section-number">6.1</span> Pyout</h2>
           <div class="sourceCode" id="cb6"><pre
           class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>HTML(<span class="st">&quot;&quot;&quot;</span></span>

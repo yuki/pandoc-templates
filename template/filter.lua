@@ -25,7 +25,7 @@ if FORMAT:match 'latex' then
     elseif el.classes[1] == "configlink" then
       beg_v = "\\configlink{"
     elseif el.classes[1] == "movie" then
-      beg_v = "\\movie{"
+      beg_v = "\\movie{"..el.c[1].target.."}{"
     end
 
     if (beg_v == nil or beg_v == "") then
