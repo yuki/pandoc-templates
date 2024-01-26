@@ -128,7 +128,7 @@ $endif$
         $if(toc)$
           col-md-9 col-lg-10 px-md-4
         $endif$
-        " id="book">
+        " id="main">
         <div class="justify-content-between align-items-center p-2" 
           data-bs-spy="scroll" data-bs-target="#navbar-toc" data-bs-root-margin="0px 0px -85%" 
           data-bs-smooth-scroll="true" tabindex="0">
@@ -151,7 +151,9 @@ $endif$
             $include-before$
           $endfor$
 
-          $body$
+          <div id="book">
+            $body$
+          </div>
 
           $for(include-after)$
             $include-after$

@@ -1,13 +1,20 @@
-#book {
+#main {
   text-align: justify;
-  padding: 56px 0px;
+}
+
+#book  p {
+  line-height: 2;
 }
 
 #abstract {
   padding-bottom: 2rem;
 }
 
-/* SIDEBAR */
+/* 
+ *
+ * SIDEBAR 
+ *
+ * */
 
 .sidebar {
   position: fixed;
@@ -25,7 +32,11 @@
   overflow-x: auto;
 }
 
-/* NAVBAR */
+/* 
+ *
+ * NAVBAR 
+ *
+ * */
 
 .navbar ul {
   margin-top: 0em;
@@ -33,6 +44,7 @@
 
 #navbar-toc > ul {
   padding-left: 0em;
+  font-size: 0.8rem;
 }
 
 #navbar-toc li {
@@ -72,7 +84,11 @@
   padding-right: 0.5rem;
 }
 
-/* PARTS */
+/* 
+ *
+ * PARTS 
+ *
+ * */
 
 .part {
   display:block;
@@ -85,7 +101,11 @@
 }
 
 
-/* IMAGES */
+/* 
+ *
+ * IMAGES 
+ *
+ * */
 .center {
     text-align: center;
 }
@@ -106,7 +126,17 @@ figcaption{
   padding-right: 1rem;
 }
 
-/* CUSTOM BOXES */
+.float-right figure{
+  float: right;
+  width: 30%;
+  padding-left: 1rem;
+
+
+/* 
+ *
+ * CUSTOM BOXES 
+ *
+ * */
 
 .mycode {
   border: 2px solid var(--bs-gray-700);
@@ -297,5 +327,9 @@ figcaption{
   content: "\f013";
 }
 
-/* Tables */
+/* 
+ *
+ * Tables 
+ *
+ * */
 

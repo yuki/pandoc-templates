@@ -42,7 +42,7 @@ pandoc -o "example.html" --toc -N  --template=template/yuki.html --resource-path
 
 To create the PDF file: 
 ```
-pandoc -o "example.pdf" --toc -N  --template=template/yuki.tex --resource-path=. --lua-filter=template/filter.lua $(cat book.md)
+pandoc -o "example.pdf" --pdf-engine=lualatex --pdf-engine-opt=-shell-escape --toc -N --top-level-division=chapter  --template=template/yuki.tex --resource-path=. --lua-filter=template/filter.lua $(cat book.md)
 ```
 
 

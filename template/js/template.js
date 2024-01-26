@@ -21,9 +21,9 @@
         element.setAttribute('class','table table-striped table-hover table-bordered ')
     }
 
-    for (const element of document.getElementsByTagName('thead')) {
-        element.setAttribute('class','table-primary')
-    }
+    // for (const element of document.getElementsByTagName('thead')) {
+    //     element.setAttribute('class','table-primary')
+    // }
 
     for (const element of document.getElementsByTagName('tbody')) {
         element.setAttribute('class','table-group-divider')

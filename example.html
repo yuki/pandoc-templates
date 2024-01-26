@@ -356,33 +356,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <!-- if TOC, the class properties changed -->
       <main class="ms-sm-auto
                   col-md-9 col-lg-10 px-md-4
-                " id="book">
+                " id="main">
         <div class="justify-content-between align-items-center p-2" 
           data-bs-spy="scroll" data-bs-target="#navbar-toc" data-bs-root-margin="0px 0px -85%" 
           data-bs-smooth-scroll="true" tabindex="0">
               
           
-          <p><span class="part">Parte 1</span></p>
-          <h1 data-number="1" id="pandoc-template-in-bootstrap-5"><span
-          class="header-section-number">1</span> Pandoc template in
-          Bootstrap 5</h1>
-          <p>This template has been created to use <a
-          href="https://pandoc.org/">Pandoc</a> as a parser for Markdown
-          files. The idea is to use it to create static HTML files from
-          <a href="https://github.com/yuki/my-books">my books</a>. This
-          template uses <a href="https://getbootstrap.com/">Bootstrap
-          5</a> and <a href="https://fontawesome.com/">Font
-          Awesome</a>.</p>
-          <h1 data-number="2" id="example-of-uses"><span
-          class="header-section-number">2</span> Example of uses</h1>
-          <p>Here few examples of how to use this template:</p>
-          <h2 data-number="2.1" id="custom-boxes"><span
-          class="header-section-number">2.1</span> Custom boxes</h2>
-          <p>Here few custom boxes with code:</p>
-          <div class="mycode">
-          <p><span class="title">Title of the custom box</span></p>
-          <div class="sourceCode" id="cb1"><pre
-          class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+          <div id="book">
+            <p><span class="part">Parte 1</span></p>
+            <h1 data-number="1"
+            id="pandoc-template-in-bootstrap-5"><span
+            class="header-section-number">1</span> Pandoc template in
+            Bootstrap 5</h1>
+            <p>This template has been created to use <a
+            href="https://pandoc.org/">Pandoc</a> as a parser for
+            Markdown files. The idea is to use it to create static HTML
+            files from <a href="https://github.com/yuki/my-books">my
+            books</a>. This template uses <a
+            href="https://getbootstrap.com/">Bootstrap 5</a> and <a
+            href="https://fontawesome.com/">Font Awesome</a>.</p>
+            <h1 data-number="2" id="example-of-uses"><span
+            class="header-section-number">2</span> Example of uses</h1>
+            <p>Here few examples of how to use this template:</p>
+            <h2 data-number="2.1" id="custom-boxes"><span
+            class="header-section-number">2.1</span> Custom boxes</h2>
+            <p>Here few custom boxes with code:</p>
+            <div class="mycode">
+            <p><span class="title">Title of the custom box</span></p>
+            <div class="sourceCode" id="cb1"><pre
+            class="sourceCode php"><code class="sourceCode php"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">I</span>lluminate\<span class="cn">D</span>atabase\<span class="cn">M</span>igrations\<span class="cn">M</span>igration<span class="ot">;</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">I</span>lluminate\<span class="cn">D</span>atabase\<span class="cn">S</span>chema\<span class="cn">B</span>lueprint<span class="ot">;</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">I</span>lluminate\<span class="cn">S</span>upport\<span class="cn">F</span>acades\<span class="cn">S</span>chema<span class="ot">;</span></span>
@@ -396,162 +398,192 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        })<span class="ot">;</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}<span class="ot">;</span></span></code></pre></div>
-          </div>
-          <p>Another example for console:</p>
-          <div class="mycode">
-          <p><span class="title">Title 2</span></p>
-          <div class="sourceCode" id="cb2"><pre
-          class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">root@1b29e46c10ae:/var/www/html#</span> php artisan make:model Post <span class="at">-crms</span></span></code></pre></div>
-          </div>
-          <p>Sometimes we need inline console code like <span
-          class="commandbox">ls path</span> , other times we need to
-          talk about some configuration file like <span
-          class="configfile">/etc/hosts</span> , config directory <span
-          class="configdir">/etc</span> inline text <span
-          class="inlineconsole">help</span> or a movie <span
-          class="movie"><a
-          href="https://www.imdb.com/title/tt2084970/">The Imitation
-          Game</a></span>.</p>
-          <p>This is an <strong>infobox</strong>:</p>
-          <div class="infobox">
-          <p>This is an <strong>infobox</strong>!</p>
-          </div>
-          <p>This is an <strong>warnbox</strong>:</p>
-          <div class="warnbox">
-          <p>This is an <strong>warningbox</strong>!</p>
-          </div>
-          <p>This is an <strong>errorbox</strong>:</p>
-          <div class="errorbox">
-          <p>This is an <strong>errorbox</strong>!</p>
-          </div>
-          <p>This is an <strong>questionbox</strong>:</p>
-          <div class="questionbox">
-          <p>This is an <strong>questionbox</strong>!</p>
-          </div>
-          <p>This is an <strong>exercisebox</strong>:</p>
-          <div class="exercisebox">
-          <p>This is an <strong>exercisebox</strong>!</p>
-          </div>
-          <p><span class="part">Parte 2</span></p>
-          <h1 data-number="3" id="images"><span
-          class="header-section-number">3</span> Images</h1>
-          <p>Here few examples of with images.</p>
-          <h2 data-number="3.1" id="centered-image-with-caption"><span
-          class="header-section-number">3.1</span> Centered image with
-          caption</h2>
-          <div class="center">
-          <figure>
-          <img src="img/cover.png" style="width:30%"
-          alt="this is a dragon" />
-          <figcaption aria-hidden="true">this is a dragon</figcaption>
-          </figure>
-          </div>
-          <h2 data-number="3.2" id="float-image-in-the-left-side"><span
-          class="header-section-number">3.2</span> Float image in the
-          left side</h2>
-          <div class="float-left">
-          <figure>
-          <img src="img/cover.png" alt="this is a dragon" />
-          <figcaption aria-hidden="true">this is a dragon</figcaption>
-          </figure>
-          <p>Lorem Ipsum comenzó como un latín revuelto y sin sentido
-          derivado del texto de Cicerón del siglo I aC De Finibus
-          Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto
-          y sin sentido derivado del texto de Cicerón del siglo I aC De
-          Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín
-          revuelto y sin sentido derivado del texto de Cicerón del siglo
-          I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como
-          un latín revuelto y sin sentido derivado del texto de Cicerón
-          del siglo I aC De Finibus Bonorum et Malorum.</p>
-          <p>Lorem Ipsum comenzó como un latín revuelto y sin sentido
-          derivado del texto de Cicerón del siglo I aC De Finibus
-          Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto
-          y sin sentido derivado del texto de Cicerón del siglo I aC De
-          Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín
-          revuelto y sin sentido derivado del texto de Cicerón del siglo
-          I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como
-          un latín revuelto y sin sentido derivado del texto de Cicerón
-          del siglo I aC De Finibus Bonorum et Malorum.</p>
-          </div>
-          <h1 data-number="4" id="tables"><span
-          class="header-section-number">4</span> Tables</h1>
-          <p>A normal table:</p>
-          <table>
-          <thead>
-          <tr class="header">
-          <th style="text-align: center;"></th>
-          <th style="text-align: center;">Col 1</th>
-          <th style="text-align: center;">Col 2</th>
-          <th style="text-align: center;">Col 3</th>
-          <th style="text-align: center;">Col 4</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr class="odd">
-          <td style="text-align: center;">Fila 1</td>
-          <td style="text-align: center;">a</td>
-          <td style="text-align: center;"></td>
-          <td style="text-align: center;"></td>
-          <td style="text-align: center;"></td>
-          </tr>
-          <tr class="even">
-          <td style="text-align: center;">Fila 2</td>
-          <td style="text-align: center;"></td>
-          <td style="text-align: center;">b</td>
-          <td style="text-align: center;"></td>
-          <td style="text-align: center;">a</td>
-          </tr>
-          <tr class="odd">
-          <td style="text-align: center;">Fila 3</td>
-          <td style="text-align: center;"></td>
-          <td style="text-align: center;"></td>
-          <td style="text-align: center;">c</td>
-          <td style="text-align: center;"></td>
-          </tr>
-          </tbody>
-          </table>
-          <h1 data-number="5" id="lorem-ipsum"><span
-          class="header-section-number">5</span> Lorem ipsum</h1>
-          <p>El paso clásico “Lorem ipsum dolor sit amet…” se atribuye a
-          una remixación del texto de De Finibus Bonorum et Malorum (“En
-          los extremos del bien y del mal”), del filósofo romano
-          Cicerón, de 45 aC. Más específicamente, se piensa que el
-          pasaje proviene de las secciones 1.10.32 - 33 de su texto, con
-          la parte más notable extraída a continuación:</p>
-          <div class="sourceCode" id="cb3"><pre
-          class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
-          <h2 data-number="5.1" id="pyout"><span
-          class="header-section-number">5.1</span> Pyout</h2>
-          <div class="sourceCode" id="cb4"><pre
-          class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
+            </div>
+            <p>Another example for console:</p>
+            <div class="mycode">
+            <p><span class="title">Title 2</span></p>
+            <div class="sourceCode" id="cb2"><pre
+            class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">root@1b29e46c10ae:/var/www/html#</span> php artisan make:model Post <span class="at">-crms</span></span></code></pre></div>
+            </div>
+            <p>Sometimes we need inline console code like <span
+            class="commandbox">ls path</span> , other times we need to
+            talk about some configuration file like <span
+            class="configfile">/etc/hosts</span> , config directory
+            <span class="configdir">/etc</span> inline text <span
+            class="inlineconsole">help</span> or a movie <span
+            class="movie"><a
+            href="https://www.imdb.com/title/tt2084970/">The Imitation
+            Game</a></span>.</p>
+            <p>This is an <strong>infobox</strong>:</p>
+            <div class="infobox">
+            <p>This is an <strong>infobox</strong>!</p>
+            </div>
+            <p>This is an <strong>warnbox</strong>:</p>
+            <div class="warnbox">
+            <p>This is an <strong>warningbox</strong>!</p>
+            </div>
+            <p>This is an <strong>errorbox</strong>:</p>
+            <div class="errorbox">
+            <p>This is an <strong>errorbox</strong>!</p>
+            </div>
+            <p>This is an <strong>questionbox</strong>:</p>
+            <div class="questionbox">
+            <p>This is an <strong>questionbox</strong>!</p>
+            </div>
+            <p>This is an <strong>exercisebox</strong>:</p>
+            <div class="exercisebox">
+            <p>This is an <strong>exercisebox</strong>!</p>
+            </div>
+            <p><span class="part">Parte 2</span></p>
+            <h1 data-number="3" id="images"><span
+            class="header-section-number">3</span> Images</h1>
+            <p>Here few examples of with images.</p>
+            <h2 data-number="3.1" id="centered-image-with-caption"><span
+            class="header-section-number">3.1</span> Centered image with
+            caption</h2>
+            <div class="center">
+            <figure>
+            <img src="img/cover.png" style="width:30%"
+            alt="this is a dragon" />
+            <figcaption aria-hidden="true">this is a dragon</figcaption>
+            </figure>
+            </div>
+            <h2 data-number="3.2"
+            id="float-image-in-the-left-side"><span
+            class="header-section-number">3.2</span> Float image in the
+            left side</h2>
+            <div class="float-left">
+            <figure>
+            <img src="img/cover.png" alt="this is a dragon" />
+            <figcaption aria-hidden="true">this is a dragon</figcaption>
+            </figure>
+            <p>Lorem Ipsum comenzó como un latín revuelto y sin sentido
+            derivado del texto de Cicerón del siglo I aC De Finibus
+            Bonorum et Malorum. Lorem Ipsum comenzó como un latín
+            revuelto y sin sentido derivado del texto de Cicerón del
+            siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum
+            comenzó como un latín revuelto y sin sentido derivado del
+            texto de Cicerón del siglo I aC De Finibus Bonorum et
+            Malorum. Lorem Ipsum comenzó como un latín revuelto y sin
+            sentido derivado del texto de Cicerón del siglo I aC De
+            Finibus Bonorum et Malorum.</p>
+            <p>Lorem Ipsum comenzó como un latín revuelto y sin sentido
+            derivado del texto de Cicerón del siglo I aC De Finibus
+            Bonorum et Malorum. Lorem Ipsum comenzó como un latín
+            revuelto y sin sentido derivado del texto de Cicerón del
+            siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum
+            comenzó como un latín revuelto y sin sentido derivado del
+            texto de Cicerón del siglo I aC De Finibus Bonorum et
+            Malorum. Lorem Ipsum comenzó como un latín revuelto y sin
+            sentido derivado del texto de Cicerón del siglo I aC De
+            Finibus Bonorum et Malorum.</p>
+            </div>
+            <div class="float-right">
+            <figure>
+            <img src="img/cover.png" alt="this is a dragon" />
+            <figcaption aria-hidden="true">this is a dragon</figcaption>
+            </figure>
+            <p>Lorem Ipsum comenzó como un latín revuelto y sin sentido
+            derivado del texto de Cicerón del siglo I aC De Finibus
+            Bonorum et Malorum. Lorem Ipsum comenzó como un latín
+            revuelto y sin sentido derivado del texto de Cicerón del
+            siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum
+            comenzó como un latín revuelto y sin sentido derivado del
+            texto de Cicerón del siglo I aC De Finibus Bonorum et
+            Malorum. Lorem Ipsum comenzó como un latín revuelto y sin
+            sentido derivado del texto de Cicerón del siglo I aC De
+            Finibus Bonorum et Malorum.</p>
+            <p>Lorem Ipsum comenzó como un latín revuelto y sin sentido
+            derivado del texto de Cicerón del siglo I aC De Finibus
+            Bonorum et Malorum. Lorem Ipsum comenzó como un latín
+            revuelto y sin sentido derivado del texto de Cicerón del
+            siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum
+            comenzó como un latín revuelto y sin sentido derivado del
+            texto de Cicerón del siglo I aC De Finibus Bonorum et
+            Malorum. Lorem Ipsum comenzó como un latín revuelto y sin
+            sentido derivado del texto de Cicerón del siglo I aC De
+            Finibus Bonorum et Malorum.</p>
+            </div>
+            <h1 data-number="4" id="tables"><span
+            class="header-section-number">4</span> Tables</h1>
+            <p>A normal table:</p>
+            <table>
+            <thead>
+            <tr class="header">
+            <th style="text-align: center;"></th>
+            <th style="text-align: center;">Col 1</th>
+            <th style="text-align: center;">Col 2</th>
+            <th style="text-align: center;">Col 3</th>
+            <th style="text-align: center;">Col 4</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="odd">
+            <td style="text-align: center;">Fila 1</td>
+            <td style="text-align: center;">a</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            </tr>
+            <tr class="even">
+            <td style="text-align: center;">Fila 2</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;">b</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;">a</td>
+            </tr>
+            <tr class="odd">
+            <td style="text-align: center;">Fila 3</td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;"></td>
+            <td style="text-align: center;">c</td>
+            <td style="text-align: center;"></td>
+            </tr>
+            </tbody>
+            </table>
+            <h1 data-number="5" id="lorem-ipsum"><span
+            class="header-section-number">5</span> Lorem ipsum</h1>
+            <p>El paso clásico “Lorem ipsum dolor sit amet…” se atribuye
+            a una remixación del texto de De Finibus Bonorum et Malorum
+            (“En los extremos del bien y del mal”), del filósofo romano
+            Cicerón, de 45 aC. Más específicamente, se piensa que el
+            pasaje proviene de las secciones 1.10.32 - 33 de su texto,
+            con la parte más notable extraída a continuación:</p>
+            <div class="sourceCode" id="cb3"><pre
+            class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
+            <h2 data-number="5.1" id="pyout"><span
+            class="header-section-number">5.1</span> Pyout</h2>
+            <div class="sourceCode" id="cb4"><pre
+            class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>HTML(<span class="st">&quot;&quot;&quot;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;script&gt;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">console.log(&quot;hello&quot;);</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/script&gt;</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;b&gt;HTML&lt;/b&gt;</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;&quot;&quot;</span>)</span></code></pre></div>
-          <h3 data-number="5.1.1" id="image"><span
-          class="header-section-number">5.1.1</span> Image</h3>
-          <p><strong>Lorem ipsum</strong> dolor sit amet, consectetur
-          adipiscing elit. Nunc luctus bibendum felis dictum
-          sodales.</p>
-          <h1 data-number="6" id="lorem-ipsum-1"><span
-          class="header-section-number">6</span> Lorem ipsum</h1>
-          <p><strong>Lorem ipsum</strong> dolor sit amet, consectetur
-          adipiscing elit. Nunc luctus bibendum felis dictum
-          sodales.</p>
-          <div class="sourceCode" id="cb5"><pre
-          class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
-          <h2 data-number="6.1" id="pyout-1"><span
-          class="header-section-number">6.1</span> Pyout</h2>
-          <div class="sourceCode" id="cb6"><pre
-          class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
+            <h3 data-number="5.1.1" id="image"><span
+            class="header-section-number">5.1.1</span> Image</h3>
+            <p><strong>Lorem ipsum</strong> dolor sit amet, consectetur
+            adipiscing elit. Nunc luctus bibendum felis dictum
+            sodales.</p>
+            <h1 data-number="6" id="lorem-ipsum-1"><span
+            class="header-section-number">6</span> Lorem ipsum</h1>
+            <p><strong>Lorem ipsum</strong> dolor sit amet, consectetur
+            adipiscing elit. Nunc luctus bibendum felis dictum
+            sodales.</p>
+            <div class="sourceCode" id="cb5"><pre
+            class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;hello&quot;</span>)</span></code></pre></div>
+            <h2 data-number="6.1" id="pyout-1"><span
+            class="header-section-number">6.1</span> Pyout</h2>
+            <div class="sourceCode" id="cb6"><pre
+            class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> HTML</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>HTML(<span class="st">&quot;&quot;&quot;</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;script&gt;</span></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">console.log(&quot;hello&quot;);</span></span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;/script&gt;</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="st">&lt;b&gt;HTML&lt;/b&gt;</span></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;&quot;&quot;</span>)</span></code></pre></div>
+          </div>
 
                   </div>
       </main>
