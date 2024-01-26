@@ -356,7 +356,7 @@ $endif$
 %     \makeatother
 % $endif$
 %$if(svg)$
-    \usepackage{svg}
+%    \usepackage{svg}
 %$endif$
 % $if(strikeout)$
 %     $-- also used for underline
@@ -797,6 +797,20 @@ explicit, % Specify section names explicitly in \titleformat with #1
 \RequirePackage[export]{adjustbox} % frames in graphics
 \RequirePackage{wrapfig}
 
+% from pandoc template
+\makeatletter
+  \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+  \def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+%     % Scale images if necessary, so that they will not overflow the page
+%     % margins by default, and it is still possible to overwrite the defaults
+%     % using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+%     % Set default figure placement to htbp
+% \makeatletter
+%   \def\fps@figure{htbp}
+% \makeatother
+
 \RequirePackage{caption}
 \captionsetup{labelformat=empty,textfont={scriptsize}}
 \RequirePackage[shortcuts]{extdash}
@@ -901,6 +915,26 @@ explicit, % Specify section names explicitly in \titleformat with #1
 
 
 
+%--------------------------------------------------------------------------
+% IMAGES
+%--------------------------------------------------------------------------
+
+\newcommand{\floatimage}[4]{
+  \begin{wrapfigure}{#1}{#2\textwidth}
+    \centering
+    \includegraphics[width=0.9\linewidth]{#3}
+    \captionof{figure}{#4}
+    \label{fig:wrapfig}
+  \end{wrapfigure}
+}
+
+\newcommand{\floatleft}[3]{
+  \floatimage{l}{#1}{#2}{#3}
+}
+
+\newcommand{\floatright}[3]{
+  \floatimage{r}{#1}{#2}{#3}
+}
 
 \newcommand{\itemimage}[6]{
     % #1 item text

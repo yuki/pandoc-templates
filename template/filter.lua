@@ -35,9 +35,18 @@ if FORMAT:match 'latex' then
     end
   end
 
+  function Figure(el)
+    -- if figure's child is a RawInline is because it has changed in Image
+    if el.c[1].c[1].t == "RawInline" then
+      return el.c[1].c[1]
+    end
+  end
+
   function Div(el)
     beg_v = ""
     end_v = ""
+
+    -- para las customboxes
     if el.classes[1] == "infobox" then
       beg_v = "\\begin{infobox}"
       end_v = "\\end{infobox}"
@@ -63,6 +72,27 @@ if FORMAT:match 'latex' then
     table.insert(el.content, 1, pandoc.RawInline("latex", beg_v))
     table.insert(el.content, pandoc.RawInline("latex", end_v))
     return el
+  end
+
+  function Image(el)
+    width = el.attributes.width
+    if (width) then
+      -- remove the percentage, because in LaTeX make problems
+      width = string.gsub(width,"(%%)", "")
+      -- convert width XY% into 0.XY
+      width = "0."..width
+    end
+    
+    if el.classes[1] == "float-left" then
+      beg_v = "\\floatleft{"..width.."}{"..el.src.."}{"..pandoc.utils.stringify(el.caption).."}"
+      return pandoc.RawInline("latex", beg_v)
+    elseif el.classes[1] == "float-right" then
+      beg_v = "\\floatright{"..width.."}{"..el.src.."}{"..pandoc.utils.stringify(el.caption).."}"
+      return pandoc.RawInline("latex", beg_v)
+    else
+      return el
+    end
+
   end
 
 end
