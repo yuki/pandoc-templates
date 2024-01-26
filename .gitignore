@@ -1,0 +1,15 @@
+*log
+*.aux
+*.listing
+*.log
+*.out
+*.synctex.gz
+*.toc
+*_minted*
+*.pdf
+*.fdb_latexmk
+*.fls
+*.ilg
+*.ind
+svg-inkscape
+.DS_Store
