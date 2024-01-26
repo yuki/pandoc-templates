@@ -106,12 +106,20 @@
  * IMAGES
  *
  * */
+
 .center {
     text-align: center;
 }
 
 img {
+  max-width: -webkit-fill-available;
+  max-width: -moz-available;
   padding: 1rem;
+}
+
+figure{
+  max-width: -webkit-fill-available;
+  max-width: -moz-available;
 }
 
 figcaption{
@@ -120,15 +128,13 @@ figcaption{
   margin:auto;
 }
 
-.float-left figure{
+.float-left figure, .float-left img{
   float: left;
-  width: 30%;
   padding-right: 1rem;
 }
 
-.float-right figure{
+.float-right figure, .float-right img{
   float: right;
-  width: 30%;
   padding-left: 1rem;
 }
 

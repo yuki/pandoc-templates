@@ -42,4 +42,12 @@
         }
     }
 
+    // IMAGES
+    for (const element of document.getElementsByTagName('img')) {
+        var width = element.style.width;
+        element.parentElement.style.width=width;
+        element.style.width="100%";
+    }
+
+
 })()
