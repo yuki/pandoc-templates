@@ -807,9 +807,9 @@ explicit, % Specify section names explicitly in \titleformat with #1
 %     % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 %     % Set default figure placement to htbp
-% \makeatletter
-%   \def\fps@figure{htbp}
-% \makeatother
+\makeatletter
+  \def\fps@figure{htbp}
+\makeatother
 
 \RequirePackage{caption}
 \captionsetup{labelformat=empty,textfont={scriptsize}}

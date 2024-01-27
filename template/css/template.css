@@ -1,5 +1,6 @@
 #main {
   text-align: justify;
+  padding: 56px 0px;
 }
 
 #book  p {
@@ -8,6 +9,10 @@
 
 #abstract {
   padding-bottom: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6{
+  padding-top: 2rem;
 }
 
 /* 
@@ -109,6 +114,10 @@
 
 .center {
     text-align: center;
+}
+
+.center figure {
+  display: inline-block;
 }
 
 img {
