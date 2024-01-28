@@ -1,0 +1,15 @@
+toc: true
+number-sections: true
+wrap: preserve
+standalone: true
+embed-resources: true
+top-level-division: chapter
+pdf-engine: lualatex
+pdf-engine-opt: '-shell-escape'
+template: template/yuki.html
+filters:
+  - template/filter.lua
+metadata-files:
+  - metadata.yaml
+resource-path:
+  - .

@@ -37,12 +37,12 @@ In this repository there are few files to create an example HTML and PDF file:
 To create the HTML file:
 
 ```
-pandoc -o "example.html" -d book.yaml
+./book.sh | pandoc -o "example.html" -d defaults.yaml
 ```
 
 To create the PDF file: 
 ```
-pandoc -o "example.pdf" -d book.yaml --template=template/yuki.tex 
+./book.sh | pandoc -o "example.pdf" -d defaults.yaml --template=template/yuki.tex 
 ```
 
 
