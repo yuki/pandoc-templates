@@ -919,21 +919,21 @@ explicit, % Specify section names explicitly in \titleformat with #1
 % IMAGES
 %--------------------------------------------------------------------------
 
-\newcommand{\floatimage}[4]{
+\newcommand{\floatimage}[5]{
   \begin{wrapfigure}{#1}{#2\textwidth}
     \centering
-    \includegraphics[width=0.9\linewidth]{#3}
+    \includegraphics[width=0.9\linewidth #5]{#3}
     \captionof{figure}{#4}
     \label{fig:wrapfig}
   \end{wrapfigure}
 }
 
-\newcommand{\floatleft}[3]{
-  \floatimage{l}{#1}{#2}{#3}
+\newcommand{\floatleft}[4]{
+  \floatimage{l}{#1}{#2}{#3}{#4}
 }
 
-\newcommand{\floatright}[3]{
-  \floatimage{r}{#1}{#2}{#3}
+\newcommand{\floatright}[4]{
+  \floatimage{r}{#1}{#2}{#3}{#4}
 }
 
 \newcommand{\itemimage}[6]{

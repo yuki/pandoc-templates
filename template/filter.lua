@@ -83,13 +83,29 @@ if FORMAT:match 'latex' then
       width = "0."..width
     end
     
-    if el.classes[1] == "float-left" then
-      beg_v = "\\floatleft{"..width.."}{"..el.src.."}{"..pandoc.utils.stringify(el.caption).."}"
-      return pandoc.RawInline("latex", beg_v)
-    elseif el.classes[1] == "float-right" then
-      beg_v = "\\floatright{"..width.."}{"..el.src.."}{"..pandoc.utils.stringify(el.caption).."}"
-      return pandoc.RawInline("latex", beg_v)
+    frame = ""
+    float = nil
+    for _, v in ipairs(el.classes) do
+      if v == "float-left" then
+        float = "floatleft"
+      elseif v == "float-right" then
+        float = "floatright"
+      elseif v == "border" then
+        frame = ",frame"
+      end
+    end
+
+    if float ~= nil then
+      return pandoc.RawInline("latex", "\\"..float.."{"..width.."}{"..el.src.."}{"..pandoc.utils.stringify(el.caption).."}{"..frame.."}")
     else
+      if frame ~= "" then
+        return pandoc.RawInline("latex", "\\begin{center}\
+        \\includegraphics[frame,width="..width.."\\linewidth]{"..el.src.."} \
+        \\captionof{figure}{"..pandoc.utils.stringify(el.caption).."} \
+        \\end{center}")
+      else
+        return el
+      end
       return el
     end
 
