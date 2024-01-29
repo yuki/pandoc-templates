@@ -116,19 +116,15 @@ h1, h2, h3, h4, h5, h6{
     text-align: center;
 }
 
-.center figure {
-  display: inline-block;
-}
-
-img {
-  max-width: -webkit-fill-available;
-  max-width: -moz-available;
-  padding: 1rem;
-}
-
 figure{
-  max-width: -webkit-fill-available;
+  /*max-width: -webkit-fill-available;
   max-width: -moz-available;
+  */
+  margin:auto;
+}
+
+.frame figure img {
+  border: 1px solid black;
 }
 
 figcaption{

@@ -29,7 +29,23 @@ if FORMAT:match 'latex' then
     end
 
     if (beg_v == nil or beg_v == "") then
-      return el
+      -- COLORS
+      color = el.attributes['color']
+      -- if no color attribute, return unchanged
+      if color == nil then return el end
+
+        -- remove color attributes
+        el.attributes['color'] = nil
+        -- encapsulate in latex code
+        table.insert(
+          el.content, 1,
+          pandoc.RawInline('latex', '\\textcolor{'..color..'}{')
+        )
+        table.insert(
+          el.content,
+          pandoc.RawInline('latex', '}')
+        )
+        return el.content
     else
       return pandoc.RawInline("latex", beg_v..pandoc.utils.stringify(el).."}")
     end
@@ -67,6 +83,10 @@ if FORMAT:match 'latex' then
       beg_v = "\\begin{mycode}{"..title.."}"
       title = ""
       end_v = "\\end{mycode}"
+    elseif el.classes[1] == "frame" then
+      table.insert(el.c[1].c[1].content, 1, pandoc.RawInline("latex", "\\frame{ "))
+      table.insert(el.c[1].c[1].content, pandoc.RawInline("latex", " }"))
+      return el
     end
 
     table.insert(el.content, 1, pandoc.RawInline("latex", beg_v))
@@ -97,20 +117,24 @@ if FORMAT:match 'latex' then
 
     if float ~= nil then
       return pandoc.RawInline("latex", "\\"..float.."{"..width.."}{"..el.src.."}{"..pandoc.utils.stringify(el.caption).."}{"..frame.."}")
-    else
-      if frame ~= "" then
-        return pandoc.RawInline("latex", "\\begin{center}\
-        \\includegraphics[frame,width="..width.."\\linewidth]{"..el.src.."} \
-        \\captionof{figure}{"..pandoc.utils.stringify(el.caption).."} \
-        \\end{center}")
-      else
-        return el
-      end
-      return el
     end
-
   end
 
 end
 
+-- when parsing to HTML
+if FORMAT:match 'html' then
+  function Span(el)
+    color = el.attributes['color']
+    -- if no color attribute, return unchanged
+    if color == nil then return el end
 
+    -- transform to <span style="color: red;"></span>
+      -- remove color attributes
+      el.attributes['color'] = nil
+      -- use style attribute instead
+      el.attributes['style'] = 'color: ' .. color .. ';'
+      -- return full span element
+      return el
+  end
+end
