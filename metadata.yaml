@@ -9,4 +9,5 @@ phrase: 'This is a good phrase'
 phrase-author: 'Phrase author'
 lang: es
 keywords: [nothing, nothingness]
+cover: 'img/cover.png'
 ...
