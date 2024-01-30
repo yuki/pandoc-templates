@@ -232,7 +232,7 @@ figcaption{
 
 .infobox strong, .warnbox strong, .errorbox strong, .questionbox strong, .exercisebox strong {
   /* TODO: no entiendo por qué tengo que poner esto  */
-  margin-left: 0.2em;
+  margin-right: 2rem;
 }
 
 .infobox > p::before, .warnbox > p::before, .errorbox > p::before, .questionbox > p::before, .exercisebox > p::before {
@@ -240,7 +240,7 @@ figcaption{
   font-weight: normal;
   font-style: normal;
   display: inline-block;
-  padding: 0 0.5em;
+  margin: 0 2rem;
   font-size: 3rem;
 }
 
