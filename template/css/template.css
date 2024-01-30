@@ -7,12 +7,18 @@
   line-height: 2;
 }
 
+#book a{
+  color: var(--templatecolor);
+}
+
 #abstract {
   padding-bottom: 2rem;
 }
 
 h1, h2, h3, h4, h5, h6{
   padding-top: 2rem;
+  color: var(--templatecolor);
+  clear: both;
 }
 
 /* 
@@ -95,14 +101,18 @@ h1, h2, h3, h4, h5, h6{
  *
  * */
 
-.part {
+p:has(.part){
   display:block;
   font-size: 3rem;
   text-align: center;
-  background-color: var(--bs-danger);
+  background-color: var(--templatecolor);
   color: var(--bs-gray-100);
-  margin: 6rem 0 3rem 0;
+  margin: 3rem 0;
   border-radius: 0.5rem;
+}
+
+.roman-number {
+  padding-right: 2rem;
 }
 
 
@@ -128,8 +138,8 @@ figure img {
   margin: auto;
 }
 
-.frame figure img {
-  border: 1px solid black;
+.frame figure img, .border{
+  border: 1px solid black!important;
 }
 
 figcaption{
@@ -150,7 +160,7 @@ figcaption{
 
 /* 
  *
- * CUSTOM BOXES
+ * CODE BOXES
  *
  * */
 
@@ -180,6 +190,12 @@ figcaption{
 .mycode div.sourceCode {
   margin: 1em;
 }
+
+/* 
+ *
+ * INLINE COMMANDS
+ *
+ * */
 
 .inlineconsole, .commandbox, .configfile, .configdir {
   border: 2px solid var(--bs-black);
@@ -225,121 +241,115 @@ figcaption{
 }
 
 
+/* 
+ *
+ * CUSTOM BOXES
+ *
+ * */
+
 .infobox, .warnbox, .errorbox, .questionbox, .exercisebox {
   border-radius: 0.5rem;
   margin-bottom: 2em;
 }
 
-.infobox strong, .warnbox strong, .errorbox strong, .questionbox strong, .exercisebox strong {
-  /* TODO: no entiendo por qué tengo que poner esto  */
-  margin-right: 2rem;
-}
-
-.infobox > p::before, .warnbox > p::before, .errorbox > p::before, .questionbox > p::before, .exercisebox > p::before {
-  font-family: FontAwesome;
-  font-weight: normal;
-  font-style: normal;
-  display: inline-block;
+.infobox > p, .warnbox > p, .errorbox > p, .questionbox > p, .exercisebox > p {
+  margin: 0;
+  display: flex;
+  align-items: center!important;
   margin: 0 2rem;
-  font-size: 3rem;
 }
 
-.infobox-header, .warnbox-header, .errorbox-header, .questionbox-header, .exercisebox-header {
+.infobox::before, .warnbox::before, .errorbox::before, .questionbox::before, .exercisebox::before {
+  display: block;
   border-radius: 5px 5px 0 0;
   color: var(--bs-body-bg)!important;
   font-weight: bold;
+  line-height: 2;
   padding: 0.1em 1em;
   margin-bottom: 0;
 }
 
+.infobox::before {
+  background-color: var(--bs-info-text-emphasis);
+  content: "Información";
+}
 
 .infobox {
   border: 2px solid var(--bs-info-text-emphasis);
   background-color: var(--bs-info-bg-subtle);
-}
-
-.infobox-header {
-  background-color: var(--bs-info-text-emphasis);
-}
-
-.infobox p {
-  margin:auto;
   color: var(--bs-info-text-emphasis);
 }
 
-.infobox p:last-child::before {
-  content: "\f05a";
+.warnbox::before {
+  background-color: var(--bs-orange);
+  content: "¡Atención!";
 }
 
 .warnbox {
   border: 2px solid var(--bs-orange);
   background-color: #fd7e1405;
+  color: var(--bs-orange)
 }
 
-.warnbox-header {
-  background-color: var(--bs-orange);
-}
-
-.warnbox p {
-  margin:auto;
-  color: var(--bs-orange);
-}
-
-.warnbox p:last-child::before  {
-  content: "\f06a";
+.errorbox::before {
+  background-color: var(--bs-danger-text-emphasis);
+  content: "¡Cuidado!";
 }
 
 .errorbox {
   border: 2px solid var(--bs-danger-text-emphasis);
   background-color: var(--bs-danger-bg-subtle);
-}
-
-.errorbox-header {
-  background-color: var(--bs-danger-text-emphasis);
-}
-
-.errorbox > p {
-  margin:auto;
   color: var(--bs-danger-text-emphasis);
 }
 
-.errorbox p:last-child::before  {
-  content: "\f071";
+.questionbox::before {
+  background-color: var(--bs-warning-text-emphasis);
+  content: "Pregunta";
 }
 
 .questionbox {
   border: 2px solid var(--bs-warning-text-emphasis);
   background-color: var(--bs-warning-bg-subtle);
+  color: var(--bs-warning-text-emphasis)
 }
 
-.questionbox-header {
-  background-color: var(--bs-warning-text-emphasis);
-}
-
-.questionbox > p {
-  margin:auto;
-  color: var(--bs-warning-text-emphasis);
-}
-
-.questionbox p:last-child::before  {
-  content: "\f059";
+.exercisebox::before {
+  background-color: var(--bs-success-text-emphasis);
+  content: "Ejercicio";
 }
 
 .exercisebox {
   border: 2px solid var(--bs-success-text-emphasis);
   background-color: var(--bs-success-bg-subtle);
+  color: var(--bs-success-text-emphasis)
 }
 
-.exercisebox-header {
-  background-color: var(--bs-success-text-emphasis);
+
+.infobox > p::before, .warnbox > p::before, .errorbox > p::before, .questionbox > p::before, .exercisebox > p::before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  margin: 0 2rem 0 0;
+  font-size: 3rem;
 }
 
-.exercisebox > p {
-  margin:auto;
-  color: var(--bs-success-text-emphasis);
+.infobox p::before {
+  content: "\f05a";
 }
 
-.exercisebox p:last-child::before  {
+.warnbox p::before {
+  content: "\f06a";
+}
+
+.errorbox p::before {
+  content: "\f071";
+}
+
+.questionbox p::before {
+  content: "\f059";
+}
+
+.exercisebox p::before {
   content: "\f013";
 }
 
@@ -349,3 +359,7 @@ figcaption{
  *
  * */
 
+th {
+  background-color: var(--templatecolor)!important;
+  color: white!important;
+}

@@ -1,7 +1,28 @@
+// copied from https://www.codehim.com/text-input/roman-numeral-converter-using-javascript/
+function convertToRoman(num) {
+    let decimalValue = [10, 9, 5, 4, 1];
+    let romanNumeral = ["X","IX","V","IV","I"];
+
+    let romanized = "";
+
+    for (let index = 0; index < decimalValue.length; index++) {
+        while (decimalValue[index] <= num) {
+        romanized += romanNumeral[index];
+        num -= decimalValue[index];
+        }
+    }
+
+    if (typeof num === "number") {
+        return (romanized);
+    }
+}
+  
+
 (() => {
 
     sidebarMenu = document.querySelector('#navbar-toc')
 
+    // sidebars links 
     if (sidebarMenu) {
         links = sidebarMenu.getElementsByTagName('a')
         for(let i = 0;i < links.length; i++){
@@ -10,10 +31,14 @@
     }
 
     // PARTS
-    var part = 0
+    var count = 0
     for (const element of document.getElementsByClassName('part')) {
-        part = part + 1
-        element.setAttribute('id','part-'+part)
+        count = count + 1
+        element.setAttribute('id','part-'+count)
+        const num = document.createElement("span")
+        num.innerHTML=convertToRoman(count)
+        num.setAttribute('class','roman-number')
+        element.parentElement.prepend(num)
     }
 
     // TABLES
@@ -21,25 +46,8 @@
         element.setAttribute('class','table table-striped table-hover table-bordered ')
     }
 
-    // for (const element of document.getElementsByTagName('thead')) {
-    //     element.setAttribute('class','table-primary')
-    // }
-
     for (const element of document.getElementsByTagName('tbody')) {
         element.setAttribute('class','table-group-divider')
-    }
-
-    // CUSTOM BOXES
-    const boxes = [['infobox','Información'], ['warnbox','¡Atención!'], ['errorbox','¡Cuidado!'], ['questionbox','Pregunta'], ['exercisebox','Ejercicio']]
-    for (let index = 0; index < boxes.length; index++) {
-        // for every custom boxes, we add the header with its title
-        for (const element of document.getElementsByClassName(boxes[index][0])) {
-            const p = document.createElement("p")
-            p.setAttribute('class',boxes[index][0]+'-header')
-            p.innerHTML = boxes[index][1]
-            element.prepend(p)
-            element.getElementsByTagName('p')[1].setAttribute('class','d-flex align-items-center')
-        }
     }
 
     // IMAGES
