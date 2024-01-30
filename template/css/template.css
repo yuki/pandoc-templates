@@ -140,12 +140,12 @@ figcaption{
 
 .float-left figure, .float-left img{
   float: left;
-  padding-right: 1rem;
+  margin-right: 1rem;
 }
 
 .float-right figure, .float-right img{
   float: right;
-  padding-left: 1rem;
+  margin-left: 1rem;
 }
 
 /* 
