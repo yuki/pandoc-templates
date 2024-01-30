@@ -43,10 +43,19 @@
     }
 
     // IMAGES
-    for (const element of document.getElementsByTagName('img')) {
+    for (const element of document.getElementsByClassName('float-left')) {
         var width = element.style.width;
-        element.parentElement.style.width=width;
-        element.style.width="100%";
+        if (element.parentElement.tagName == "FIGURE"){
+            element.parentElement.style.width=width;
+            element.style.width="100%";
+        }
+    }
+    for (const element of document.getElementsByClassName('float-right')) {
+        var width = element.style.width;
+        if (element.parentElement.tagName == "FIGURE"){
+            element.parentElement.style.width=width;
+            element.style.width="100%";
+        }
     }
 
 

@@ -96,12 +96,20 @@ if FORMAT:match 'latex' then
 
   function Image(el)
     width = el.attributes.width
+    -- height = el.attributes.height
     if (width) then
       -- remove the percentage, because in LaTeX make problems
       width = string.gsub(width,"(%%)", "")
       -- convert width XY% into 0.XY
       width = "0."..width
     end
+
+    -- if (height) then
+    --   -- remove the percentage, because in LaTeX make problems
+    --   height = string.gsub(height,"(%%)", "")
+    --   -- convert width XY% into 0.XY
+    --   height = "0."..height
+    -- end
     
     frame = ""
     float = nil

@@ -123,6 +123,11 @@ figure{
   margin:auto;
 }
 
+figure img {
+  display: block;
+  margin: auto;
+}
+
 .frame figure img {
   border: 1px solid black;
 }

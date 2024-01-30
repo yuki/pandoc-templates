@@ -2,7 +2,7 @@ toc: true
 number-sections: true
 wrap: preserve
 standalone: true
-embed-resources: true
+embed-resources: false
 top-level-division: chapter
 pdf-engine: lualatex
 pdf-engine-opt: '-shell-escape'
