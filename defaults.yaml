@@ -4,6 +4,7 @@ wrap: preserve
 standalone: true
 embed-resources: false
 top-level-division: chapter
+section-divs: true
 pdf-engine: lualatex
 pdf-engine-opt: '-shell-escape'
 template: template/yuki.html
