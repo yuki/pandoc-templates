@@ -1,6 +1,11 @@
+html {
+  --top-spacing: 56px;
+  scroll-padding-top: var(--top-spacing);
+}
+
 #main {
   text-align: justify;
-  padding: 56px 0px;
+  margin-top: var(--top-spacing);
 }
 
 #book  p {
@@ -62,8 +67,13 @@ h1, h2, h3, h4, h5, h6{
   margin-top: 0em;
 }
 
-#navbar-toc > ul {
-  padding-left: 0em;
+#navbar-toc .nav {
+  padding-left: 2rem!important;
+  display: block!important;
+}
+
+#navbar-toc > ul, #navbar-toc > .nav {
+  padding-left: 0em!important;
   font-size: 0.8rem;
 }
 
@@ -74,16 +84,29 @@ h1, h2, h3, h4, h5, h6{
 #navbar-toc li a {
   padding: 5px;
   padding-left: 15px;
-}
-#navbar-toc a.nav-link.active {
-  border: 3px solid;
-  border-radius: 0.5rem;
-  background-color: var(--bs-danger);
   color: var(--bs-body-color);
 }
 
-#theme-selector {
+#navbar-toc a.active {
+  border: 3px solid;
+  border-radius: 0.5rem;
+  background-color: var(--bs-danger);
+  border-color: var(--bs-body-color);
+  color: var(--bs-white);
+}
+
+.download-icon {
   padding-left: 1rem;
+}
+
+/*
+ *
+ * Theme selector
+ *
+ * */
+
+#theme-selector {
+  /* padding-left: 1rem; */
 }
 
 #theme-selector-menu {
@@ -106,7 +129,7 @@ h1, h2, h3, h4, h5, h6{
 
 /* 
  *
- * PARTS
+ * PARTS and LINKS
  *
  * */
 
@@ -122,6 +145,14 @@ p:has(.part){
 
 .roman-number {
   padding-right: 2rem;
+}
+
+.anchor-link {
+  font-size: medium;
+  margin-left: -2rem;
+  padding-right: 0.8rem;
+  vertical-align: middle;
+  visibility: hidden;
 }
 
 
@@ -370,5 +401,5 @@ figcaption{
 
 th {
   background-color: var(--templatecolor)!important;
-  color: white!important;
+  color: var(--bs-white-rgb)!important;
 }

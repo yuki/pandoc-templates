@@ -53,7 +53,7 @@ $endif$
   <body>
     <header>
       <nav class="navbar navbar-expand-md navbar-danger fixed-top bg-danger" aria-label="header">
-        <div class="container text-white align-items-center">
+        <div class="container flex-row d-flex align-items-center flex-wrap text-white">
           <span>
             $if(title)$
               <span class="fs-4">$title$</span>
@@ -66,7 +66,7 @@ $endif$
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <span class="fs-6 flex-wrap ms-md-auto d-none d-lg-inline">
+            <span class="fs-6 flex-row d-flex align-items-center flex-wrap text-white ms-md-auto d-none d-lg-inline">
               $for(author)$
                 <span class="author">$author$ </span>
               $endfor$
@@ -74,11 +74,13 @@ $endif$
                 <span class="date"> - $date$</span>
               $endif$
             </span>
+
+            <a href="$download-link$" class="flex-row d-flex align-items-center flex-wrap text-white download-icon"><i class="fa-solid fa-cloud-arrow-down"></i></a>
             
-            <ul class="navbar-nav flex-row flex-wrap" id="theme-selector">
+            <ul class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white" id="theme-selector">
               <li class="nav-item dropdown">
-                <button class="btn btn-link nav-link  dropdown-toggle d-flex align-items-center theme-icon-active" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" href="fa-moon">
-                  <i class="fas fa-moon"></i>
+                <button class="btn btn-link nav-link text-white dropdown-toggle d-flex align-items-center theme-icon-active" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" href="fa-moon">
+                  <i class="fa-solid fa-moon"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;" id="theme-selector-menu">
                   <li href="fa-sun" data-bs-theme-value="light">

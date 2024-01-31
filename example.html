@@ -68,6 +68,10 @@ a:visited {
 img {
   max-width: 100%;
 }
+svg {
+  height: auto;
+  max-width: 100%;
+}
 h1, h2, h3, h4, h5, h6 {
   margin-top: 1.4em;
 }
@@ -160,8 +164,11 @@ span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
 div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-ul.task-list{list-style: none;}
+/* The extra [class] is a hack that increases specificity enough to
+   override a similar rule in reveal.js */
+ul.task-list[class]{list-style: none;}
 ul.task-list li input[type="checkbox"] {
+  font-size: inherit;
   width: 0.8em;
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
@@ -169,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
 .display.math{display: block; text-align: center; margin: 0.5rem auto;}
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -249,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <body>
     <header>
       <nav class="navbar navbar-expand-md navbar-danger fixed-top bg-danger" aria-label="header">
-        <div class="container text-white align-items-center">
+        <div class="container flex-row d-flex align-items-center flex-wrap text-white">
           <span>
                           <span class="fs-4">This is the title</span>
                               <span class="subtitle d-none d-lg-inline"> - subtitle</span>
@@ -258,15 +265,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <span class="fs-6 flex-wrap ms-md-auto d-none d-lg-inline">
+            <span class="fs-6 flex-row d-flex align-items-center flex-wrap text-white ms-md-auto d-none d-lg-inline">
                               <span class="author">Author One </span>
                                             <span class="date"> - 2023-10-15</span>
                           </span>
+
+            <a href="example.pdf" class="flex-row d-flex align-items-center flex-wrap text-white download-icon"><i class="fa-solid fa-cloud-arrow-down"></i></a>
             
-            <ul class="navbar-nav flex-row flex-wrap" id="theme-selector">
+            <ul class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white" id="theme-selector">
               <li class="nav-item dropdown">
-                <button class="btn btn-link nav-link  dropdown-toggle d-flex align-items-center theme-icon-active" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" href="fa-moon">
-                  <i class="fas fa-moon"></i>
+                <button class="btn btn-link nav-link text-white dropdown-toggle d-flex align-items-center theme-icon-active" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" href="fa-moon">
+                  <i class="fa-solid fa-moon"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;" id="theme-selector-menu">
                   <li href="fa-sun" data-bs-theme-value="light">

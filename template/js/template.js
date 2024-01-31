@@ -28,6 +28,25 @@ function convertToRoman(num) {
         for(let i = 0;i < links.length; i++){
             links[i].setAttribute('class','nav-link')
         }
+
+        links = sidebarMenu.getElementsByTagName('ul')
+        for(let i = 0;i < links.length; i++){
+            links[i].setAttribute('class','nav')
+        }
+    }
+
+    // ANCHOR LINKS in HEADINGS
+    for (const element of document.getElementsByTagName('section')) {
+        const link = document.createElement("a")
+        const header = element.querySelector('.header-section-number')
+        link.href = "#"+element.id
+        link.setAttribute('class','anchor-link')
+        icon = document.createElement("i")
+        icon.setAttribute('class', 'fa-solid fa-link')
+        link.appendChild(icon)
+        header.prepend(link)
+        header.parentElement.onmouseover = function(){link.style.visibility="visible"}
+        header.parentElement.onmouseout = function(){link.style.visibility="hidden"}
     }
 
     // PARTS
