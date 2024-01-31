@@ -16,7 +16,7 @@ function convertToRoman(num) {
         return (romanized);
     }
 }
-  
+
 
 (() => {
 
@@ -64,7 +64,6 @@ function convertToRoman(num) {
         element.parentElement.prepend(num)
 
         // insert part into TOC
-        console.log (part_id + " " + part_title + " " + roman_num)
         grandfather = element.parentElement.parentElement
         const part_li = document.createElement("LI")
         part_li.id = "toc-" + part_id
@@ -89,6 +88,32 @@ function convertToRoman(num) {
             header_id = el.id
             a = document.getElementById('toc-' + header_id)
             a.parentNode.parentNode.insertBefore(part_li,a.parentNode)
+        }
+    }
+
+    // HEADERS NUMBERS RESET
+    count = 0
+    new_num = 0
+    // we use the navbar UL's LIs, it's easier than the sections
+    for (element of document.getElementById('navbar-toc').querySelectorAll("ul > li")) {
+        if (element.classList.contains('toc_part')){
+            // the LI is a PART; we reset the count
+            count = 0
+        } else {
+            link = element.firstElementChild.id.replace(/^toc-/g, "")
+            section = document.getElementById(link)
+            if (section.classList.contains('level1')){
+                count = count + 1
+                new_num = count
+            } else {
+                num = section.getAttribute("data-number")
+                new_num = num.replace(/^[0-9]+\./,count + ".")
+            }
+            // we update the LI and the headers in the "sections"
+            element.firstElementChild.firstElementChild.innerText = new_num
+            section.setAttribute("data-number",new_num)
+            section.firstElementChild.setAttribute("data-number",new_num)
+            section.firstElementChild.firstElementChild.innerHTML=new_num
         }
     }
 
