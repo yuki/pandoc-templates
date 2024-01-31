@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5, h6{
 
 /*
  *
- * TOC and headers
+ * Headers
  *
  * */
 .toc-section-number::after, .header-section-number::after {
@@ -93,6 +93,22 @@ h1, h2, h3, h4, h5, h6{
   background-color: var(--bs-danger);
   border-color: var(--bs-body-color);
   color: var(--bs-white);
+}
+
+
+#navbar-toc li.toc_part {
+  border-top: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)!important;
+  border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)!important;
+}
+
+#navbar-toc li.toc_part a, #navbar-toc li.toc_part a.active{
+  background-color: var(--templatecolor);
+  color: var(--bs-white);
+  display: block!important;
+  padding: 1rem 15px;
+  /* text-align: center!important; */
+  font-size: 1rem;
+  text-decoration: none;
 }
 
 .download-icon {

@@ -53,11 +53,43 @@ function convertToRoman(num) {
     var count = 0
     for (const element of document.getElementsByClassName('part')) {
         count = count + 1
-        element.setAttribute('id','part-'+count)
+        part_id = 'part-'+count
+        part_title = element.innerText
+        element.setAttribute('id',part_id)
+        // add roman number
         const num = document.createElement("span")
-        num.innerHTML=convertToRoman(count)
+        roman_num = convertToRoman(count)
+        num.innerHTML=roman_num
         num.setAttribute('class','roman-number')
         element.parentElement.prepend(num)
+
+        // insert part into TOC
+        console.log (part_id + " " + part_title + " " + roman_num)
+        grandfather = element.parentElement.parentElement
+        const part_li = document.createElement("LI")
+        part_li.id = "toc-" + part_id
+        part_li.setAttribute('class','toc_part')
+        const link = document.createElement("a")
+        link.href = "#" + part_id
+        link.innerHTML = roman_num + '.  ' + part_title
+        part_li.appendChild(link)
+
+        if (grandfather.tagName == "DIV"){
+            // first part
+            header_id = element.parentElement.nextElementSibling.id
+            a = document.getElementById('toc-' + header_id)
+            a.parentNode.parentNode.insertBefore(part_li,a.parentNode)
+        } else if (grandfather.tagName == "SECTION"){
+            // others parts, that can be inside HeaderX
+            el = grandfather
+            while(!el.classList.contains('level1')){
+                el = el.parentNode
+            }
+            el = el.nextElementSibling
+            header_id = el.id
+            a = document.getElementById('toc-' + header_id)
+            a.parentNode.parentNode.insertBefore(part_li,a.parentNode)
+        }
     }
 
     // TABLES
