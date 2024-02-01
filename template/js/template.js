@@ -17,6 +17,18 @@ function convertToRoman(num) {
     }
 }
 
+function addAnchorLink(element,href) {
+    const link = document.createElement("a")
+    link.href = "#"+href
+    link.setAttribute('class','anchor-link')
+    icon = document.createElement("i")
+    icon.setAttribute('class', 'fa-solid fa-link')
+    link.appendChild(icon)
+    element.prepend(link)
+    element.onmouseover = function(){link.style.visibility="visible"}
+    element.onmouseout = function(){link.style.visibility="hidden"}
+}
+
 
 (() => {
 
@@ -35,20 +47,6 @@ function convertToRoman(num) {
         }
     }
 
-    // ANCHOR LINKS in HEADINGS
-    for (const element of document.getElementsByTagName('section')) {
-        const link = document.createElement("a")
-        const header = element.querySelector('.header-section-number')
-        link.href = "#"+element.id
-        link.setAttribute('class','anchor-link')
-        icon = document.createElement("i")
-        icon.setAttribute('class', 'fa-solid fa-link')
-        link.appendChild(icon)
-        header.prepend(link)
-        header.parentElement.onmouseover = function(){link.style.visibility="visible"}
-        header.parentElement.onmouseout = function(){link.style.visibility="hidden"}
-    }
-
     // PARTS
     var count = 0
     for (const element of document.getElementsByClassName('part')) {
@@ -62,6 +60,7 @@ function convertToRoman(num) {
         num.innerHTML=roman_num
         num.setAttribute('class','roman-number')
         element.parentElement.prepend(num)
+        addAnchorLink(element.parentElement,element.id)
 
         // insert part into TOC
         grandfather = element.parentElement.parentElement
@@ -76,8 +75,6 @@ function convertToRoman(num) {
         if (grandfather.tagName == "DIV"){
             // first part
             header_id = element.parentElement.nextElementSibling.id
-            a = document.getElementById('toc-' + header_id)
-            a.parentNode.parentNode.insertBefore(part_li,a.parentNode)
         } else if (grandfather.tagName == "SECTION"){
             // others parts, that can be inside HeaderX
             el = grandfather
@@ -86,9 +83,9 @@ function convertToRoman(num) {
             }
             el = el.nextElementSibling
             header_id = el.id
-            a = document.getElementById('toc-' + header_id)
-            a.parentNode.parentNode.insertBefore(part_li,a.parentNode)
         }
+        a = document.getElementById('toc-' + header_id)
+        a.parentNode.parentNode.insertBefore(part_li,a.parentNode)
     }
 
     // HEADERS NUMBERS RESET
@@ -115,6 +112,12 @@ function convertToRoman(num) {
             section.firstElementChild.setAttribute("data-number",new_num)
             section.firstElementChild.firstElementChild.innerHTML=new_num
         }
+    }
+
+    // ANCHOR LINKS in HEADINGS
+    for (const element of document.getElementsByTagName('section')) {
+        const header = element.querySelector('.header-section-number')
+        addAnchorLink(header.parentElement,element.id)
     }
 
     // TABLES

@@ -24,6 +24,8 @@ h1, h2, h3, h4, h5, h6{
   padding-top: 2rem;
   color: var(--templatecolor);
   clear: both;
+  display: flex;
+  align-items: center;
 }
 
 /*
@@ -150,7 +152,9 @@ h1, h2, h3, h4, h5, h6{
  * */
 
 p:has(.part){
-  display:block;
+  /* display:flex; */
+  align-items: center;
+  justify-content: center;
   font-size: 3rem;
   text-align: center;
   background-color: var(--templatecolor);
@@ -164,11 +168,19 @@ p:has(.part){
 }
 
 .anchor-link {
-  font-size: medium;
-  margin-left: -2rem;
-  padding-right: 0.8rem;
-  vertical-align: middle;
+  font-size: 20px;
+  margin-left: -40px;
+  padding-right: 125px;
   visibility: hidden;
+  height: 20px;
+  position: absolute;
+}
+
+
+p:has(.part) .anchor-link {
+  color: var(--bs-gray-100)!important;
+    font-size: 20px;
+    padding-top: 30px;
 }
 
 
