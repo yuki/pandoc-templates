@@ -6,7 +6,9 @@ embed-resources: false
 top-level-division: chapter
 section-divs: true
 pdf-engine: lualatex
-pdf-engine-opt: '-shell-escape'
+pdf-engine-opt:
+  - '-shell-escape'
+  - '-output-directory=.'
 template: template/yuki.html
 filters:
   - template/filter.lua

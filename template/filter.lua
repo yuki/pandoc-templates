@@ -1,13 +1,4 @@
 if FORMAT:match 'latex' then
-  title = ""
-
-  function Para(el)
-    if (el.c[1].t == "Span" and el.c[1].classes[1] == "title") then
-      -- get mycode block's title, and put in global variable
-      title = pandoc.utils.stringify(el.c[1])
-      return ""
-    end
-  end
 
   function Span(el)
     beg_v = ""
@@ -79,10 +70,11 @@ if FORMAT:match 'latex' then
       beg_v = "\\begin{exercisebox}"
       end_v = "\\end{exercisebox}"
     elseif el.classes[1] == "mycode" then
+      title = pandoc.utils.stringify(el.c[1])
+      language = pandoc.utils.stringify(el.c[2].attr.classes)
+      code = el.c[2].text
       -- get mycode block's title
-      beg_v = "\\begin{mycode}{"..title.."}"
-      title = ""
-      end_v = "\\end{mycode}"
+      return pandoc.RawBlock('latex', "\\begin{mycode}{"..title.."}{"..language.."}{}\n"..code.."\n\\end{mycode}")
     elseif el.classes[1] == "frame" then
       table.insert(el.c[1].c[1].content, 1, pandoc.RawInline("latex", "\\frame{ "))
       table.insert(el.c[1].c[1].content, pandoc.RawInline("latex", " }"))
@@ -144,5 +136,25 @@ if FORMAT:match 'html' then
       el.attributes['style'] = 'color: ' .. color .. ';'
       -- return full span element
       return el
+  end
+
+  function CodeBlock(block)
+    lang = block.classes[1]
+    code = block.text
+    filename = "pygmentize.txt"
+
+    file = io.open(filename, "w")
+    file:write(code)
+    file:close()
+
+
+    cmd = string.format('pygmentize -l %s -f %s < %s', lang, 'html',filename)
+    local proceso = io.popen(cmd, "r") -- Abre el archivo en modo de lectura
+    local output = proceso:read('*a')
+    proceso:close()
+    os.remove(filename)
+
+    texto = '<div class="sourceCode">'..output..'</div>'
+    return pandoc.RawBlock('html',texto)
   end
 end

@@ -834,9 +834,9 @@ explicit, % Specify section names explicitly in \titleformat with #1
 
 \RequirePackage{fontawesome5}
 \RequirePackage{tcolorbox}
-\tcbuselibrary{raster,fitting,many,listings,breakable,skins}
+\tcbuselibrary{raster,fitting,many,minted,breakable,skins}
 \usetikzlibrary{decorations.pathmorphing}
-% \usemintedstyle{friendly}
+\usemintedstyle{friendly}
 % \newtcolorbox{infobox}{colback=cyan!5!white,arc=0pt,outer arc=0pt,colframe=cyan!60!black}
 \newenvironment{custombox}[4]{
   \begin{tcolorbox}[
@@ -884,13 +884,12 @@ explicit, % Specify section names explicitly in \titleformat with #1
   \end{custombox}
 }
 
-\newenvironment{mycode}[1]{
-  \begin{tcolorbox}[
-    title=\faTerminal \hspace{10pt}\textbf{#1},
-      breakable=true,enhanced jigsaw
-  ]
-}{
-  \end{tcolorbox}
+\newtcblisting[auto counter,number within=section, list inside=mycommands]
+  {mycode}[3]{
+    listing only,adjusted title={\faTerminal \hspace{10pt}#1}, listing engine=minted,minted language=#2,
+    breakable=true,enhanced jigsaw,
+    minted options={fontsize=#3},colback=white,
+    list entry={\protect\numberline{\thetcbcounter}#1}
 }
 
 \DeclareTotalTCBox{\inlineconsole}{ v }

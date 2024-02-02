@@ -13,17 +13,29 @@
     
     const getPreferredTheme = () => {
         if (storedTheme) {
-        return storedTheme
+            return storedTheme
         }
     
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
     }
-    
+
     const setTheme = function (theme) {
+        var source_theme = theme
+        if (theme == 'light' || theme == 'auto'){
+            source_theme = 'highlight'
+        }
+
         if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.setAttribute('data-bs-theme', 'dark')
+            document.documentElement.setAttribute('data-bs-theme', 'dark')
+            source_theme = 'dark'
         } else {
-        document.documentElement.setAttribute('data-bs-theme', theme)
+            document.documentElement.setAttribute('data-bs-theme', theme)
+        }
+        //change code
+        for (const element of document.querySelectorAll('[class=sourceCode]')) {
+            element.firstElementChild.className = ''
+            element.firstElementChild.setAttribute('class',source_theme)
+            console.log(source_theme)
         }
     }
     
@@ -50,7 +62,7 @@
     
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
         if (storedTheme !== 'light' || storedTheme !== 'dark') {
-        setTheme(getPreferredTheme())
+            setTheme(getPreferredTheme())
         }
     })
     
@@ -60,10 +72,10 @@
         document.querySelectorAll('[data-bs-theme-value]')
         .forEach(toggle => {
             toggle.addEventListener('click', () => {
-            const theme = toggle.getAttribute('data-bs-theme-value')
-            localStorage.setItem('theme', theme)
-            setTheme(theme)
-            showActiveTheme(theme)
+                const theme = toggle.getAttribute('data-bs-theme-value')
+                localStorage.setItem('theme', theme)
+                setTheme(theme)
+                showActiveTheme(theme)
             })
         })
     })
