@@ -11,4 +11,6 @@ lang: es
 keywords: [nothing, nothingness]
 cover: 'img/cover.png'
 download-link: 'example.pdf'
+# other links for footers
+github-link: 'https://github.com/yuki/pandoc-templates/'
 ...
