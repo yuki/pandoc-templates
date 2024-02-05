@@ -72,9 +72,15 @@ if FORMAT:match 'latex' then
     elseif el.classes[1] == "mycode" then
       title = pandoc.utils.stringify(el.c[1])
       language = pandoc.utils.stringify(el.c[2].attr.classes)
+      if (el.attributes["size"]) then
+        size = el.attributes.size
+      else
+        size = "normalsize"
+      end
+
       code = el.c[2].text
       -- get mycode block's title
-      return pandoc.RawBlock('latex', "\\begin{mycode}{"..title.."}{"..language.."}{}\n"..code.."\n\\end{mycode}")
+      return pandoc.RawBlock('latex', "\\begin{mycode}{"..title.."}{"..language.."}{\\"..size.."}\n"..code.."\n\\end{mycode}")
     elseif el.classes[1] == "frame" then
       table.insert(el.c[1].c[1].content, 1, pandoc.RawInline("latex", "\\frame{ "))
       table.insert(el.c[1].c[1].content, pandoc.RawInline("latex", " }"))
