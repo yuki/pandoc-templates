@@ -35,7 +35,6 @@
         for (const element of document.querySelectorAll('[class=sourceCode]')) {
             element.firstElementChild.className = ''
             element.firstElementChild.setAttribute('class',source_theme)
-            console.log(source_theme)
         }
     }
     

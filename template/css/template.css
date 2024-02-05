@@ -3,6 +3,10 @@ html {
   scroll-padding-top: var(--top-spacing);
 }
 
+#navbar {
+  background-color: var(--templatecolor);
+}
+
 #main {
   text-align: justify;
   margin-top: var(--top-spacing);
@@ -12,7 +16,7 @@ html {
   line-height: 2;
 }
 
-#book a{
+[data-bs-theme=light] #book a{
   color: var(--templatecolor);
 }
 
@@ -22,7 +26,7 @@ html {
 
 h1, h2, h3, h4, h5, h6{
   padding-top: 2rem;
-  color: var(--templatecolor);
+  font-weight: bold;
   clear: both;
   display: flex;
   align-items: center;
@@ -96,25 +100,26 @@ h1, h2, h3, h4, h5, h6{
 #navbar-toc a.active {
   border: 3px solid;
   border-radius: 0.5rem;
-  background-color: var(--bs-danger);
+  background-color: var(--templatecolor);
   border-color: var(--bs-body-color);
   color: var(--bs-white);
 }
 
 
-#navbar-toc li.toc_part {
-  border-top: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)!important;
-  border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color)!important;
-}
-
 #navbar-toc li.toc_part a, #navbar-toc li.toc_part a.active{
   background-color: var(--templatecolor);
   color: var(--bs-white);
-  display: block!important;
+  display: block;
   padding: 1rem 15px;
-  /* text-align: center!important; */
+  text-align: center;
   font-size: 1rem;
+  font-weight: bold;
   text-decoration: none;
+}
+
+[data-bs-theme=dark] #navbar-toc li.toc_part a, [data-bs-theme=dark] #navbar-toc li.toc_part a.active{
+  background-color: var(--bs-heading-color);
+  color: var(--templatecolor);
 }
 
 .download-icon {
@@ -155,8 +160,13 @@ h1, h2, h3, h4, h5, h6{
  *
  * */
 
+[data-bs-theme=dark] p:has(.part){
+  color: var(--templatecolor);
+  background-color: var(--bs-gray-100);
+}
+
 p:has(.part){
-  /* display:flex; */
+  font-weight: bold;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
@@ -182,9 +192,13 @@ p:has(.part){
 
 
 p:has(.part) .anchor-link {
+  color: var(--templatecolor)!important;
+  font-size: 20px;
+  padding-top: 30px;
+}
+
+[data-bs-theme=light] p:has(.part) .anchor-link {
   color: var(--bs-gray-100)!important;
-    font-size: 20px;
-    padding-top: 30px;
 }
 
 

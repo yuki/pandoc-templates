@@ -23,8 +23,13 @@ $endif$
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    :root {
+    :root, [data-bs-theme=light] {
       --templatecolor: #$maincolor$;
+      --bs-heading-color: var(--templatecolor);
+    }
+
+    [data-bs-theme=dark] {
+      --bs-heading-color: var(--bs-gray-100);
     }
   </style>
   <link href="template/css/dark_mode.css" rel="stylesheet">
@@ -51,7 +56,7 @@ $endif$
 </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-md navbar-danger fixed-top bg-danger" aria-label="header">
+      <nav id="navbar" class="navbar navbar-expand-md fixed-top" aria-label="header">
         <div class="container flex-row d-flex align-items-center flex-wrap text-white">
           <span>
             $if(title)$
