@@ -156,6 +156,16 @@ $endif$
           $endfor$
 
 <div id="book">
+
+$if(title)$
+  <div id="cover" class="fw-bold text-center">
+    <span id="title" >$title$</span>
+    <div id="cover_img" class="py-5">
+      <img src="$cover$">
+    </div>
+  </div>
+$endif$
+
 $body$
 </div>
 

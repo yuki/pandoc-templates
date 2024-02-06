@@ -17,6 +17,8 @@ if FORMAT:match 'latex' then
       beg_v = "\\configlink{"
     elseif el.classes[1] == "movie" then
       beg_v = "\\movie{"..el.c[1].target.."}{"
+    elseif el.classes[1] == "footnotesize" then
+      beg_v = "\\footnotesize{"
     end
 
     if (beg_v == nil or beg_v == "") then
@@ -69,6 +71,9 @@ if FORMAT:match 'latex' then
     elseif el.classes[1] == "exercisebox" then
       beg_v = "\\begin{exercisebox}"
       end_v = "\\end{exercisebox}"
+    elseif el.classes[1] == "center" then
+      beg_v = "\\begin{center}"
+      end_v = "\\end{center}"
     elseif el.classes[1] == "mycode" then
       title = pandoc.utils.stringify(el.c[1])
       language = pandoc.utils.stringify(el.c[2].attr.classes)

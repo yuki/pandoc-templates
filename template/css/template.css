@@ -28,9 +28,22 @@ h1, h2, h3, h4, h5, h6{
   padding-top: 2rem;
   font-weight: bold;
   clear: both;
-  display: flex;
-  align-items: center;
 }
+
+.footnotesize {
+  font-size: 0.8rem;
+}
+
+#cover {
+  font-size: 3rem;
+  color: var(--templatecolor);
+}
+
+#cover_img img{
+  width: 100%;
+}
+
+
 
 /*
  *
@@ -183,11 +196,9 @@ p:has(.part){
 
 .anchor-link {
   font-size: 20px;
-  margin-left: -40px;
-  padding-right: 125px;
+  margin-left: -25px;
   visibility: hidden;
   height: 20px;
-  position: absolute;
 }
 
 
@@ -222,6 +233,10 @@ figure{
 figure img {
   display: block;
   margin: auto;
+}
+
+figcaption {
+  padding: 0.5rem 0 2rem;
 }
 
 .frame figure img, .border{
@@ -438,6 +453,23 @@ figcaption{
 .exercisebox p::before {
   content: "\f013";
 }
+
+
+/*
+ *
+ * Columns
+ *
+ * */
+ .columns2 {
+  text-align: center;
+}
+
+.columns2 img {
+  width: 45%!important;
+  margin-right: 1.3rem;
+
+}
+
 
 /* 
  *
