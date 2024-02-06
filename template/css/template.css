@@ -159,7 +159,12 @@ h1, h2, h3, h4, h5, h6{
 
 #theme-selector li.active, #theme-selector-menu button:focus, #theme-selector-menu button:hover {
   border-radius: 0.25rem;
-  background-color: var(--bs-danger);
+  background-color: var(--templatecolor);
+  color: var(--bs-gray-100);
+}
+
+#theme-selector li.active > button {
+  color: var(--bs-gray-100);
 }
 
 .theme-icon {
