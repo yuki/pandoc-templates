@@ -86,7 +86,7 @@ if FORMAT:match 'latex' then
       code = el.c[2].text
       -- get mycode block's title
       return pandoc.RawBlock('latex', "\\begin{mycode}{"..title.."}{"..language.."}{\\"..size.."}\n"..code.."\n\\end{mycode}")
-    elseif el.classes[1] == "frame" then
+    elseif el.classes[1] == "framed" then
       table.insert(el.c[1].c[1].content, 1, pandoc.RawInline("latex", "\\frame{ "))
       table.insert(el.c[1].c[1].content, pandoc.RawInline("latex", " }"))
       return el
@@ -98,36 +98,74 @@ if FORMAT:match 'latex' then
   end
 
   function Image(el)
-    width = el.attributes.width
-    -- height = el.attributes.height
-    if (width) then
-      -- remove the percentage, because in LaTeX make problems
-      width = string.gsub(width,"(%%)", "")
-      -- convert width XY% into 0.XY
-      width = "0."..width
+    local options = {}
+
+    local caption = ""
+    -- Procesar cada elemento del caption para manejar texto y enlaces
+    for _, e in ipairs(el.caption) do
+      if e.t == "Str" then
+        caption = caption .. e.text
+      elseif e.t == "Link" then
+        local linkText = pandoc.utils.stringify(e.content)
+        local url = e.target
+        caption = caption .. string.format("\\href{%s}{%s}", url, linkText)
+      elseif e.t == "Space" then
+        caption = caption .. " "
+      end
     end
 
-    -- if (height) then
-    --   -- remove the percentage, because in LaTeX make problems
-    --   height = string.gsub(height,"(%%)", "")
-    --   -- convert width XY% into 0.XY
-    --   height = "0."..height
-    -- end
+    -- height = el.attributes.height
+    if (el.attributes.width) then
+      -- remove the percentage, because in LaTeX make problems
+      width = string.gsub(el.attributes.width,"(%%)", "")
+      -- convert width XY% into 0.XY
+      width = tonumber(width)
+      if (width == nil) then
+        width = 100.0
+      end
+      width = width / 100.0 -- "0."..width
+      table.insert(options,string.format("width=%s\\linewidth",string.format("%f", width)))
+    end
     
-    frame = ""
-    float = nil
+    -- height = el.attributes.height
+    if (el.attributes.height) then
+      -- remove the percentage, because in LaTeX make problems
+      height = string.gsub(el.attributes.height,"(%%)", "")
+      -- convert height XY% into 0.XY
+      height = tonumber(height)
+      if (height == nil) then
+        height = 100.0
+      end
+      height = height / 100.0
+      table.insert(options,string.format("height=%s\\linewidth",string.format("%f", height)))
+    end
+
+    local framed = ""
+    if (el.attributes.framed) then
+      framed = "frame"
+      table.insert(options,framed)
+    end
+
+    local float = nil
     for _, v in ipairs(el.classes) do
       if v == "float-left" then
         float = "floatleft"
       elseif v == "float-right" then
         float = "floatright"
-      elseif v == "border" then
-        frame = ",frame"
       end
     end
 
     if float ~= nil then
-      return pandoc.RawInline("latex", "\\"..float.."{"..width.."}{"..el.src.."}{"..pandoc.utils.stringify(el.caption).."}{"..frame.."}")
+      -- take care of the "," before "frame"
+      local latexstring = string.format("\\%s{%s}{%s}{%s}{,%s}",float,width,el.src,caption,framed)
+      return pandoc.RawInline("latex", latexstring)
+    else
+      local includefile = "includegraphics"
+      if (string.sub(el.src,-3) == "svg") then
+        includefile = "includesvg"
+      end
+      local latexstring = string.format("\\begin{center} \\%s[%s]{%s} \\captionof{figure}{%s} \\end{center}",includefile,table.concat(options,","),el.src,caption)
+      return pandoc.RawInline("latex", latexstring)
     end
   end
 
