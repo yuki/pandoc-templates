@@ -254,16 +254,6 @@ figcaption{
   margin:auto;
 }
 
-.float-left figure, .float-left img{
-  float: left;
-  margin-right: 1rem;
-}
-
-.float-right figure, .float-right img{
-  float: right;
-  margin-left: 1rem;
-}
-
 /* 
  *
  * CODE BOXES
@@ -465,14 +455,19 @@ figcaption{
  * Columns
  *
  * */
- .columns2 {
-  text-align: center;
+
+/* From original template */
+div.columns {
+  display: flex;
+  gap: min(4vw, 1.5em);
 }
 
-.columns2 img {
-  width: 45%!important;
-  margin-right: 1.3rem;
-
+div.column {
+  flex: auto;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  overflow-x: auto;
 }
 
 

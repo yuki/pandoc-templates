@@ -1,3 +1,14 @@
+function parse_size(size)
+  -- to parse width and height
+  size = string.gsub(size,"(%%)", "")
+  -- convert height XY% into 0.XY
+  size = tonumber(size)
+  if (size == nil) then
+    size = 100.0
+  end
+  return size / 100.0
+end
+
 if FORMAT:match 'latex' then
 
   function Span(el)
@@ -74,6 +85,30 @@ if FORMAT:match 'latex' then
     elseif el.classes[1] == "center" then
       beg_v = "\\begin{center}"
       end_v = "\\end{center}"
+    elseif el.classes[1] == 'column' then
+      -- FOR COLUMNS
+      -- https://superuser.com/questions/1682413/two-columns-pdf-from-markdown-with-pandoc-and-lua-script
+      local width = parse_size(el.attributes.width)
+      beg_v = pandoc.List:new{pandoc.RawBlock("latex", '\\begin{minipage}{'..width..'\\linewidth}\n\\setlength{\\parskip}{1.2em}')}
+      end_v = pandoc.List:new{pandoc.RawBlock("latex", "\\end{minipage}")}
+      return beg_v .. el.content .. end_v
+    elseif el.classes[1] == 'columns' then
+      -- FOR COLUMNS
+      -- https://superuser.com/questions/1682413/two-columns-pdf-from-markdown-with-pandoc-and-lua-script
+      -- merge two consecutives RawBlocks (\end... and \begin...)
+      -- to get rid of the extra blank line
+      local blocks = el.content
+      local rbtxt = ''
+  
+      for i = #blocks-1, 1, -1 do
+        if i > 1 and blocks[i].tag == 'RawBlock' and blocks[i].text:match 'end' and blocks[i+1].tag == 'RawBlock' and blocks[i+1].text:match 'begin' then
+          -- added \hfill for the space between
+          rbtxt = blocks[i].text .."\\hfill".. blocks[i+1].text
+          blocks:remove(i+1)
+          blocks[i].text = rbtxt
+        end
+      end
+      return blocks
     elseif el.classes[1] == "mycode" then
       title = pandoc.utils.stringify(el.c[1])
       language = pandoc.utils.stringify(el.c[2].attr.classes)
@@ -86,10 +121,6 @@ if FORMAT:match 'latex' then
       code = el.c[2].text
       -- get mycode block's title
       return pandoc.RawBlock('latex', "\\begin{mycode}{"..title.."}{"..language.."}{\\"..size.."}\n"..code.."\n\\end{mycode}")
-    elseif el.classes[1] == "framed" then
-      table.insert(el.c[1].c[1].content, 1, pandoc.RawInline("latex", "\\frame{ "))
-      table.insert(el.c[1].c[1].content, pandoc.RawInline("latex", " }"))
-      return el
     end
 
     table.insert(el.content, 1, pandoc.RawInline("latex", beg_v))
@@ -116,27 +147,13 @@ if FORMAT:match 'latex' then
 
     -- height = el.attributes.height
     if (el.attributes.width) then
-      -- remove the percentage, because in LaTeX make problems
-      width = string.gsub(el.attributes.width,"(%%)", "")
-      -- convert width XY% into 0.XY
-      width = tonumber(width)
-      if (width == nil) then
-        width = 100.0
-      end
-      width = width / 100.0 -- "0."..width
+      width = parse_size(el.attributes.width)
       table.insert(options,string.format("width=%s\\linewidth",string.format("%f", width)))
     end
     
     -- height = el.attributes.height
     if (el.attributes.height) then
-      -- remove the percentage, because in LaTeX make problems
-      height = string.gsub(el.attributes.height,"(%%)", "")
-      -- convert height XY% into 0.XY
-      height = tonumber(height)
-      if (height == nil) then
-        height = 100.0
-      end
-      height = height / 100.0
+      height = parse_size(el.attributes.height)
       table.insert(options,string.format("height=%s\\linewidth",string.format("%f", height)))
     end
 
@@ -146,27 +163,12 @@ if FORMAT:match 'latex' then
       table.insert(options,framed)
     end
 
-    local float = nil
-    for _, v in ipairs(el.classes) do
-      if v == "float-left" then
-        float = "floatleft"
-      elseif v == "float-right" then
-        float = "floatright"
-      end
+    local includefile = "includegraphics"
+    if (string.sub(el.src,-3) == "svg") then
+      includefile = "includesvg"
     end
-
-    if float ~= nil then
-      -- take care of the "," before "frame"
-      local latexstring = string.format("\\%s{%s}{%s}{%s}{,%s}",float,width,el.src,caption,framed)
-      return pandoc.RawInline("latex", latexstring)
-    else
-      local includefile = "includegraphics"
-      if (string.sub(el.src,-3) == "svg") then
-        includefile = "includesvg"
-      end
-      local latexstring = string.format("\\begin{center} \\%s[%s]{%s} \\captionof{figure}{%s} \\end{center}",includefile,table.concat(options,","),el.src,caption)
-      return pandoc.RawInline("latex", latexstring)
-    end
+    local latexstring = string.format("\\begin{center} \\%s[%s]{%s} \\captionof{figure}{%s} \\end{center}",includefile,table.concat(options,","),el.src,caption)
+    return pandoc.RawInline("latex", latexstring)
   end
 
 end
