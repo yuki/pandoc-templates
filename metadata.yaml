@@ -1,6 +1,7 @@
 ---
-title:  'This is the title'
-subtitle:  'subtitle'
+title: 'This is the title'
+title-mini: 'mini-title'
+subtitle: 'subtitle'
 degree: 'The Degree'
 author: 'Author One'
 date: '2023-10-15'

@@ -67,7 +67,8 @@ $endif$
 
         <div>
           $if(title)$
-            <span class="fs-4">$title$</span>
+            <span class="fs-4 d-none d-md-inline">$title$</span>
+            <span class="fs-4 d-md-none d-xs-inline">$title-mini$</span>
             $if(subtitle)$
               <span class="subtitle d-none d-lg-inline"> - $subtitle$</span>
             $endif$
