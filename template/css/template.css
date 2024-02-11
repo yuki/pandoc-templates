@@ -1,19 +1,29 @@
 html {
-  --top-spacing: 56px;
-  scroll-padding-top: var(--top-spacing);
+  scroll-padding-top: 65px;
 }
 
-#navbar {
+#header, #navbar {
   background-color: var(--templatecolor);
 }
 
-#main {
+body {
+  line-height: 2;
+  grid-area: main;
   text-align: justify;
   margin-top: var(--top-spacing);
 }
 
 #book  p {
   line-height: 2;
+}
+
+@media (min-width: 992px) {
+  .bd-layout {
+      display:grid;
+      grid-template-areas: "sidebar main";
+      grid-template-columns: 1fr 5fr;
+      gap: 1.5rem
+  }
 }
 
 [data-bs-theme=light] #book a{
@@ -24,11 +34,6 @@ html {
   padding-bottom: 2rem;
 }
 
-h1, h2, h3, h4, h5, h6{
-  padding-top: 2rem;
-  font-weight: bold;
-  clear: both;
-}
 
 .footnotesize {
   font-size: 0.8rem;
@@ -58,59 +63,92 @@ h1, h2, h3, h4, h5, h6{
   padding-right: 0.5rem;
 }
 
-/* 
- *
- * SIDEBAR
- *
- * */
-
-.sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  padding: 56px 0 0;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+h1, h2, h3, h4, h5, h6{
+  padding-top: 2rem;
+  font-weight: bold;
+  clear: both;
+  text-align: start;
 }
 
-.sidebar-sticky {
-  height: calc(100vh - 56px);
-  overflow-y: auto;
-  overflow-x: auto;
-}
 
 /* 
  *
- * NAVBAR
+ * TOC SIDEBAR & RIGHT SIDEBAR
+ *
+ * */
+ @media (min-width: 992px) {
+  .bd-sidebar {
+    position:-webkit-sticky;
+    position: sticky;
+    top: 5rem;
+    display: block !important;
+    height: calc(100vh - 6rem);
+    padding-left: .25rem;
+    margin-left: -.25rem;
+    overflow-y: auto;
+  }
+}
+
+.bd-gutter {
+  --bs-gutter-x: 3rem;
+}
+
+.bd-sidebar {
+  grid-area: sidebar;
+}
+
+.bd-main {
+  grid-area: main
+}
+
+#offcanvasRight {
+  background-color: var(--templatecolor);
+}
+
+.offcanvas-header {
+  border-bottom: 0.3rem solid white!important;
+  padding-bottom: 1rem!important;
+  margin-bottom: 1rem!important;
+}
+
+.offcanvas-header h5{
+  padding-top: 0;
+}
+
+
+/* 
+ *
+ * TOC
  *
  * */
 
-.navbar ul {
+ .navbar ul {
   margin-top: 0em;
+  
 }
 
-#navbar-toc .nav {
+#toc .nav {
   padding-left: 2rem!important;
   display: block!important;
 }
 
-#navbar-toc > ul, #navbar-toc > .nav {
+#toc > ul, #toc > .nav {
   padding-left: 0em!important;
   font-size: 0.8rem;
 }
 
-#navbar-toc li {
+#toc li {
   list-style: none;
+  text-align: start;
 }
 
-#navbar-toc li a {
+#toc li a {
   padding: 5px;
   padding-left: 15px;
   color: var(--bs-body-color);
 }
 
-#navbar-toc a.active {
+#toc a.active {
   border: 3px solid;
   border-radius: 0.5rem;
   background-color: var(--templatecolor);
@@ -119,24 +157,19 @@ h1, h2, h3, h4, h5, h6{
 }
 
 
-#navbar-toc li.toc_part a, #navbar-toc li.toc_part a.active{
+#toc li.toc_part a, #toc li.toc_part a.active{
   background-color: var(--templatecolor);
   color: var(--bs-white);
   display: block;
   padding: 1rem 15px;
-  text-align: center;
   font-size: 1rem;
   font-weight: bold;
   text-decoration: none;
 }
 
-[data-bs-theme=dark] #navbar-toc li.toc_part a, [data-bs-theme=dark] #navbar-toc li.toc_part a.active{
+[data-bs-theme=dark] #toc li.toc_part a, [data-bs-theme=dark] #toc li.toc_part a.active{
   background-color: var(--bs-heading-color);
   color: var(--templatecolor);
-}
-
-.download-icon {
-  padding-left: 1rem;
 }
 
 /*
@@ -144,10 +177,6 @@ h1, h2, h3, h4, h5, h6{
  * Theme selector
  *
  * */
-
-#theme-selector {
-  /* padding-left: 1rem; */
-}
 
 #theme-selector-menu {
   padding: 0;

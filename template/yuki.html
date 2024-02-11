@@ -55,33 +55,56 @@ $endif$
 
 </head>
   <body>
-    <header>
-      <nav id="navbar" class="navbar navbar-expand-md fixed-top" aria-label="header">
-        <div class="container flex-row d-flex align-items-center flex-wrap text-white">
-          <span>
-            $if(title)$
-              <span class="fs-4">$title$</span>
-              $if(subtitle)$
-                <span class="subtitle d-none d-lg-inline"> - $subtitle$</span>
-              $endif$
-            $endif$
-          </span>
-          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".collapse" aria-controls="navbarCollapse navbar-toc" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <span class="fs-6 flex-row d-flex align-items-center flex-wrap text-white ms-md-auto d-none d-lg-inline">
-              $for(author)$
-                <span class="author">$author$ </span>
-              $endfor$
-              $if(date)$
-                <span class="date"> - $date$</span>
-              $endif$
-            </span>
 
-            <a href="$download-link$" class="flex-row d-flex align-items-center flex-wrap text-white download-icon"><i class="fa-solid fa-cloud-arrow-down"></i></a>
-            
+    <header class="navbar navbar-expand-lg bd-navbar sticky-top" id="header" >
+      <nav id="navbar" class="container-xxl bd-gutter flex-wrap flex-lg-nowrap text-white" aria-label="header">
+
+        <div class="bd-navbar-toggle">
+          <button class="navbar-toggler p-2 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#TOCsidebarMenu" aria-controls="toc" aria-label="Toggle docs navigation">
+            <i class="fa-solid fa-circle-chevron-right"></i>
+          </button>
+        </div>
+
+        <div>
+          $if(title)$
+            <span class="fs-4">$title$</span>
+            $if(subtitle)$
+              <span class="subtitle d-none d-lg-inline"> - $subtitle$</span>
+            $endif$
+          $endif$
+        </div>
+
+        <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" aria-label="Toggle navigation">
+          <i class="fa-solid fa-ellipsis text-white"></i>
+        </button>
+
+        <!-- RIGHT OFFCANVAS -->
+        <div class="offcanvas offcanvas-end flex-grow-1" tabindex="-1" id="offcanvasRight" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true" aria-modal="true" role="dialog">
+          <div class="offcanvas-header px-4 pb-0">
+            <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">$title$</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+          </div>
+
+          <div class="offcanvas-body p-4 pt-0 p-lg-0">
+            <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+              <ul class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white">
+                <li class="d-lg-none me-2 text-white navbar-nav flex-row d-flex align-items-center flex-wrap">Descargar</li>
+                <li class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white">
+                  <a href="$download-link$" class=" btn flex-row d-flex align-items-center flex-wrap text-white download-icon">
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                  </a>
+                </li>
+              </ul>
+
+
+              <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+                <hr class="d-lg-none my-2 text-white-50">
+              </li>
+
+            <!-- Theme Selector -->
             <ul class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white" id="theme-selector">
+              <div class="d-lg-none me-2 text-white navbar-nav flex-row d-flex align-items-center flex-wrap">Cambiar tema</div>
               <li class="nav-item dropdown">
                 <button class="btn btn-link nav-link text-white dropdown-toggle d-flex align-items-center theme-icon-active" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" href="fa-moon">
                   <i class="fa-solid fa-moon"></i>
@@ -108,49 +131,50 @@ $endif$
                 </ul>
               </li>
             </ul>
+
+              <li class="d-lg-none nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+                <hr class="d-lg-none my-2 text-white-50">
+              </li>
+
+              <!-- Author and links -->
+              <ul class="d-lg-none navbar-nav flex-row d-flex align-items-center flex-wrap text-white">
+                <li class="d-lg-none me-2 text-white navbar-nav flex-row d-flex align-items-center flex-wrap">$date$, $author$</li>
+                <ul class="nav justify-content-end list-unstyled d-flex">
+                  $if(github-link)$
+                    <li class="ms-3"><a class="text-white" href="$github-link$"><i class="fa-brands fa-github"></i></a></li>
+                  $endif$
+                </ul>
+              </ul>
+            </ul>
           </div>
         </div>
       </nav>
     </header>
 
-    <div class="container">
-      <div class="row">
-        $if(toc)$
-          <!-- INDEX BAR MENU -->
-          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-body-tertiary">
-            <div class="position-sticky sidebar-sticky">
-              <div id="navbar-toc" class="pb-5">
-                <h5 class="p-2 border-bottom">Índice</h5>
-                $toc$
-              </div>
-            </div>
-          </nav>
-        $endif$
-      </div>
+    <div class="container-xxl bd-gutter bd-layout" id="mainlayout">
 
-      <!-- if TOC, the class properties changed -->
-      <main class="ms-sm-auto
-        $if(toc)$
-          col-md-9 col-lg-10 px-md-4
-        $endif$
-        " id="main">
-        <div class="justify-content-between align-items-center p-2" 
-          data-bs-spy="scroll" data-bs-target="#navbar-toc" data-bs-smooth-scroll="true" tabindex="0">
-          $if(abstract)$
-            <div id="abstract">
-              <div class="offset-lg-3 col-lg-6">
-                <h2 class="text-center">$abstract-title$</h2>
-                $abstract$
-                <div id="keywords">
-                  <span><strong>Keywords: </strong></span>
-                  $for(keywords)$
-                    <span class="author">$keywords$, </span>
-                  $endfor$
-                </div>
-              </div>
+      $if(toc)$
+        <aside class="bd-sidebar offcanvas-lg offcanvas-start offcanvas-body" tabindex="-1" id="TOCsidebarMenu" aria-labelledby="bdSidebarOffcanvasLabel">
+          <div class="offcanvas-lg offcanvas-start show" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarOffcanvasLabel" aria-modal="true" role="dialog">
+
+            <div class="offcanvas-header border-bottom">
+              <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">Índice</h5>
+              <button type="button" class="btn-close d-lg-none" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#TOCsidebarMenu"></button>
             </div>
-          $endif$
-    
+            <div class="offcanvas-body">
+              <nav class="" id="bd-docs-nav" aria-label="Docs navigation">
+                <div id="toc" class="pb-5">
+                  $toc$
+                </div>
+              </nav>
+            </div>
+          </div>
+        </aside>
+      $endif$
+
+      <main class="bd-main order-1" id="main"  data-bs-spy="scroll" data-bs-target="#toc">
+
           $for(include-before)$
             $include-before$
           $endfor$
@@ -167,7 +191,6 @@ $if(title)$
 $endif$
 
 $body$
-</div>
 
           $for(include-after)$
             $include-after$
@@ -176,13 +199,8 @@ $body$
       </main>
     </div>
 
-    <footer class="container">
-      <div class="justify-content-between align-items-center py-3 my-4 border-top
-        ms-sm-auto
-        $if(toc)$
-          col-md-9 col-lg-10 px-md-4
-          $endif$
-        ">
+    <footer class="container" id="footer">
+      <div class="justify-content-between align-items-center py-3 my-4 border-top ms-sm-auto">
           <div class="row justify-content-between align-items-center">
             <div class="col-8 d-flex p-2">
               <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none"> </a>

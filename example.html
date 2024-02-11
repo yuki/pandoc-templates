@@ -34,25 +34,52 @@
 
 </head>
   <body>
-    <header>
-      <nav id="navbar" class="navbar navbar-expand-md fixed-top" aria-label="header">
-        <div class="container flex-row d-flex align-items-center flex-wrap text-white">
-          <span>
-                          <span class="fs-4">This is the title</span>
-                              <span class="subtitle d-none d-lg-inline"> - subtitle</span>
-                                    </span>
-          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".collapse" aria-controls="navbarCollapse navbar-toc" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <span class="fs-6 flex-row d-flex align-items-center flex-wrap text-white ms-md-auto d-none d-lg-inline">
-                              <span class="author">Author One </span>
-                                            <span class="date"> - 2023-10-15</span>
-                          </span>
 
-            <a href="example.pdf" class="flex-row d-flex align-items-center flex-wrap text-white download-icon"><i class="fa-solid fa-cloud-arrow-down"></i></a>
-            
+    <header class="navbar navbar-expand-lg bd-navbar sticky-top" id="header" >
+      <nav id="navbar" class="container-xxl bd-gutter flex-wrap flex-lg-nowrap text-white" aria-label="header">
+
+        <div class="bd-navbar-toggle">
+          <button class="navbar-toggler p-2 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#TOCsidebarMenu" aria-controls="toc" aria-label="Toggle docs navigation">
+            <i class="fa-solid fa-circle-chevron-right"></i>
+          </button>
+        </div>
+
+        <div>
+                      <span class="fs-4">This is the title</span>
+                          <span class="subtitle d-none d-lg-inline"> - subtitle</span>
+                              </div>
+
+        <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" aria-label="Toggle navigation">
+          <i class="fa-solid fa-ellipsis text-white"></i>
+        </button>
+
+        <!-- RIGHT OFFCANVAS -->
+        <div class="offcanvas offcanvas-end flex-grow-1" tabindex="-1" id="offcanvasRight" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true" aria-modal="true" role="dialog">
+          <div class="offcanvas-header px-4 pb-0">
+            <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">This is the title</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+          </div>
+
+          <div class="offcanvas-body p-4 pt-0 p-lg-0">
+            <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+              <ul class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white">
+                <li class="d-lg-none me-2 text-white navbar-nav flex-row d-flex align-items-center flex-wrap">Descargar</li>
+                <li class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white">
+                  <a href="example.pdf" class=" btn flex-row d-flex align-items-center flex-wrap text-white download-icon">
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                  </a>
+                </li>
+              </ul>
+
+
+              <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+                <hr class="d-lg-none my-2 text-white-50">
+              </li>
+
+            <!-- Theme Selector -->
             <ul class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white" id="theme-selector">
+              <div class="d-lg-none me-2 text-white navbar-nav flex-row d-flex align-items-center flex-wrap">Cambiar tema</div>
               <li class="nav-item dropdown">
                 <button class="btn btn-link nav-link text-white dropdown-toggle d-flex align-items-center theme-icon-active" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" href="fa-moon">
                   <i class="fa-solid fa-moon"></i>
@@ -79,58 +106,73 @@
                 </ul>
               </li>
             </ul>
+
+              <li class="d-lg-none nav-item py-2 py-lg-1 col-12 col-lg-auto">
+                <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+                <hr class="d-lg-none my-2 text-white-50">
+              </li>
+
+              <!-- Author and links -->
+              <ul class="d-lg-none navbar-nav flex-row d-flex align-items-center flex-wrap text-white">
+                <li class="d-lg-none me-2 text-white navbar-nav flex-row d-flex align-items-center flex-wrap">2023-10-15, Author One</li>
+                <ul class="nav justify-content-end list-unstyled d-flex">
+                                      <li class="ms-3"><a class="text-white" href="https://github.com/yuki/pandoc-templates/"><i class="fa-brands fa-github"></i></a></li>
+                                  </ul>
+              </ul>
+            </ul>
           </div>
         </div>
       </nav>
     </header>
 
-    <div class="container">
-      <div class="row">
-                  <!-- INDEX BAR MENU -->
-          <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse bg-body-tertiary">
-            <div class="position-sticky sidebar-sticky">
-              <div id="navbar-toc" class="pb-5">
-                <h5 class="p-2 border-bottom">Índice</h5>
-                <ul>
-                <li><a href="#pandoc-template-in-bootstrap-5" id="toc-pandoc-template-in-bootstrap-5"><span class="toc-section-number">1</span> Pandoc template in Bootstrap 5</a></li>
-                <li><a href="#example-of-uses" id="toc-example-of-uses"><span class="toc-section-number">2</span> Example of uses</a>
-                <ul>
-                <li><a href="#colors" id="toc-colors"><span class="toc-section-number">2.1</span> Colors</a></li>
-                <li><a href="#custom-boxes" id="toc-custom-boxes"><span class="toc-section-number">2.2</span> Custom boxes</a></li>
-                </ul></li>
-                <li><a href="#images" id="toc-images"><span class="toc-section-number">3</span> Images</a>
-                <ul>
-                <li><a href="#centered-image-with-caption" id="toc-centered-image-with-caption"><span class="toc-section-number">3.1</span> Centered image with caption</a></li>
-                </ul></li>
-                <li><a href="#columns" id="toc-columns"><span class="toc-section-number">4</span> Columns</a>
-                <ul>
-                <li><a href="#float-image-in-the-left-side" id="toc-float-image-in-the-left-side"><span class="toc-section-number">4.1</span> Float image in the left side</a></li>
-                </ul></li>
-                <li><a href="#tables" id="toc-tables"><span class="toc-section-number">5</span> Tables</a></li>
-                <li><a href="#lorem-ipsum" id="toc-lorem-ipsum"><span class="toc-section-number">6</span> Lorem ipsum</a>
-                <ul>
-                <li><a href="#pyout" id="toc-pyout"><span class="toc-section-number">6.1</span> Pyout</a>
-                <ul>
-                <li><a href="#image" id="toc-image"><span class="toc-section-number">6.1.1</span> Image</a></li>
-                </ul></li>
-                </ul></li>
-                <li><a href="#lorem-ipsum-1" id="toc-lorem-ipsum-1"><span class="toc-section-number">7</span> Lorem ipsum</a>
-                <ul>
-                <li><a href="#pyout-1" id="toc-pyout-1"><span class="toc-section-number">7.1</span> Pyout</a></li>
-                </ul></li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-              </div>
+    <div class="container-xxl bd-gutter bd-layout" id="mainlayout">
 
-      <!-- if TOC, the class properties changed -->
-      <main class="ms-sm-auto
-                  col-md-9 col-lg-10 px-md-4
-                " id="main">
-        <div class="justify-content-between align-items-center p-2" 
-          data-bs-spy="scroll" data-bs-target="#navbar-toc" data-bs-smooth-scroll="true" tabindex="0">
-              
+              <aside class="bd-sidebar offcanvas-lg offcanvas-start offcanvas-body" tabindex="-1" id="TOCsidebarMenu" aria-labelledby="bdSidebarOffcanvasLabel">
+          <div class="offcanvas-lg offcanvas-start show" tabindex="-1" id="bdSidebar" aria-labelledby="bdSidebarOffcanvasLabel" aria-modal="true" role="dialog">
+
+            <div class="offcanvas-header border-bottom">
+              <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">Índice</h5>
+              <button type="button" class="btn-close d-lg-none" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#TOCsidebarMenu"></button>
+            </div>
+            <div class="offcanvas-body">
+              <nav class="" id="bd-docs-nav" aria-label="Docs navigation">
+                <div id="toc" class="pb-5">
+                  <ul>
+                  <li><a href="#pandoc-template-in-bootstrap-5" id="toc-pandoc-template-in-bootstrap-5"><span class="toc-section-number">1</span> Pandoc template in Bootstrap 5</a></li>
+                  <li><a href="#example-of-uses" id="toc-example-of-uses"><span class="toc-section-number">2</span> Example of uses</a>
+                  <ul>
+                  <li><a href="#colors" id="toc-colors"><span class="toc-section-number">2.1</span> Colors</a></li>
+                  <li><a href="#custom-boxes" id="toc-custom-boxes"><span class="toc-section-number">2.2</span> Custom boxes</a></li>
+                  </ul></li>
+                  <li><a href="#images" id="toc-images"><span class="toc-section-number">3</span> Images</a>
+                  <ul>
+                  <li><a href="#centered-image-with-caption" id="toc-centered-image-with-caption"><span class="toc-section-number">3.1</span> Centered image with caption</a></li>
+                  </ul></li>
+                  <li><a href="#columns" id="toc-columns"><span class="toc-section-number">4</span> Columns</a>
+                  <ul>
+                  <li><a href="#float-image-in-the-left-side" id="toc-float-image-in-the-left-side"><span class="toc-section-number">4.1</span> Float image in the left side</a></li>
+                  </ul></li>
+                  <li><a href="#tables" id="toc-tables"><span class="toc-section-number">5</span> Tables</a></li>
+                  <li><a href="#lorem-ipsum" id="toc-lorem-ipsum"><span class="toc-section-number">6</span> Lorem ipsum</a>
+                  <ul>
+                  <li><a href="#pyout" id="toc-pyout"><span class="toc-section-number">6.1</span> Pyout</a>
+                  <ul>
+                  <li><a href="#image" id="toc-image"><span class="toc-section-number">6.1.1</span> Image</a></li>
+                  </ul></li>
+                  </ul></li>
+                  <li><a href="#lorem-ipsum-1" id="toc-lorem-ipsum-1"><span class="toc-section-number">7</span> Lorem ipsum</a>
+                  <ul>
+                  <li><a href="#pyout-1" id="toc-pyout-1"><span class="toc-section-number">7.1</span> Pyout</a></li>
+                  </ul></li>
+                  </ul>
+                </div>
+              </nav>
+            </div>
+          </div>
+        </aside>
+      
+      <main class="bd-main order-1" id="main"  data-bs-spy="scroll" data-bs-target="#toc">
+
           
 <div id="book">
 
@@ -345,17 +387,13 @@ bibendum felis dictum sodales.</p>
 </div>
 </section>
 </section>
-</div>
 
                   </div>
       </main>
     </div>
 
-    <footer class="container">
-      <div class="justify-content-between align-items-center py-3 my-4 border-top
-        ms-sm-auto
-                  col-md-9 col-lg-10 px-md-4
-                  ">
+    <footer class="container" id="footer">
+      <div class="justify-content-between align-items-center py-3 my-4 border-top ms-sm-auto">
           <div class="row justify-content-between align-items-center">
             <div class="col-8 d-flex p-2">
               <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none"> </a>

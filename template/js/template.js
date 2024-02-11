@@ -32,7 +32,7 @@ function addAnchorLink(element,href) {
 
 (() => {
 
-    sidebarMenu = document.querySelector('#navbar-toc')
+    sidebarMenu = document.querySelector('#toc')
 
     // sidebars links 
     if (sidebarMenu) {
@@ -92,7 +92,7 @@ function addAnchorLink(element,href) {
     count = 0
     new_num = 0
     // we use the navbar UL's LIs, it's easier than the sections
-    for (element of document.getElementById('navbar-toc').querySelectorAll("ul > li")) {
+    for (element of document.getElementById('toc').querySelectorAll("ul > li")) {
         if (element.classList.contains('toc_part')){
             // the LI is a PART; we reset the count
             count = 0
