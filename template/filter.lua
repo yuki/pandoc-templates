@@ -142,6 +142,15 @@ if FORMAT:match 'latex' then
         caption = caption .. string.format("\\href{%s}{%s}", url, linkText)
       elseif e.t == "Space" then
         caption = caption .. " "
+      elseif e.t == "Strong" then
+        local strongText = pandoc.utils.stringify(e.content)
+        caption = caption .. string.format("\\textbf{%s}", strongText)
+      elseif e.t == "Emph" then
+        local strongText = pandoc.utils.stringify(e.content)
+        caption = caption .. string.format("\\textit{%s}", strongText)
+      elseif e.t == "Quoted" then
+        local quotedText = pandoc.utils.stringify(e.content)
+        caption = caption .. "``" ..quotedText .."\'' "
       end
     end
 

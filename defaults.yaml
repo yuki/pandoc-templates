@@ -1,4 +1,5 @@
 toc: true
+toc-depth: 5
 number-sections: true
 wrap: preserve
 standalone: true

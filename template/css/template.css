@@ -158,6 +158,7 @@ h1, h2, h3, h4, h5, h6{
 
 
 #toc li.toc_part a, #toc li.toc_part a.active{
+  text-align: center;
   background-color: var(--templatecolor);
   color: var(--bs-white);
   display: block;
@@ -316,6 +317,10 @@ figcaption{
   margin: 1em;
 }
 
+.mycode div.sourceCode .highlight pre{
+  line-height: 2!important;
+}
+
 /* 
  *
  * INLINE COMMANDS
@@ -382,6 +387,10 @@ figcaption{
   display: flex;
   align-items: center!important;
   margin: 0 2rem;
+}
+
+.infobox > p > *, .warnbox > p > *, .errorbox > p > *, .questionbox > p > *, .exercisebox > p > * {
+  display: contents;
 }
 
 .infobox::before, .warnbox::before, .errorbox::before, .questionbox::before, .exercisebox::before {
