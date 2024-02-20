@@ -21,7 +21,7 @@ body {
   .bd-layout {
       display:grid;
       grid-template-areas: "sidebar main";
-      grid-template-columns: 1fr 5fr;
+      grid-template-columns: 1fr 4fr;
       gap: 1.5rem
   }
 }
@@ -83,8 +83,6 @@ h1, h2, h3, h4, h5, h6{
     top: 5rem;
     display: block !important;
     height: calc(100vh - 6rem);
-    padding-left: .25rem;
-    margin-left: -.25rem;
     overflow-y: auto;
   }
 }
@@ -115,12 +113,22 @@ h1, h2, h3, h4, h5, h6{
   padding-top: 0;
 }
 
+.offcanvas-body {
+  /* display: block!important; */
+}
+
 
 /* 
  *
  * TOC
  *
  * */
+
+ #TOCsidebarMenu {
+  border-right: 2px double var(--templatecolor);
+  resize: horizontal;
+  /* overflow-x: auto; */
+ }
 
  .navbar ul {
   margin-top: 0em;
