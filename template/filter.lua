@@ -176,7 +176,12 @@ if FORMAT:match 'latex' then
     if (string.sub(el.src,-3) == "svg") then
       includefile = "includesvg"
     end
-    local latexstring = string.format("\\begin{center} \\%s[%s]{%s} \\captionof{figure}{%s} \\end{center}",includefile,table.concat(options,","),el.src,caption)
+
+    if (caption == "" or caption == " ") then
+      latexstring = string.format("\\begin{center} \\%s[%s]{%s}\\end{center}",includefile,table.concat(options,","),el.src)
+    else
+      latexstring = string.format("\\begin{center} \\%s[%s]{%s} \\captionof{figure}{%s} \\end{center}",includefile,table.concat(options,","),el.src,caption)
+    end
     return pandoc.RawInline("latex", latexstring)
   end
 

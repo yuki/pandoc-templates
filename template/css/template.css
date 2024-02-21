@@ -516,6 +516,26 @@ div.column {
   overflow-x: auto;
 }
 
+/*
+ *
+ * Lists
+ *
+ * */
+
+dl {
+  display: grid;
+  grid-template-columns: max-content auto;
+}
+
+dt {
+  grid-column-start: 1;
+  padding-right: 1rem;
+}
+
+dd {
+  grid-column-start: 2;
+}
+
 
 /* 
  *
