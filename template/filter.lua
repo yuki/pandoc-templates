@@ -154,7 +154,7 @@ if FORMAT:match 'latex' then
       end
     end
 
-    -- height = el.attributes.height
+    -- width = el.attributes.width
     if (el.attributes.width) then
       width = parse_size(el.attributes.width)
       table.insert(options,string.format("width=%s\\linewidth",string.format("%f", width)))
@@ -162,8 +162,8 @@ if FORMAT:match 'latex' then
     
     -- height = el.attributes.height
     if (el.attributes.height) then
-      height = parse_size(el.attributes.height)
-      table.insert(options,string.format("height=%s\\linewidth",string.format("%f", height)))
+      -- I don't use pecentages with the height
+      table.insert(options,string.format("height=%s",string.format(el.attributes.height)))
     end
 
     local framed = ""
@@ -177,10 +177,18 @@ if FORMAT:match 'latex' then
       includefile = "includesvg"
     end
 
+    beg_v = "\\begin{center} "
+    end_v = "\\end{center}"
+
+    if (el.attributes.inline) then
+      beg_v = ""
+      end_v = ""
+    end
+
     if (caption == "" or caption == " ") then
-      latexstring = string.format("\\begin{center} \\%s[%s]{%s}\\end{center}",includefile,table.concat(options,","),el.src)
+      latexstring = string.format(beg_v.." \\%s[%s]{%s} " ..end_v,includefile,table.concat(options,","),el.src)
     else
-      latexstring = string.format("\\begin{center} \\%s[%s]{%s} \\captionof{figure}{%s} \\end{center}",includefile,table.concat(options,","),el.src,caption)
+      latexstring = string.format(beg_v.." \\%s[%s]{%s} \\captionof{figure}{%s} " ..end_v ,includefile,table.concat(options,","),el.src,caption)
     end
     return pandoc.RawInline("latex", latexstring)
   end
