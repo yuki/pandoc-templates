@@ -273,7 +273,11 @@ figure{
   margin:auto;
 }
 
-figure img {
+[data-inline="true"]{
+  display: inline;
+}
+
+figure img, p > img{
   display: block;
   margin: auto;
 }
@@ -506,6 +510,7 @@ figcaption{
 div.columns {
   display: flex;
   gap: min(4vw, 1.5em);
+  align-items: center;
 }
 
 div.column {
