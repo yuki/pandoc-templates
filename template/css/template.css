@@ -402,7 +402,7 @@ figcaption{
 }
 
 .infobox > p > *, .warnbox > p > *, .errorbox > p > *, .questionbox > p > *, .exercisebox > p > * {
-  display: contents;
+  display: inline;
 }
 
 .infobox::before, .warnbox::before, .errorbox::before, .questionbox::before, .exercisebox::before {
