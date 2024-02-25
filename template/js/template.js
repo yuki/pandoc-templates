@@ -103,21 +103,28 @@ function addAnchorLink(element,href) {
                 count = count + 1
                 new_num = count
             } else {
-                num = section.getAttribute("data-number")
-                new_num = num.replace(/^[0-9]+\./,count + ".")
+                if (section.getAttribute("data-number")){
+                    num = section.getAttribute("data-number")
+                    new_num = num.replace(/^[0-9]+\./,count + ".")
+                }
             }
             // we update the LI and the headers in the "sections"
-            element.firstElementChild.firstElementChild.innerText = new_num
-            section.setAttribute("data-number",new_num)
-            section.firstElementChild.setAttribute("data-number",new_num)
-            section.firstElementChild.firstElementChild.innerHTML=new_num
-        }
+            if (element.firstElementChild.firstElementChild){
+                element.firstElementChild.firstElementChild.innerText = new_num
+                section.setAttribute("data-number",new_num)
+                section.firstElementChild.setAttribute("data-number",new_num)
+                section.firstElementChild.firstElementChild.innerHTML=new_num
+            }
+            }
     }
 
     // ANCHOR LINKS in HEADINGS
     for (const element of document.getElementsByTagName('section')) {
-        const header = element.querySelector('.header-section-number')
-        addAnchorLink(header.parentElement,element.id)
+        if (element.querySelector('.header-section-number')){
+            const header = element.querySelector('.header-section-number')
+            addAnchorLink(header.parentElement,element.id)
+        }
+        
     }
 
     // TABLES
