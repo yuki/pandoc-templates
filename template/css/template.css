@@ -550,5 +550,6 @@ dd {
 
 th {
   background-color: var(--templatecolor)!important;
-  color: var(--bs-white-rgb)!important;
+  /* color: var(--bs-white-rgb)!important; */
+  color: white!important;
 }
