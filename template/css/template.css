@@ -548,8 +548,65 @@ dd {
  *
  * */
 
+ [data-tablename="rubrica"] {
+  text-align: left;
+ }
+
+ [data-tablename="rubrica"] thead {
+  text-align: center;
+ }
+
+[data-tablename="yukitblrcol"].table-bordered thead,
+[data-tablename="yukitblrcol"].table-bordered thead tr,
+[data-tablename="rubrica"].table-bordered thead,
+[data-tablename="rubrica"].table-bordered thead tr {
+  border: 0px!important;
+}
+
+[data-tablename="yukitblrcol"] td:first-child,
+[data-tablename="rubrica"] td:first-child  {
+  background-color: var(--templatecolor);
+  color: white!important;
+  font-weight: bold;
+}
+
+[data-tablename="yukitblrcol"].table-bordered tr.header th:nth-child(n),
+[data-tablename="rubrica"].table-bordered tr.header th:nth-child(n){
+  border: 1px solid var(--bs-secondary-border-subtle)!important;
+}
+
+[data-tablename="yukitblrcol"].table-bordered tr.header th:first-child,
+[data-tablename="rubrica"].table-bordered tr.header th:first-child {
+  background-color: transparent!important;
+  border: 0px!important;
+}
+
+[data-tablename="rubrica"] tr.header th:nth-child(2)  {
+  background-color: SeaGreen!important;
+}
+
+[data-tablename="rubrica"] tr.header th:nth-child(3)  {
+  background-color: DarkSeaGreen!important;
+}
+
+[data-tablename="rubrica"] tr.header th:nth-child(4)  {
+  background-color: SandyBrown!important;
+}
+
+[data-tablename="rubrica"] tr.header th:nth-child(5)  {
+  background-color: Tomato!important;
+}
+
 th {
   background-color: var(--templatecolor)!important;
   /* color: var(--bs-white-rgb)!important; */
   color: white!important;
+}
+
+tr.even td{
+  background-color: color-mix(in srgb, white 100%, var(--templatecolor) 10%) ;
+}
+
+table caption {
+  text-align: center;
 }

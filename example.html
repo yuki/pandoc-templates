@@ -153,7 +153,13 @@
                   <ul>
                   <li><a href="#float-image-in-the-left-side" id="toc-float-image-in-the-left-side"><span class="toc-section-number">4.1</span> Float image in the left side</a></li>
                   </ul></li>
-                  <li><a href="#tables" id="toc-tables"><span class="toc-section-number">5</span> Tables</a></li>
+                  <li><a href="#tables" id="toc-tables"><span class="toc-section-number">5</span> Tables</a>
+                  <ul>
+                  <li><a href="#table-1" id="toc-table-1"><span class="toc-section-number">5.1</span> Table 1</a></li>
+                  <li><a href="#table-2" id="toc-table-2"><span class="toc-section-number">5.2</span> Table 2</a></li>
+                  <li><a href="#table-3" id="toc-table-3"><span class="toc-section-number">5.3</span> Table 3</a></li>
+                  <li><a href="#table-4" id="toc-table-4"><span class="toc-section-number">5.4</span> Table 4</a></li>
+                  </ul></li>
                   <li><a href="#lorem-ipsum" id="toc-lorem-ipsum"><span class="toc-section-number">6</span> Lorem ipsum</a>
                   <ul>
                   <li><a href="#pyout" id="toc-pyout"><span class="toc-section-number">6.1</span> Pyout</a>
@@ -308,62 +314,143 @@
 </section>
 <section id="tables" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Tables</h1>
-<p>A normal table:</p>
-<table>
+<p>Few examples of tables</p>
+<section id="table-1" class="level2" data-number="5.1">
+<h2 data-number="5.1"><span class="header-section-number">5.1</span> Table 1</h2>
+<p>Custom tablename “yukitblr”:</p>
+<table data-tablename="yukitblr">
+<caption>Table content </caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Head 1</th>
+<th style="text-align: center;">Head 2</th>
+<th style="text-align: right;">Head 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alpha</td>
+<td style="text-align: center;">Beta</td>
+<td style="text-align: right;">Gamma</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Delta</td>
+<td style="text-align: center;">Epsilon</td>
+<td style="text-align: right;">Zeta</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eta</td>
+<td style="text-align: center;">Theta</td>
+<td style="text-align: right;">Iota</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="table-2" class="level2" data-number="5.2">
+<h2 data-number="5.2"><span class="header-section-number">5.2</span> Table 2</h2>
+<p>Custom tablename “yukitblrcol”:</p>
+<table data-tablename="yukitblrcol">
+<caption>Table content </caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">Head 2</th>
+<th style="text-align: right;">Head 3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alpha</td>
+<td style="text-align: center;">Beta</td>
+<td style="text-align: right;">Gamma</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Delta</td>
+<td style="text-align: center;">Epsilon</td>
+<td style="text-align: right;">Zeta</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eta</td>
+<td style="text-align: center;">Theta</td>
+<td style="text-align: right;">Iota</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="table-3" class="level2" data-number="5.3">
+<h2 data-number="5.3"><span class="header-section-number">5.3</span> Table 3</h2>
+<p>Custom tablename “rubrica” with custom “colspec” like “X[-1]X[2]X[2]X[2]X[2]” in the Caption (see the source):</p>
+<table data-tablename="rubrica" data-colspec="X[-1]X[2]X[2]X[2]X[2]">
+<caption></caption>
 <thead>
 <tr class="header">
 <th></th>
-<th style="text-align: center;">Col 1</th>
-<th style="text-align: center;">Col 2</th>
-<th style="text-align: center;">Col 3</th>
-<th style="text-align: center;">Col 4</th>
+<th>Excelente</th>
+<th>Notable</th>
+<th>Mejorable</th>
+<th>Muy mejorable</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Fila 1</td>
-<td style="text-align: center;">a</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td>Alpha</td>
+<td>Beta</td>
+<td>Gamma</td>
+<td>Beta</td>
+<td>Gamma</td>
 </tr>
 <tr class="even">
-<td>Fila 2</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">b</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">a</td>
+<td>Delta</td>
+<td>Epsilon</td>
+<td>Zeta</td>
+<td>Epsilon</td>
+<td>Zeta</td>
 </tr>
 <tr class="odd">
-<td>Fila 3</td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;">c</td>
-<td style="text-align: center;"></td>
+<td>Eta</td>
+<td>Theta</td>
+<td>Iota</td>
+<td>Theta</td>
+<td>Iota</td>
 </tr>
 </tbody>
 </table>
-<table>
+</section>
+<section id="table-4" class="level2" data-number="5.4">
+<h2 data-number="5.4"><span class="header-section-number">5.4</span> Table 4</h2>
+<p>An example of HTML table:yukitblr</p>
+<table class="table table-striped table-hover table-bordered" tablename="yukitblr">
+<colgroup>
+<col>
+<col style="width: 40%">
+<col style="width: 30%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Item</th>
-<th>Price</th>
-<th># In stock</th>
+<th style="text-align: center;">Head 1</th>
+<th style="text-align: center;">Head 2</th>
+<th style="text-align: center;">Head 3</th>
 </tr>
 </thead>
-<tbody>
+<tbody class="table-group-divider">
 <tr class="odd">
-<td>Juicy Apples</td>
-<td>1.99</td>
-<td><em>7</em></td>
+    <td>Alpha</td>
+    <td>Beta</td>
+    <td>Gamma</td>
 </tr>
-<tr class="even">
-<td>Bananas</td>
-<td><strong>1.89</strong></td>
-<td>5234</td>
+<tr>
+    <td>Delta</td>
+    <td>Epsilon</td>
+    <td>Zeta</td>
+</tr>
+<tr>
+    <td>Eta</td>
+    <td>Theta</td>
+    <td>Iota</td>
 </tr>
 </tbody>
 </table>
+</section>
 </section>
 <section id="lorem-ipsum" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Lorem ipsum</h1>

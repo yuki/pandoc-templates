@@ -1,3 +1,4 @@
+from: markdown-markdown_in_html_blocks+table_captions
 toc: true
 toc-depth: 5
 number-sections: true

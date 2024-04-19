@@ -963,40 +963,17 @@ explicit, % Specify section names explicitly in \titleformat with #1
 % TABLES
 %--------------------------------------------------------------------------
 
+\RequirePackage{pdflscape} %change page orientation to landscape
+
 % from: https://github.com/jgm/pandoc/issues/7475
 \RequirePackage{tabularray}
-\let\longtable\longtblr
-\let\endlongtable\endlongtblr
-\NewTblrTheme{headless}{
-    \DefTblrTemplate{contfoot-text}{default}{}
-    \DefTblrTemplate{conthead-text}{default}{}
-    \DefTblrTemplate{caption}{default}{}
-    \DefTblrTemplate{conthead}{default}{}
-    \DefTblrTemplate{capcont}{default}{}
-}
-\SetTblrOuter[longtblr]{
-    entry=none,
-    label=none,
-    theme=headless,
-    long,
-}
-\let\noalign\empty
-\def\endlastfoot{\hspace{-2.5mm}} % compensate whitespace produced by left over \empty tokens
-\let\endhead\empty
-\def\toprule{\hspace{-1mm}} % compensate whitespace produced by left over \empty tokens
-\let\midrule\empty
-\let\bottomrule\empty
-% add some optional styling
-\UseTblrLibrary{varwidth}
-\SetTblrInner[longtblr]{
-  vlines,
-  hlines,
-  rowsep=6pt,
-  colsep=12pt,
-  row{odd} = {maincolor!10},
-  row{1} = {bg=maincolor,fg=white,font=\bfseries},
-  columns = {co=1,valign=t},
-}
+\DefTblrTemplate{contfoot-text}{default}{Continúa en la siguiente página}
+\DefTblrTemplate{conthead-text}{default}{}
+\DefTblrTemplate{caption}{default}{}
+\DefTblrTemplate{conthead}{default}{}
+\DefTblrTemplate{capcont}{default}{}
+
+
 % FIXME: hay que corregir el tema de las tablas.. pero para no perder, el tiempo, lo dejo así.
 \NewTblrEnviron{yukitblr}
 \SetTblrInner[yukitblr]{
@@ -1049,7 +1026,7 @@ explicit, % Specify section names explicitly in \titleformat with #1
     cell{1}{5}={bg=Tomato},
     column{1} = {bg=maincolor,fg=white,font=\bfseries},
     cells={l,t},
-    row{1} = {font=\bfseries, c},
+    row{1} = {fg=white,font=\bfseries, c},
     cell{1}{1}={bg=white},
     %    rowhead=1, %repeat head in new page
 }
@@ -1163,10 +1140,9 @@ explicit, % Specify section names explicitly in \titleformat with #1
 \begin{flushleft}
     \includesvg[]{img/seal.svg}
 
-    Copyright \textcopyright \ $author$ \hspace{1pt} (\href{mailto:me@somewhere.com}{r.gomezolivencia@irakasle.eus})
+    Copyright \textcopyright \ $author$ \hspace{1pt} (\href{mailto:r.gomezolivencia@irakasle.eus}{r.gomezolivencia@irakasle.eus})
     \begin{itemize}
         \item Github: \href{https://github.com/yuki}{https://github.com/yuki}
-        \item Twitter: \href{https://twitter.com/rugoli}{https://twitter.com/rugoli}
     \end{itemize}
 
 
