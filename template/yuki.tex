@@ -967,6 +967,12 @@ explicit, % Specify section names explicitly in \titleformat with #1
 
 % from: https://github.com/jgm/pandoc/issues/7475
 \RequirePackage{tabularray}
+
+\SetTblrInner{
+    vlines,
+    hlines,
+}
+
 \DefTblrTemplate{contfoot-text}{default}{Continúa en la siguiente página}
 \DefTblrTemplate{conthead-text}{default}{}
 \DefTblrTemplate{caption}{default}{}

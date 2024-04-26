@@ -1,3 +1,95 @@
+-- Based on work by John MacFarlane @jgm in https://github.com/jgm/djot.lua/blob/main/djot-writer.lua
+-- Modified to change Markdown code into LaTeX, because I need for Tabularray tables.
+
+local layout = pandoc.layout
+local literal, empty, cr, concat, blankline, chomp, space, cblock, rblock,
+  prefixed, nest, hang, nowrap =
+  layout.literal, layout.empty, layout.cr, layout.concat, layout.blankline,
+  layout.chomp, layout.space, layout.cblock, layout.rblock,
+  layout.prefixed, layout.nest, layout.hang, layout.nowrap
+
+Inlines = {}
+Inlines.mt = {}
+Inlines.mt.__index = function(tbl,key)
+  return function() io.stderr:write("Unimplemented " .. key .. "\n") end
+end
+setmetatable(Inlines, Inlines.mt)
+
+
+-- Escape special characters
+local function escape(s)
+  s = s:gsub("[][\\`{}_*<>~^'\"]", function(s) return "\\" .. s end)
+   -- change % into \% hack
+  s = string.gsub(layout.render(s),'([^\\])%%', '%1\\%%')
+  s = string.gsub(layout.render(s),'^%%', '\\%%')
+  return s
+end
+
+local function inlines(ils)
+  local buff = {}
+  for i=1,#ils do
+    local el = ils[i]
+    buff[#buff + 1] = Inlines[el.tag](el)
+  end
+  return concat(buff)
+end
+
+Inlines.Emph = function(el)
+  return concat{ "\\emph{", inlines(el.content), "}" }
+end
+
+Inlines.LineBreak = function(el)
+  return concat{ "\\", cr }
+end
+
+Inlines.Link = function(el)
+  if el.title and #el.title > 0 then
+    el.attributes.title = el.title
+    el.title = nil
+  end
+  return layout.render(string.format("\\href{%s}{%s}", el.target, inlines(el.content)))
+end
+
+Inlines.Math = function(el)
+  -- local marker
+  if el.mathtype == "DisplayMath" then
+    return "$" .. el.text .. "$"
+  else
+    return "$" .. el.text .. "$"
+  end
+end
+
+Inlines.Quoted = function(el)
+  if el.quotetype == "DoubleQuote" then
+    return concat{ "``", inlines(el.content), "''" }
+  else
+    return concat{"`", inlines(el.content), "'"}
+  end
+end
+
+Inlines.RawInline = function(el)
+  if el.format == "latex" then
+    return el.text
+  else
+    return concat{Inlines.Code(el), "{=", el.format, "}"}
+  end
+end
+
+Inlines.Space = function(el)
+  return space
+end
+
+Inlines.Str = function(el)
+  return escape(el.text)
+end
+
+Inlines.Strong = function(el)
+  return concat{ "\\textbf{", inlines(el.content), "}" }
+end
+
+-- All the previous code is for tables
+
+
 function parse_size(size)
   -- to parse width and height
   size = string.gsub(size,"(%%)", "")
@@ -13,22 +105,22 @@ function get_rows_data(rows)
   local data = ''
   for j, row in ipairs(rows) do
     for k, cell in ipairs(row.cells) do
-      data = data .. pandoc.utils.stringify(cell.contents)
+      if cell.contents[1] ~= nil then
+        content = inlines(cell.contents[1].content)
+        data = data .. content
+      end
       if (k == #row.cells) then
         data = data .. ' \\\\ \n'
       else
         data = data .. ' & '
       end
-      -- change % into \% hack
-      data = data:gsub('([^\\])%%', '%1\\%%')
-      data = data:gsub('^%%', '\\%%')
     end
   end
-  return data
+  return layout.render(data)
 end
 
 function generate_tabularray(tbl)
-  local table_class = 'longtblr'
+  local table_class = 'tblr'
 
   if (tbl.attributes['tablename'] ~= nil) then
     table_class = tbl.attributes['tablename']
@@ -118,7 +210,7 @@ if FORMAT:match 'latex' then
     elseif el.classes[1] == "configlink" then
       beg_v = "\\configlink{"
     elseif el.classes[1] == "movie" then
-      beg_v = "\\movie{"..el.c[1].target.."}{"
+      return pandoc.RawInline("latex", "\\movie{"..el.c[1].target.."}{"..pandoc.utils.stringify(el).."}")
     elseif el.classes[1] == "footnotesize" then
       beg_v = "\\footnotesize{"
     end
@@ -142,7 +234,7 @@ if FORMAT:match 'latex' then
         )
         return el.content
     else
-      return pandoc.RawInline("latex", beg_v..pandoc.utils.stringify(el).."}")
+      return pandoc.RawInline("latex", beg_v..layout.render(inlines(el.content)).."}")
     end
   end
 
@@ -224,26 +316,7 @@ if FORMAT:match 'latex' then
 
     local caption = ""
     -- Procesar cada elemento del caption para manejar texto y enlaces
-    for _, e in ipairs(el.caption) do
-      if e.t == "Str" then
-        caption = caption .. e.text
-      elseif e.t == "Link" then
-        local linkText = pandoc.utils.stringify(e.content)
-        local url = e.target
-        caption = caption .. string.format("\\href{%s}{%s}", url, linkText)
-      elseif e.t == "Space" then
-        caption = caption .. " "
-      elseif e.t == "Strong" then
-        local strongText = pandoc.utils.stringify(e.content)
-        caption = caption .. string.format("\\textbf{%s}", strongText)
-      elseif e.t == "Emph" then
-        local strongText = pandoc.utils.stringify(e.content)
-        caption = caption .. string.format("\\textit{%s}", strongText)
-      elseif e.t == "Quoted" then
-        local quotedText = pandoc.utils.stringify(e.content)
-        caption = caption .. "``" ..quotedText .."\'' "
-      end
-    end
+    caption = inlines(el.caption)
 
     -- width = el.attributes.width
     if (el.attributes.width) then
