@@ -316,7 +316,9 @@ if FORMAT:match 'latex' then
 
     local caption = ""
     -- Procesar cada elemento del caption para manejar texto y enlaces
-    caption = inlines(el.caption)
+    if (pandoc.utils.stringify(el.caption) ~= "") then
+      caption = inlines(el.caption)
+    end
 
     -- width = el.attributes.width
     if (el.attributes.width) then
