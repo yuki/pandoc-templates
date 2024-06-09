@@ -8,22 +8,12 @@ html {
 
 body {
   line-height: 2;
-  grid-area: main;
   text-align: justify;
   margin-top: var(--top-spacing);
 }
 
 #book  p {
   line-height: 2;
-}
-
-@media (min-width: 992px) {
-  .bd-layout {
-      display:grid;
-      grid-template-areas: "sidebar main";
-      grid-template-columns: 1fr 4fr;
-      gap: 1.5rem
-  }
 }
 
 [data-bs-theme=light] #book a{
@@ -33,7 +23,6 @@ body {
 #abstract {
   padding-bottom: 2rem;
 }
-
 
 .footnotesize {
   font-size: 0.8rem;
@@ -47,8 +36,6 @@ body {
 #cover_img img{
   width: 100%;
 }
-
-
 
 /*
  *
@@ -76,28 +63,6 @@ h1, h2, h3, h4, h5, h6{
  * TOC SIDEBAR & RIGHT SIDEBAR
  *
  * */
- @media (min-width: 992px) {
-  .bd-sidebar {
-    position:-webkit-sticky;
-    position: sticky;
-    top: 5rem;
-    display: block !important;
-    height: calc(100vh - 6rem);
-    overflow-y: auto;
-  }
-}
-
-.bd-gutter {
-  --bs-gutter-x: 3rem;
-}
-
-.bd-sidebar {
-  grid-area: sidebar;
-}
-
-.bd-main {
-  grid-area: main
-}
 
 #offcanvasRight {
   background-color: var(--templatecolor);
@@ -113,10 +78,6 @@ h1, h2, h3, h4, h5, h6{
   padding-top: 0;
 }
 
-.offcanvas-body {
-  /* display: block!important; */
-}
-
 
 /* 
  *
@@ -124,13 +85,14 @@ h1, h2, h3, h4, h5, h6{
  *
  * */
 
- #TOCsidebarMenu {
-  border-right: 2px double var(--templatecolor);
-  resize: horizontal;
-  /* overflow-x: auto; */
- }
+#TOCsidebarMenu {
+  border-right: 2px solid var(--templatecolor);
+  top: 4rem;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
 
- .navbar ul {
+.navbar ul {
   margin-top: 0em;
   
 }
@@ -267,9 +229,6 @@ p:has(.part) .anchor-link {
 }
 
 figure{
-  /*max-width: -webkit-fill-available;
-  max-width: -moz-available;
-  */
   margin:auto;
 }
 
@@ -515,9 +474,6 @@ div.columns {
 
 div.column {
   flex: auto;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   overflow-x: auto;
 }
 
@@ -599,7 +555,6 @@ dd {
 
 th {
   background-color: var(--templatecolor)!important;
-  /* color: var(--bs-white-rgb)!important; */
   color: white!important;
 }
 
