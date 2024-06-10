@@ -152,5 +152,16 @@ function addAnchorLink(element,href) {
         }
     }
 
+    const modal = new bootstrap.Modal(document.getElementById('imgModal'))
+    for (const img of document.getElementsByTagName('img')) {
+        img.onclick = function(){
+            // alert(this.alt)
+            var modalImg = document.getElementById("img01");
+            var captionText = document.getElementById("modalCaption");
+            modalImg.src = this.src;
+            captionText.innerHTML = this.alt;
+            modal.show()
+        }
+    }
 
 })()

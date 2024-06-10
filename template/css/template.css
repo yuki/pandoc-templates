@@ -57,6 +57,9 @@ h1, h2, h3, h4, h5, h6{
   text-align: start;
 }
 
+h5#modalCaption {
+  padding-top: 0rem;
+}
 
 /* 
  *
@@ -223,6 +226,10 @@ p:has(.part) .anchor-link {
  * IMAGES
  *
  * */
+
+img:hover {
+  cursor: zoom-in!important ;
+}
 
 .center {
     text-align: center;
