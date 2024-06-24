@@ -348,6 +348,10 @@ figcaption{
   padding-right: 1em;
 }
 
+#book > section > p > code {
+  color: var(--bs-body-color);
+}
+
 
 /* 
  *
