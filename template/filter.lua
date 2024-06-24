@@ -291,6 +291,10 @@ if FORMAT:match 'latex' then
           blocks[i].text = rbtxt
         end
       end
+      -- add before and after "columns" some space
+      blocks[1].text = "\\vspace{5pt}" .. blocks[1].text
+      blocks[#blocks].text = blocks[#blocks].text .. "\\vspace{5pt}"
+      
       return blocks
     elseif el.classes[1] == "mycode" then
       title = pandoc.utils.stringify(el.c[1])
