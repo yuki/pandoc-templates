@@ -286,7 +286,7 @@ if FORMAT:match 'latex' then
       for i = #blocks-1, 1, -1 do
         if i > 1 and blocks[i].tag == 'RawBlock' and blocks[i].text:match 'end' and blocks[i+1].tag == 'RawBlock' and blocks[i+1].text:match 'begin' then
           -- added \hfill for the space between
-          rbtxt = blocks[i].text .."\\hfill".. blocks[i+1].text
+          rbtxt = blocks[i].text .."\\hfill\n".. blocks[i+1].text
           blocks:remove(i+1)
           blocks[i].text = rbtxt
         end
