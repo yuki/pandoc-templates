@@ -4,14 +4,13 @@ title-mini: 'mini-title'
 subtitle: 'subtitle'
 degree: 'The Degree'
 author: 'Author One'
-date: '2023-10-15'
+date: '2024-09-17'
 maincolor: dc3545
 phrase: 'This is a good phrase'
 phrase-author: 'Phrase author'
 lang: es
 keywords: [nothing, nothingness]
 cover: 'img/cover.png'
-download-link: 'example.pdf'
 # other links for footers
 github-link: 'https://github.com/yuki/pandoc-templates/'
 ...

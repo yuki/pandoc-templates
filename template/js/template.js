@@ -31,7 +31,10 @@ function addAnchorLink(element,href) {
 
 
 (() => {
+    // add PDF link
+    document.getElementById('pdf-link').href = window.location.pathname.replace('/my-books/','').replace('.html','.pdf')
 
+    // change TOC to improve navigation
     sidebarMenu = document.querySelector('#toc')
 
     // sidebars links 
