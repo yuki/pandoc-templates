@@ -366,7 +366,7 @@ figcaption{
 
 .infobox > p, .warnbox > p, .errorbox > p, .questionbox > p, .exercisebox > p {
   margin: 0;
-  display: flex;
+  /*display: flex;*/
   align-items: center!important;
   margin: 0 2rem;
 }
@@ -447,6 +447,7 @@ figcaption{
   font-style: normal;
   margin: 0 2rem 0 0;
   font-size: 3rem;
+  vertical-align: middle;
 }
 
 .infobox p::before {
