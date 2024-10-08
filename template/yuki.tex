@@ -456,6 +456,7 @@ explicit, % Specify section names explicitly in \titleformat with #1
 
 % from: https://github.com/jgm/pandoc/issues/7475
 \RequirePackage{tabularray}
+\UseTblrLibrary{varwidth}
 
 \SetTblrInner{
     vlines,
@@ -529,6 +530,32 @@ explicit, % Specify section names explicitly in \titleformat with #1
 \SetTblrOuter[rubrica]{
     long,
     label=none,
+}
+
+
+\RequirePackage{multicol}
+
+\NewTblrEnviron{requisitostbl}
+
+\SetTblrInner[requisitostbl]{
+    hspan=minimal,
+    measure=vbox,
+    vlines={maincolor},
+    vline{2,3,4,5}={1,2}{white},
+    hlines={maincolor},
+    hline{2}={0pt},
+    row{1,2} = {
+        bg=maincolor,
+        fg=white,
+        font=\bfseries,
+        halign={c},
+    },
+    row{3}={
+        halign={c},
+        font=\bfseries,
+    },
+    cell{3,4,5,6}{1} = {c=5}{},
+%    width=\linewidth
 }
 
 

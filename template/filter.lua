@@ -367,16 +367,16 @@ if FORMAT:match 'latex' then
     return generate_tabularray(tbl)
   end
 
-  function RawBlock(raw)
-    if raw.format:match 'html' and raw.text:match '%<table' then
-      blocks = pandoc.read(raw.text, raw.format).blocks
-      for i, block in ipairs(blocks) do
-        if block.t == 'Table' then
-          return generate_tabularray(block)
-        end
-      end
-    end
-  end
+  -- function RawBlock(raw)
+  --   if raw.format:match 'html' and raw.text:match '%<table' then
+  --     blocks = pandoc.read(raw.text, raw.format).blocks
+  --     for i, block in ipairs(blocks) do
+  --       if block.t == 'Table' then
+  --         return generate_tabularray(block)
+  --       end
+  --     end
+  --   end
+  -- end
 
 
 end

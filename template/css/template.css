@@ -577,3 +577,9 @@ tr.even td{
 table caption {
   text-align: center;
 }
+
+[data-tablename="requisito"] thead tr th{
+  background-color: var(--templatecolor)!important;
+  color: white!important;
+  text-align:center
+}
