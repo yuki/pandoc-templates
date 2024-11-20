@@ -265,6 +265,9 @@ if FORMAT:match 'latex' then
     elseif el.classes[1] == "exercisebox" then
       beg_v = "\\begin{exercisebox}"
       end_v = "\\end{exercisebox}"
+    elseif el.classes[1] == "gitbox" then
+      beg_v = "\\begin{gitbox}"
+      end_v = "\\end{gitbox}"
     elseif el.classes[1] == "center" then
       beg_v = "\\begin{center}"
       end_v = "\\end{center}"

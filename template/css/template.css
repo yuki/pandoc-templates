@@ -359,26 +359,26 @@ figcaption{
  *
  * */
 
-.infobox, .warnbox, .errorbox, .questionbox, .exercisebox {
+.infobox, .warnbox, .errorbox, .questionbox, .exercisebox, .gitbox {
   border-radius: 0.5rem;
   margin-bottom: 2em;
 }
 
-.infobox > p, .warnbox > p, .errorbox > p, .questionbox > p, .exercisebox > p {
+.infobox > p, .warnbox > p, .errorbox > p, .questionbox > p, .exercisebox > p, .gitbox > p {
   margin: 0;
   /*display: flex;*/
   align-items: center!important;
   margin: 0 2rem;
 }
 
-.infobox > p > *, .warnbox > p > *, .errorbox > p > *, .questionbox > p > *, .exercisebox > p > * {
+.infobox > p > *, .warnbox > p > *, .errorbox > p > *, .questionbox > p > *, .exercisebox > p > *, .gitbox > p > * {
   display: inline;
 }
 
-.infobox::before, .warnbox::before, .errorbox::before, .questionbox::before, .exercisebox::before {
+.infobox::before, .warnbox::before, .errorbox::before, .questionbox::before, .exercisebox::before, .gitbox::before {
   display: block;
   border-radius: 5px 5px 0 0;
-  color: var(--bs-body-bg)!important;
+  color: var(--bs-white)!important;
   font-weight: bold;
   line-height: 2;
   padding: 0.1em 1em;
@@ -426,7 +426,7 @@ figcaption{
 .questionbox {
   border: 2px solid var(--bs-warning-text-emphasis);
   background-color: var(--bs-warning-bg-subtle);
-  color: var(--bs-warning-text-emphasis)
+  color: var(--bs-warning-text-emphasis);
 }
 
 .exercisebox::before {
@@ -437,11 +437,22 @@ figcaption{
 .exercisebox {
   border: 2px solid var(--bs-success-text-emphasis);
   background-color: var(--bs-success-bg-subtle);
-  color: var(--bs-success-text-emphasis)
+  color: var(--bs-success-text-emphasis);
+}
+
+.gitbox::before {
+  background-color: var(--bs-purple);
+  content: "GitHub";
+}
+
+.gitbox {
+  border: 2px solid var(--bs-purple);
+  background-color: var(--bs-gray-100);
+  color: var(--bs-purple);
 }
 
 
-.infobox > p::before, .warnbox > p::before, .errorbox > p::before, .questionbox > p::before, .exercisebox > p::before {
+.infobox > p::before, .warnbox > p::before, .errorbox > p::before, .questionbox > p::before, .exercisebox > p::before, .gitbox > p::before  {
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
@@ -468,6 +479,10 @@ figcaption{
 
 .exercisebox p::before {
   content: "\f013";
+}
+
+.gitbox p::before {
+  content: "\f09b";
 }
 
 

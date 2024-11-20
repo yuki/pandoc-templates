@@ -377,6 +377,12 @@ explicit, % Specify section names explicitly in \titleformat with #1
   \end{custombox}
 }
 
+\newenvironment{gitbox}{
+  \begin{custombox}{BlueViolet}{BlueViolet!4!white}{Ejercicio}{\faGithub}
+}{
+  \end{custombox}
+}
+
 \newtcblisting[auto counter,number within=section, list inside=mycommands]
   {mycode}[3]{
     listing only,adjusted title={\faTerminal \hspace{10pt}#1}, listing engine=minted,minted language=#2,
