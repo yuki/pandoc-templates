@@ -316,6 +316,8 @@ explicit, % Specify section names explicitly in \titleformat with #1
 
 \RequirePackage{blindtext} % to add Lorem Impsum...
 
+\RequirePackage{xstring} % for the Cover's "if png...else svg"
+
 %--------------------------------------------------------------------------
 % Custom color BOXES
 %--------------------------------------------------------------------------
@@ -595,61 +597,65 @@ explicit, % Specify section names explicitly in \titleformat with #1
     \color{white}\textbf{\textit{$degree$}}
 \end{tcolorbox}
 
- \begin{tcolorbox}[
-     boxrule=0mm,
-     arc=0mm,
-     colframe=white,
-     colback=white,
-     fit to={\paperwidth} and 12.5cm,
-     halign=flush center,
-     valign=center,
-     space to=\myspace,
-     ]
-     \includegraphics[width=\linewidth,height=13cm,keepaspectratio]{$cover$}
- \end{tcolorbox}
+\begin{tcolorbox}[
+    boxrule=0mm,
+    arc=0mm,
+    colframe=white,
+    colback=white,
+    fit to={\paperwidth} and 12.5cm,
+    halign=flush center,
+    valign=center,
+    space to=\myspace,
+    ]
+    \IfEndWith{$cover$}{png}{
+      \includegraphics[width=\linewidth,height=13cm,keepaspectratio]{$cover$}
+    }{
+      \includesvg[pretex=\escapeus,width=\linewidth,height=13cm,keepaspectratio]{$cover$}
+    }\par
+\end{tcolorbox}
 
- \begin{tcolorbox}[
-     boxrule=0mm,
-     arc=0mm,
-     colframe=maincolor,
-     colback=maincolor,
-     fit to={\paperwidth} and 8cm,
-     fit basedim=130pt,
-     halign=flush center,
-     valign=center,
-     top=1cm,bottom=1cm,
-     ]
-     \color{white}\textbf{\textit{$title$}}
- \end{tcolorbox}
+\begin{tcolorbox}[
+    boxrule=0mm,
+    arc=0mm,
+    colframe=maincolor,
+    colback=maincolor,
+    fit to={\paperwidth} and 8cm,
+    fit basedim=130pt,
+    halign=flush center,
+    valign=center,
+    top=1cm,bottom=1cm,
+    ]
+    \color{white}\textbf{\textit{$title$}}
+\end{tcolorbox}
 
- \begin{tcolorbox}[
-     boxrule=0mm,
-     colframe=white,
-     colback=white,
-     fit to={\paperwidth} and 2cm,
-     halign=flush right,
-     valign=top,
-     left=8cm,
-     right=1cm
-     ]
-     \Large{\color{maincolor}\textit{$phrase$}} \\
-     \small{\color{maincolor}\textit{$phrase-author$}}
- \end{tcolorbox}
+\begin{tcolorbox}[
+    boxrule=0mm,
+    colframe=white,
+    colback=white,
+    fit to={\paperwidth} and 2cm,
+    halign=flush right,
+    valign=top,
+    left=8cm,
+    right=1cm
+    ]
+    \Large{\color{maincolor}\textit{$phrase$}} \\
+    \small{\color{maincolor}\textit{$phrase-author$}}
+\end{tcolorbox}
 
- \begin{tcolorbox}[
-     before skip=0cm,
-     boxrule=0mm,
-     colframe=white,
-     colback=white,
-     fit to={\paperwidth} and 2.6cm,
-     fit basedim=210pt,
-     halign=flush left,
-     left=1cm,
-     valign=top
-     ]
-     \color{maincolor}\textbf{$author$} \linebreak
-     \color{maincolor}\textbf{$date$}
- \end{tcolorbox}
+\begin{tcolorbox}[
+    before skip=0cm,
+    boxrule=0mm,
+    colframe=white,
+    colback=white,
+    fit to={\paperwidth} and 2.6cm,
+    fit basedim=210pt,
+    halign=flush left,
+    left=1cm,
+    valign=top
+    ]
+    \color{maincolor}\textbf{$author$} \linebreak
+    \color{maincolor}\textbf{$date$}
+\end{tcolorbox}
 
 
 \restoregeometry
