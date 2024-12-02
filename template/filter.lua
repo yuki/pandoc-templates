@@ -401,7 +401,7 @@ if FORMAT:match 'html' then
   end
 
   function CodeBlock(block)
-    lang = block.classes[1]
+    lang = block.classes[1] or 'text'
     code = block.text
     filename = "pygmentize.txt"
 
