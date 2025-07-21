@@ -352,6 +352,11 @@ figcaption{
   color: var(--bs-body-color);
 }
 
+.verbatim {
+  font-family: monospace;
+  color: var(--bs-code-color);
+}
+
 
 /* 
  *

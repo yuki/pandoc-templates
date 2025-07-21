@@ -25,6 +25,31 @@ local function escape(s)
   return s
 end
 
+-- Concatenate a list of strings not changing the quotes
+local function extract_text(inlines)
+  local parts = {}
+  for _, elem in ipairs(inlines) do
+    if elem.t == "Str" then
+      table.insert(parts, elem.text)
+    elseif elem.t == "Space" then
+      table.insert(parts, " ")
+    elseif elem.t == "Code" then
+      table.insert(parts, elem.text)
+    elseif elem.t == "Quoted" then
+      -- Recurse into quoted elements and add raw quotes
+      table.insert(parts, '"')
+      table.insert(parts, extract_text(elem.content))
+      table.insert(parts, '"')
+    elseif elem.t == "RawInline" then
+      table.insert(parts, elem.text)
+    else
+      -- Por si acaso, convertir cualquier otro nodo a texto plano
+      table.insert(parts, pandoc.utils.stringify(elem))
+    end
+  end
+  return table.concat(parts)
+end
+
 local function inlines(ils)
   local buff = {}
   for i=1,#ils do
@@ -213,6 +238,9 @@ if FORMAT:match 'latex' then
       return pandoc.RawInline("latex", "\\movie{"..el.c[1].target.."}{"..pandoc.utils.stringify(el).."}")
     elseif el.classes[1] == "footnotesize" then
       beg_v = "\\footnotesize{"
+    elseif el.classes[1] == "verbatim" then
+      local content = extract_text(el.content)
+      return pandoc.RawInline("latex", "{\\color{inline-code-color}\\fakeverb{"..content.."}}")
     end
 
     if (beg_v == nil or beg_v == "") then
@@ -387,6 +415,13 @@ end
 -- when parsing to HTML
 if FORMAT:match 'html' then
   function Span(el)
+
+    if el.classes[1] == "verbatim" then
+      local content = extract_text(el.content)
+      texto = '<span class="verbatim">'..content..'</span>'
+      return pandoc.RawInline("html", texto)
+    end
+
     color = el.attributes['color']
     -- if no color attribute, return unchanged
     if color == nil then return el end
