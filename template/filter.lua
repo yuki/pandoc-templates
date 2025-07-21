@@ -16,12 +16,19 @@ end
 setmetatable(Inlines, Inlines.mt)
 
 
--- Escape special characters
-local function escape(s)
-  s = s:gsub("[][\\`{}_*<>~^'\"]", function(s) return "\\" .. s end)
+-- Escape comments for LaTeX
+local function escape_comments(s)
    -- change % into \% hack
   s = string.gsub(layout.render(s),'([^\\])%%', '%1\\%%')
   s = string.gsub(layout.render(s),'^%%', '\\%%')
+  return s
+end
+-- Escape special characters
+local function escape(s)
+  s = s:gsub("[][\\`{}_*<>~^'\"]", function(s) return "\\" .. s end)
+  if FORMAT:match 'latex' then
+    s = escape_comments(s)
+  end
   return s
 end
 
@@ -239,7 +246,7 @@ if FORMAT:match 'latex' then
     elseif el.classes[1] == "footnotesize" then
       beg_v = "\\footnotesize{"
     elseif el.classes[1] == "verbatim" then
-      local content = extract_text(el.content)
+      local content = escape_comments(extract_text(el.content))
       return pandoc.RawInline("latex", "{\\color{inline-code-color}\\fakeverb{"..content.."}}")
     end
 
