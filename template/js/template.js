@@ -132,7 +132,7 @@ function addAnchorLink(element,href) {
 
     // TABLES
     for (const element of document.getElementsByTagName('table')) {
-        element.setAttribute('class','table table-responsive table-hover table-bordered border-secondary-subtle')
+        element.setAttribute('class','table table-striped table-responsive table-hover table-bordered border-secondary-subtle')
     }
 
     for (const element of document.getElementsByTagName('tbody')) {

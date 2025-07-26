@@ -590,9 +590,6 @@ th {
   color: white!important;
 }
 
-tr.even td{
-  background-color: color-mix(in srgb, white 100%, var(--templatecolor) 10%) ;
-}
 
 table caption {
   text-align: center;
