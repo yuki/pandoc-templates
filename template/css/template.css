@@ -563,25 +563,25 @@ dd {
   border: 1px solid var(--bs-secondary-border-subtle)!important;
 }
 
-[data-tablename="yukitblrcol"].table-bordered tr.header th:first-child,
-[data-tablename="rubrica"].table-bordered tr.header th:first-child {
+[data-tablename="yukitblrcol"].table>:not(caption)>*>th:first-child,
+[data-tablename="rubrica"].table>:not(caption)>*> th:first-child {
   background-color: transparent!important;
   border: 0px!important;
 }
 
-[data-tablename="rubrica"] tr.header th:nth-child(2)  {
+[data-tablename="rubrica"].table>:not(caption)>*>th:nth-child(2)  {
   background-color: SeaGreen!important;
 }
 
-[data-tablename="rubrica"] tr.header th:nth-child(3)  {
+[data-tablename="rubrica"].table>:not(caption)>*>th:nth-child(3)  {
   background-color: DarkSeaGreen!important;
 }
 
-[data-tablename="rubrica"] tr.header th:nth-child(4)  {
+[data-tablename="rubrica"].table>:not(caption)>*>th:nth-child(4)  {
   background-color: SandyBrown!important;
 }
 
-[data-tablename="rubrica"] tr.header th:nth-child(5)  {
+[data-tablename="rubrica"].table>:not(caption)>*>th:nth-child(5)  {
   background-color: Tomato!important;
 }
 
