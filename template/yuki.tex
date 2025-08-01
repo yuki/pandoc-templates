@@ -72,7 +72,10 @@ $endif$
     bookmarks=true,
     bookmarksopen=true
 }
-\RequirePackage{href-ul}
+% changed because of https://github.com/yegor256/href-ul/issues/45
+% \RequirePackage{href-ul}
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{\underline{#2}}}
 
 %--------------------------------------------------------------------------
 % TOC
