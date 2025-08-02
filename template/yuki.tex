@@ -20,7 +20,7 @@
 %--------------------------------------------------------------------------
 % Language
 %--------------------------------------------------------------------------
-\RequirePackage[spanish]{babel}
+\RequirePackage[$lang$]{babel}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{csquotes}
 \RequirePackage{pifont}
@@ -286,7 +286,7 @@ explicit, % Specify section names explicitly in \titleformat with #1
 % for TOC
 \fancypagestyle{toc}[fancy]{%
     \fancyhead[LE,RO]{
-        \color{maincolor}\footnotesize\textit{Índice}
+        \color{maincolor}\footnotesize\textit{\contentsname}
         \vspace{-5pt}
 
         \color{maincolor}\hrulefill
@@ -354,33 +354,50 @@ explicit, % Specify section names explicitly in \titleformat with #1
   \end{tcolorbox}
 }
 
+\ifstrequal{$lang$}{basque}
+{
+  \def\infoname{Informazioa}
+  \def\warnname{Adi!}
+  \def\errorname{Kontuz!}
+  \def\questionname{Galdera}
+  \def\exercisename{Ariketa}
+}{
+  \def\infoname{Información}
+  \def\warnname{¡Atención!}
+  \def\errorname{¡Cuidado!}
+  \def\questionname{Pregunta}
+  \def\exercisename{Ejercicio}
+}
+
+
+
 %% Inspired on awesomebox
 \newenvironment{infobox}{
-  \begin{custombox}{cyan!60!black}{cyan!5!white}{Información}{\faInfoCircle}
+  \begin{custombox}{cyan!60!black}{cyan!5!white}{\infoname}{\faInfoCircle}
 }{
   \end{custombox}
 }
 
 \newenvironment{warnbox}{
-  \begin{custombox}{orange!80!black}{orange!5!white}{¡Atención!}{\faExclamationCircle}
+  \begin{custombox}{orange!80!black}{orange!5!white}{\warnname}{\faExclamationCircle}
 }{
   \end{custombox}
 }
 
 \newenvironment{errorbox}{
-  \begin{custombox}{error-color}{red!4!white}{¡Cuidado!}{\faExclamationTriangle}
+  \begin{custombox}{error-color}{red!4!white}{\errorname}{\faExclamationTriangle}
 }{
   \end{custombox}
 }
 
 \newenvironment{questionbox}{
-  \begin{custombox}{Goldenrod}{white}{Pregunta}{\faQuestionCircle}
+  \begin{custombox}{Goldenrod}{white}{\questionname}{\faQuestionCircle}
 }{
   \end{custombox}
 }
 
 \newenvironment{exercisebox}{
-  \begin{custombox}{teal}{teal!4!white}{Ejercicio}{\faCog}
+  \begin{custombox}{teal}{teal!4!white}{\exercisename}{\faCog}
 }{
   \end{custombox}
 }
@@ -460,7 +477,12 @@ explicit, % Specify section names explicitly in \titleformat with #1
     hlines,
 }
 
-\DefTblrTemplate{contfoot-text}{default}{Continúa en la siguiente página}
+\ifstrequal{$lang$}{basque}
+{
+    \DefTblrTemplate{contfoot-text}{default}{Hurrengo orrialdean jarraitzen du}
+}{
+    \DefTblrTemplate{contfoot-text}{default}{Continúa en la siguiente página}
+}
 \DefTblrTemplate{conthead-text}{default}{}
 \DefTblrTemplate{caption}{default}{}
 \DefTblrTemplate{conthead}{default}{}

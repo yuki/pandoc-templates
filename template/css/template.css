@@ -146,6 +146,13 @@ h5#modalCaption {
   color: var(--templatecolor);
 }
 
+:lang(basque) #bdsidebaroffcanvaslabel::after {
+  content: "Aurkibidea";
+}
+:lang(spanish) #bdsidebaroffcanvaslabel::after {
+  content: "Índice";
+}
+
 /*
  *
  * Theme selector
@@ -395,6 +402,10 @@ figcaption{
   content: "Información";
 }
 
+:lang(basque) .infobox::before {
+  content: "Informazioa";
+}
+
 .infobox {
   border: 2px solid var(--bs-info-text-emphasis);
   background-color: var(--bs-info-bg-subtle);
@@ -404,6 +415,10 @@ figcaption{
 .warnbox::before {
   background-color: var(--bs-orange);
   content: "¡Atención!";
+}
+
+:lang(basque) .warnbox::before {
+  content: "Adi!";
 }
 
 .warnbox {
@@ -417,6 +432,10 @@ figcaption{
   content: "¡Cuidado!";
 }
 
+:lang(basque) .errorbox::before {
+  content: "Kontuz!";
+}
+
 .errorbox {
   border: 2px solid var(--bs-danger-text-emphasis);
   background-color: var(--bs-danger-bg-subtle);
@@ -428,6 +447,10 @@ figcaption{
   content: "Pregunta";
 }
 
+:lang(basque) .questionbox::before {
+  content: "Galdera";
+}
+
 .questionbox {
   border: 2px solid var(--bs-warning-text-emphasis);
   background-color: var(--bs-warning-bg-subtle);
@@ -437,6 +460,10 @@ figcaption{
 .exercisebox::before {
   background-color: var(--bs-success-text-emphasis);
   content: "Ejercicio";
+}
+
+:lang(basque) .exercisebox::before {
+  content: "Ariketa";
 }
 
 .exercisebox {
