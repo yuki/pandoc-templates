@@ -36,7 +36,9 @@
 %--------------------------------------------------------------------------
 % Paragraph's style
 %--------------------------------------------------------------------------
-\usepackage{parskip}
+\usepackage{parskip}[=v1]
+% \setlength{\parskip}{9pt}
+% \setlength{\parindent}{0pt}
 \renewcommand{\baselinestretch}{1.4}
 
 
@@ -160,7 +162,7 @@ explicit, % Specify section names explicitly in \titleformat with #1
     {\thechapter. #1} % label before title
     {0pt} % length of separation between label and title
     {}    % before-code hook
-\titlespacing{\chapter} {0pt}{0pt}{0pt} % with 0pt maintains \parskip space
+\titlespacing*{\chapter} {0pt}{0pt}{0pt} % with 0pt maintains \parskip space
 
 
 \titleformat{\section}
