@@ -76,8 +76,9 @@ $endif$
 }
 % changed because of https://github.com/yegor256/href-ul/issues/45
 % \RequirePackage{href-ul}
+\RequirePackage[normalem]{ulem}
 \let\oldhref\href
-\renewcommand{\href}[2]{\oldhref{#1}{\underline{#2}}}
+\renewcommand{\href}[2]{\oldhref{#1}{\uline{#2}}}
 
 %--------------------------------------------------------------------------
 % TOC
