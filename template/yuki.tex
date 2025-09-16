@@ -334,7 +334,7 @@ explicit, % Specify section names explicitly in \titleformat with #1
 \definecolor{inline-bg-color}{HTML}{404040}
 \definecolor{inline-code-color}{HTML}{d63384}
 
-\RequirePackage{fontawesome5}
+\RequirePackage[fixed, style=regular]{fontawesome7}
 
 \RequirePackage{tcolorbox}
 \tcbuselibrary{raster,fitting,many,minted,breakable,skins}
@@ -376,31 +376,31 @@ explicit, % Specify section names explicitly in \titleformat with #1
 
 %% Inspired on awesomebox
 \newenvironment{infobox}{
-  \begin{custombox}{cyan!60!black}{cyan!5!white}{\infoname}{\faInfoCircle}
+  \begin{custombox}{cyan!60!black}{cyan!5!white}{\infoname}{\faCircleInfo}
 }{
   \end{custombox}
 }
 
 \newenvironment{warnbox}{
-  \begin{custombox}{orange!80!black}{orange!5!white}{\warnname}{\faExclamationCircle}
+  \begin{custombox}{orange!80!black}{orange!5!white}{\warnname}{\faCircleExclamation}
 }{
   \end{custombox}
 }
 
 \newenvironment{errorbox}{
-  \begin{custombox}{error-color}{red!4!white}{\errorname}{\faExclamationTriangle}
+  \begin{custombox}{error-color}{red!4!white}{\errorname}{\faTriangleExclamation}
 }{
   \end{custombox}
 }
 
 \newenvironment{questionbox}{
-  \begin{custombox}{Goldenrod}{white}{\questionname}{\faQuestionCircle}
+  \begin{custombox}{Goldenrod}{white}{\questionname}{\faCircleQuestion[solid]}
 }{
   \end{custombox}
 }
 
 \newenvironment{exercisebox}{
-  \begin{custombox}{teal}{teal!4!white}{\exercisename}{\faCog}
+  \begin{custombox}{teal}{teal!4!white}{\exercisename}{\faGear}
 }{
   \end{custombox}
 }

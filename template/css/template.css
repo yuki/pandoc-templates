@@ -146,11 +146,11 @@ h5#modalCaption {
   color: var(--templatecolor);
 }
 
-:lang(basque) #bdsidebaroffcanvaslabel::after {
-  content: "Aurkibidea";
+:lang(basque) #bdsidebaroffcanvaslabel::before {
+  content: "Aurkibid";
 }
-:lang(spanish) #bdsidebaroffcanvaslabel::after {
-  content: "Índice";
+:lang(spanish) #bdsidebaroffcanvaslabel::before {
+  content: "Índic";
 }
 
 /*
@@ -320,7 +320,7 @@ figcaption{
   color: var(--bs-white);
 }
 
-.commandbox::before, .configfile::before, .configdir::before {
+.commandbox::before, .configfile::before, .configdir::before, .fa-folder-open, .fa-file {
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
@@ -330,14 +330,6 @@ figcaption{
 
 .commandbox::before {
   content: "\f120";
-}
-
-.configfile::before {
-  content: "\f15b";
-}
-
-.configdir::before {
-  content: "\f07c";
 }
 
 .movie {

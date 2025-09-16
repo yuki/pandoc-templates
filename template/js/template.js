@@ -139,21 +139,19 @@ function addAnchorLink(element,href) {
         element.setAttribute('class','table-group-divider')
     }
 
-    // IMAGES
-    for (const element of document.getElementsByClassName('float-left')) {
-        var width = element.style.width;
-        if (element.parentElement.tagName == "FIGURE"){
-            element.parentElement.style.width=width;
-            element.style.width="100%";
-        }
+    // fontaewesome icons: file and directory
+    for (const element of document.getElementsByClassName('configdir')) {
+        dir = document.createElement("i");
+        dir.classList.add('fa-regular','fa-folder-open',);
+        element.insertBefore(dir,element.firstChild);
     }
-    for (const element of document.getElementsByClassName('float-right')) {
-        var width = element.style.width;
-        if (element.parentElement.tagName == "FIGURE"){
-            element.parentElement.style.width=width;
-            element.style.width="100%";
-        }
+
+    for (const element of document.getElementsByClassName('configfile')) {
+        dir = document.createElement("i");
+        dir.classList.add('fa-regular','fa-file',);
+        element.insertBefore(dir,element.firstChild);
     }
+
 
     const modal = new bootstrap.Modal(document.getElementById('imgModal'))
     for (const img of document.getElementsByTagName('img')) {
