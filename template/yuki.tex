@@ -306,7 +306,8 @@ explicit, % Specify section names explicitly in \titleformat with #1
 \RequirePackage{svg} % for svg images
 \svgsetup{inkscapelatex=false} % don't treat text in svg as independent: https://tex.stackexchange.com/a/599018/305952
 
-\RequirePackage[export]{adjustbox} % frames in graphics
+%\RequirePackage[export]{adjustbox} % frames in graphics
+\setlength{\fboxsep}{0pt} % \fbox without padding
 \RequirePackage{wrapfig}
 
 \RequirePackage{caption}

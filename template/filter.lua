@@ -370,14 +370,8 @@ if FORMAT:match 'latex' then
     
     -- height = el.attributes.height
     if (el.attributes.height) then
-      -- I don't use pecentages with the height
+      -- I don't use percentages with the height
       table.insert(options,string.format("height=%s",string.format(el.attributes.height)))
-    end
-
-    local framed = ""
-    if (el.attributes.framed) then
-      framed = "frame"
-      table.insert(options,framed)
     end
 
     local includefile = "includegraphics"
@@ -393,10 +387,23 @@ if FORMAT:match 'latex' then
       end_v = ""
     end
 
+    local imgcmd = string.format(
+      "\\%s[%s]{%s}",
+      includefile,
+      table.concat(options, ","),
+      el.src
+    )
+
+    local framed = el.attributes["framed"] == "true"
+
+    if framed then
+      imgcmd = "\\fbox{" .. imgcmd .. "}"
+    end
+
     if (caption == "" or caption == " ") then
-      latexstring = string.format(beg_v.." \\%s[%s]{%s} " ..end_v,includefile,table.concat(options,","),el.src)
+      latexstring = string.format(beg_v.."%s"..end_v, imgcmd)
     else
-      latexstring = string.format(beg_v.." \\%s[%s]{%s} \\captionof{figure}{%s} " ..end_v ,includefile,table.concat(options,","),el.src,caption)
+      latexstring = string.format(beg_v.. "%s".. "  \\captionof{figure}{%s} " ..end_v ,imgcmd,caption)
     end
     return pandoc.RawInline("latex", latexstring)
   end
