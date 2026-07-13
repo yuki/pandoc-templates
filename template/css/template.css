@@ -444,8 +444,8 @@ p.title a {
 }
 
 /* to be aligned with the icon */
-.infobox div.content :nth-child(n), .warnbox div.content :nth-child(n), .errorbox div.content :nth-child(n), .questionbox div.content :nth-child(n), .exercisebox div.content :nth-child(n), .gitbox div.content :nth-child(n) {
-  margin: 0;
+.infobox div.content, .warnbox div.content, .errorbox div.content, .questionbox div.content, .exercisebox div.content, .gitbox div.content {
+  margin: 0 2rem 0 0;
 }
 
 .infobox p.icon, .warnbox p.icon, .errorbox p.icon, .questionbox p.icon, .exercisebox p.icon, .gitbox p.icon  {

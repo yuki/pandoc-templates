@@ -302,9 +302,8 @@ if FORMAT:match 'latex' then
       end_v = "\\end{exercisebox}"
       -- if the exercisebox has a title, for solutions, we need to add it
       if el.c[2] ~= nil then
-        beg_v = "\\begin{exercisebox}{ "
-        latexstring = string.format(beg_v.."%s }\n %s \n"..end_v, inlines(el.c[1].c[1].c ), inlines(el.c[2].content))
-        return pandoc.RawInline("latex", latexstring)
+        beg_v = string.format("\\begin{exercisebox}{ %s }\n ", inlines(el.c[1].c[1].c))
+        table.remove(el.c, 1)
       end
 
     elseif el.classes[1] == "gitbox" then
