@@ -32,6 +32,15 @@ local function escape(s)
   return s
 end
 
+local function escape_html(s)
+  s = s or ""
+  s = s:gsub("&", "&amp;")
+  s = s:gsub("<", "&lt;")
+  s = s:gsub(">", "&gt;")
+  s = s:gsub('"', "&quot;")
+  return s
+end
+
 -- Concatenate a list of strings not changing the quotes
 local function extract_text(inlines)
   local parts = {}
@@ -437,9 +446,8 @@ if FORMAT:match 'html' then
   function Span(el)
 
     if el.classes[1] == "verbatim" then
-      local content = extract_text(el.content)
-      texto = '<span class="verbatim">'..content..'</span>'
-      return pandoc.RawInline("html", texto)
+      local content = escape_html(extract_text(el.content))
+      return pandoc.RawInline("html", '<span class="verbatim">' .. content .. '</span>')
     end
 
     color = el.attributes['color']
