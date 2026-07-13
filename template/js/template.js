@@ -165,10 +165,9 @@ function addAnchorLink(element,href) {
         for (const element of document.getElementsByClassName(box[0])) {
             //save  the content of the box in a new div, but if it's exercisebox, we took the first child if it's the solution's links
             solution = null
-            if  (box[0] == 'exercisebox'){
+            if  (box[0] == 'exercisebox' && element.children.length > 1){
                 if (element.firstElementChild.firstElementChild.classList.contains('solution')) {
                     solution = element.firstElementChild.firstElementChild
-                    // console.log(solution)
                     element.removeChild(element.firstElementChild)
                 }
             }
