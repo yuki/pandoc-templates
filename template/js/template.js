@@ -152,6 +152,60 @@ function addAnchorLink(element,href) {
         element.insertBefore(dir,element.firstChild);
     }
 
+    // custom boxes: infobox, warnbox, errorbox ...
+    custom_boxes = [
+        ['infobox','Información', 'Informazioa'],
+        ['warnbox','¡Atención!', 'Adi!'],
+        ['errorbox','¡Cuidado!', 'Kontuz!'],
+        ['questionbox','Pregunta', 'Galdera'],
+        ['exercisebox','Ejercicio', 'Ariketa'],
+        ['gitbox','GitHub','GitHub']
+    ]
+    for (const box of custom_boxes) {
+        for (const element of document.getElementsByClassName(box[0])) {
+            //save  the content of the box in a new div, but if it's exercisebox, we took the first child if it's the solution's links
+            solution = null
+            if  (box[0] == 'exercisebox'){
+                if (element.firstElementChild.firstElementChild.classList.contains('solution')) {
+                    solution = element.firstElementChild.firstElementChild
+                    // console.log(solution)
+                    element.removeChild(element.firstElementChild)
+                }
+            }
+
+            content = document.createElement("div");
+            content.setAttribute('class','align-self-center content');
+            while (element.firstChild) {
+                content.appendChild(element.firstChild);
+            }
+            //  create a new div with flexbox to hold the icon and the content
+            flex = document.createElement("div");
+            flex.setAttribute('class','d-flex flex-row');
+            icon = document.createElement("p");
+            icon.setAttribute('class','align-self-center icon');
+            flex.appendChild(icon);
+            flex.appendChild(content);
+
+            // create a new p element with the title of the box
+            title = document.createElement("p");
+            title.setAttribute('class','title');
+            title.innerHTML=box[1];
+            const lang = document.documentElement.lang;
+            if (lang == 'basque'){
+                // kontuz!
+                title.innerHTML=box[2];
+            }
+
+            if (box[0] == 'exercisebox' && solution){
+                //add the solution link to the title
+                title.innerHTML = title.innerHTML + ' '+  solution.innerHTML
+            }
+
+            // add title and flex to the element
+            element.appendChild(title);
+            element.appendChild(flex);
+        }
+    }
 
     const modal = new bootstrap.Modal(document.getElementById('imgModal'))
     for (const img of document.getElementsByTagName('img')) {

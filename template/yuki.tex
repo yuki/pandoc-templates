@@ -400,8 +400,8 @@ explicit, % Specify section names explicitly in \titleformat with #1
   \end{custombox}
 }
 
-\newenvironment{exercisebox}{
-  \begin{custombox}{teal}{teal!4!white}{\exercisename}{\faGear}
+\newenvironment{exercisebox}[1]{
+  \begin{custombox}{teal}{teal!4!white}{\exercisename { \hypersetup{allcolors=white} #1}}{\faGear}
 }{
   \end{custombox}
 }

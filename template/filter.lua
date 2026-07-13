@@ -298,8 +298,15 @@ if FORMAT:match 'latex' then
       beg_v = "\\begin{questionbox}"
       end_v = "\\end{questionbox}"
     elseif el.classes[1] == "exercisebox" then
-      beg_v = "\\begin{exercisebox}"
+      beg_v = "\\begin{exercisebox}{}"
       end_v = "\\end{exercisebox}"
+      -- if the exercisebox has a title, for solutions, we need to add it
+      if el.c[2] ~= nil then
+        beg_v = "\\begin{exercisebox}{ "
+        latexstring = string.format(beg_v.."%s }\n %s \n"..end_v, inlines(el.c[1].c[1].c ), inlines(el.c[2].content))
+        return pandoc.RawInline("latex", latexstring)
+      end
+
     elseif el.classes[1] == "gitbox" then
       beg_v = "\\begin{gitbox}"
       end_v = "\\end{gitbox}"

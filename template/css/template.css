@@ -368,49 +368,10 @@ figcaption{
   margin-bottom: 2em;
 }
 
-.infobox > p, .warnbox > p, .errorbox > p, .questionbox > p, .exercisebox > p, .gitbox > p {
-  margin: 0;
-  /*display: flex;*/
-  align-items: center!important;
-  margin: 0 2rem;
-}
-
-.infobox > p > *, .warnbox > p > *, .errorbox > p > *, .questionbox > p > *, .exercisebox > p > *, .gitbox > p > * {
-  display: inline;
-}
-
-.infobox::before, .warnbox::before, .errorbox::before, .questionbox::before, .exercisebox::before, .gitbox::before {
-  display: block;
-  border-radius: 5px 5px 0 0;
-  color: var(--bs-white)!important;
-  font-weight: bold;
-  line-height: 2;
-  padding: 0.1em 1em;
-  margin-bottom: 0;
-}
-
-.infobox::before {
-  background-color: var(--bs-info-text-emphasis);
-  content: "Información";
-}
-
-:lang(basque) .infobox::before {
-  content: "Informazioa";
-}
-
 .infobox {
   border: 2px solid var(--bs-info-text-emphasis);
   background-color: var(--bs-info-bg-subtle);
   color: var(--bs-info-text-emphasis);
-}
-
-.warnbox::before {
-  background-color: var(--bs-orange);
-  content: "¡Atención!";
-}
-
-:lang(basque) .warnbox::before {
-  content: "Adi!";
 }
 
 .warnbox {
@@ -419,28 +380,10 @@ figcaption{
   color: var(--bs-orange)
 }
 
-.errorbox::before {
-  background-color: var(--bs-danger-text-emphasis);
-  content: "¡Cuidado!";
-}
-
-:lang(basque) .errorbox::before {
-  content: "Kontuz!";
-}
-
 .errorbox {
   border: 2px solid var(--bs-danger-text-emphasis);
   background-color: var(--bs-danger-bg-subtle);
   color: var(--bs-danger-text-emphasis);
-}
-
-.questionbox::before {
-  background-color: var(--bs-warning-text-emphasis);
-  content: "Pregunta";
-}
-
-:lang(basque) .questionbox::before {
-  content: "Galdera";
 }
 
 .questionbox {
@@ -449,24 +392,10 @@ figcaption{
   color: var(--bs-warning-text-emphasis);
 }
 
-.exercisebox::before {
-  background-color: var(--bs-success-text-emphasis);
-  content: "Ejercicio";
-}
-
-:lang(basque) .exercisebox::before {
-  content: "Ariketa";
-}
-
 .exercisebox {
   border: 2px solid var(--bs-success-text-emphasis);
   background-color: var(--bs-success-bg-subtle);
   color: var(--bs-success-text-emphasis);
-}
-
-.gitbox::before {
-  background-color: var(--bs-purple);
-  content: "GitHub";
 }
 
 .gitbox {
@@ -476,36 +405,79 @@ figcaption{
 }
 
 
-.infobox > p::before, .warnbox > p::before, .errorbox > p::before, .questionbox > p::before, .exercisebox > p::before, .gitbox > p::before  {
+.infobox p.title, .warnbox p.title, .errorbox p.title, .questionbox p.title, .exercisebox p.title, .gitbox p.title    {
+  display: block;
+  border-radius: 5px 5px 0 0;
+  color: var(--bs-white);
+  font-weight: bold;
+  line-height: 2;
+  padding: 0.1em 1em;
+  margin-bottom: 0;
+}
+
+p.title a {
+  color: var(--bs-white)!important;
+}
+
+.infobox p.title {
+  background-color: var(--bs-info-text-emphasis);
+}
+
+.warnbox p.title  {
+  background-color: var(--bs-orange);
+}
+
+.errorbox p.title {
+  background-color: var(--bs-danger-text-emphasis);
+}
+
+.questionbox p.title  {
+  background-color: var(--bs-warning-text-emphasis);
+}
+
+.exercisebox p.title {
+  background-color: var(--bs-success-text-emphasis);
+}
+
+.gitbox p.title  {
+  background-color: var(--bs-purple);
+}
+
+/* to be aligned with the icon */
+.infobox div.content :nth-child(n), .warnbox div.content :nth-child(n), .errorbox div.content :nth-child(n), .questionbox div.content :nth-child(n), .exercisebox div.content :nth-child(n), .gitbox div.content :nth-child(n) {
+  margin: 0;
+}
+
+.infobox p.icon, .warnbox p.icon, .errorbox p.icon, .questionbox p.icon, .exercisebox p.icon, .gitbox p.icon  {
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
-  margin: 0 2rem 0 0;
+  margin: 0 2rem;
   font-size: 3rem;
   vertical-align: middle;
 }
 
-.infobox p::before {
+.infobox p.icon::before {
   content: "\f05a";
 }
 
-.warnbox p::before {
+.warnbox p.icon::before {
   content: "\f06a";
 }
 
-.errorbox p::before {
+.errorbox p.icon::before {
   content: "\f071";
 }
 
-.questionbox p::before {
+.questionbox p.icon::before {
   content: "\f059";
 }
 
-.exercisebox p::before {
+.exercisebox p.icon::before {
   content: "\f013";
 }
 
-.gitbox p::before {
+.gitbox p.icon::before {
   content: "\f09b";
 }
 
