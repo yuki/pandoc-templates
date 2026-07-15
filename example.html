@@ -197,7 +197,7 @@
 <p>Here few examples of how to use this template:</p>
 <section id="colors" class="level2" data-number="2.1">
 <h2 data-number="2.1"><span class="header-section-number">2.1</span> Colors</h2>
-<p>You <span style="color: red;">can use</span> <span style="color: blue;">some colors</span> in your text.</p>
+<p>You <span color="red" style="color: red">can use</span> <span color="blue" style="color: blue">some colors</span> in your text.</p>
 </section>
 <section id="custom-boxes" class="level2" data-number="2.2">
 <h2 data-number="2.2"><span class="header-section-number">2.2</span> Custom boxes</h2>
@@ -228,10 +228,10 @@
 </pre></div>
 </div>
 </div>
-<p>Sometimes we need inline console code like <span class="commandbox">ls path</span> , other times we need to talk about some configuration file like <span class="configfile">/etc/hosts</span> , config directory <span class="configdir">/etc</span> inline text <span class="inlineconsole">help</span>, <span class="verbatim">int("5")</span> (verbatim text/code), or a movie <span class="movie"><a href="https://www.imdb.com/title/tt2084970/">The Imitation Game</a></span>.</p>
+<p>Sometimes we need inline console code like <span class="commandbox">ls path</span> , other times we need to talk about some configuration file like <span class="configfile"><a href="https://en.wikipedia.org/wiki/Hosts_(file)">/etc/hosts</a></span> , config directory <span class="configdir">/etc</span>, inline text <span class="inlineconsole">help</span>, <span class="verbatim">int(“5”)</span> or <code>int("5")</code> for verbatim text/code, or a movie <span class="movie"><a href="https://www.imdb.com/title/tt2084970/">The Imitation Game</a></span>.</p>
 <p>This is an <strong>infobox</strong>:</p>
 <div class="infobox">
-<p><strong>This is an infobox! With a list</strong></p>
+<p><strong>This is an infobox! With a list and <a href="https://github.com/yuki/my-books">link</a></strong></p>
 <ul>
 <li>One</li>
 <li>Two</li>
@@ -308,7 +308,7 @@
 <section id="table-1" class="level2" data-number="5.1">
 <h2 data-number="5.1"><span class="header-section-number">5.1</span> Table 1</h2>
 <p>Custom tablename “yukitblr”:</p>
-<table data-tablename="yukitblr">
+<table data-tablename="yukitblr" data-colspec="">
 <caption>Table content </caption>
 <thead>
 <tr>
@@ -339,8 +339,8 @@
 <section id="table-2" class="level2" data-number="5.2">
 <h2 data-number="5.2"><span class="header-section-number">5.2</span> Table 2</h2>
 <p>Custom tablename “yukitblrcol”:</p>
-<table data-tablename="yukitblrcol">
-<caption>Table content </caption>
+<table data-tablename="yukitblrcol" data-colspec="">
+<caption><a href="https://github.com/yuki/my-books">link</a> </caption>
 <thead>
 <tr>
 <th style="text-align: left;"></th>
@@ -371,7 +371,7 @@
 <h2 data-number="5.3"><span class="header-section-number">5.3</span> Table 3</h2>
 <p>Custom tablename “rubrica” with custom “colspec” like “X[-1]X[2]X[2]X[2]X[2]” in the Caption (see the source):</p>
 <table data-tablename="rubrica" data-colspec="X[-1]X[2]X[2]X[2]X[2]">
-<caption></caption>
+<caption> </caption>
 <thead>
 <tr>
 <th></th>

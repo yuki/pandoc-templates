@@ -420,26 +420,25 @@ explicit, % Specify section names explicitly in \titleformat with #1
     list entry={\protect\numberline{\thetcbcounter}#1}
 }
 
-\DeclareTotalTCBox{\inlineconsole}{ v }
+\DeclareTotalTCBox{\inlineconsole}{ m }
   {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{#1}
 
-\DeclareTotalTCBox{\commandbox}{ v }
+\DeclareTotalTCBox{\commandbox}{ m }
   {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faTerminal\hspace{0pt}  #1}
 
-\DeclareTotalTCBox{\configfile}{ v }
+\DeclareTotalTCBox{\configfile}{ m }
   {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faFile\hspace{0pt}  #1}
 
-\DeclareTotalTCBox{\configdir}{ v }
+\DeclareTotalTCBox{\configdir}{ m }
   {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faFolderOpen\hspace{0pt}  #1}
 
-\DeclareTotalTCBox{\configlink}{ v }
+\DeclareTotalTCBox{\configlink}{ m }
   {verbatim,colupper=white,colback=inline-bg-color,colframe=black,enhanced}{\faLink\hspace{0pt}  #1}
 
 
 \definecolor{imdb}{HTML}{f5c518}
-\DeclareTotalTCBox{\movie}{ v v}
-  {verbatim,colback=white,colframe=imdb,enhanced}{\faFileVideo\hspace{0pt}  \href{#1}{#2}}
-
+\DeclareTotalTCBox{\movie}{ m }
+  {verbatim,colback=white,colframe=imdb,enhanced}{\faFileVideo\hspace{0pt} #1}
 
 
 %--------------------------------------------------------------------------
