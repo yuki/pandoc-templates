@@ -3,15 +3,17 @@
 import panflute as pf
 import json
 import copy
+import os
+import re
 
 
 # return True if has class "solution". For exercisebox
-def has_solution_class(elem):
-    if hasattr(elem, "classes") and "solution" in elem.classes:
+def has_class(elem,class_name):
+    if hasattr(elem, "classes") and class_name in elem.classes:
         return True
 
     if hasattr(elem, "content"):
-        return any(has_solution_class(child) for child in elem.content)
+        return any(has_class(child,class_name) for child in elem.content)
 
     return False
 
@@ -27,7 +29,6 @@ def extract_by_class(elem, class_name):
             return []
 
     elem.walk(action)
-
     return extracted
 
 
@@ -65,7 +66,7 @@ def action(elem, doc):
                     +  pf.convert_text(pf.Doc(pf.Para(elem)), input_format="panflute",output_format="latex"),
                     format="latex"
                 )
-            elif elem.classes and elem.classes[0] == "Verbatim":
+            elif elem.classes and elem.classes[0] == "verbatim":
                 return pf.RawInline(
                     "\\color{inline-code-color}\\fakeverb"
                     +  pf.convert_text(pf.Doc(pf.Para(elem)), input_format="panflute",output_format="latex"),
@@ -92,7 +93,7 @@ def action(elem, doc):
             elif elem.classes and elem.classes[0] == "exercisebox":
                 # needs 2 arguments
                 solutions = pf.RawInline(" ")
-                if has_solution_class(elem):
+                if has_class(elem,"solution"):
                     solutions = extract_by_class(elem, "solution")
 
                 return pf.RawBlock(
@@ -152,8 +153,52 @@ def action(elem, doc):
 
 
     elif doc.format == 'html':
-        pf.debug("HTML")
+        if isinstance(elem,pf.Span):
+            if elem.attributes and elem.attributes["color"]:
+                elem.attributes["style"] =  "color: "+elem.attributes["color"]
+    #         if elem.classes and elem.classes[0] == "verbatim":
+    #             return pf.RawInline(
+    #                 "<span class='verbatim'>"
+    #                 +  pf.convert_text(pf.Doc(pf.Para(elem)), input_format="panflute",output_format="html")
+    #                 +"</span>",
+    #                 format="latex"
+    #             )
+        elif isinstance(elem,pf.CodeBlock):
+            lang = elem.classes[0]
+            code = elem.text
+            filename = "pygmentize.txt"
+            with open(filename, "w", encoding="utf-8") as f:
+                f.write(code)
+                f.close()
+            cmd = "pygmentize -l "+lang+" -f html pygmentize.txt"
+            html = pf.shell(cmd).decode('utf-8')
+            os.remove(filename)
 
+            return pf.RawBlock(
+                '<div class="sourceCode">'
+                + str(html)
+                + '</div>',
+                format="html"
+            )
+
+        elif isinstance(elem,pf.Table):
+            caption = elem.caption
+
+            for item in elem.caption.content:
+                for child in item.content:
+                    if hasattr(child, "text"):
+                        # delete "{}" fromt text
+                        child.text = child.text.replace("{", "")
+                        child.text = child.text.replace("}", "")
+                        for pair in re.findall(r"(\w+)=(\S+)", child.text):
+                            child.text = ""
+                            key, value = pair
+                            if key == "tablename":
+                                table_name = value
+                                elem.attributes["data-tablename"] = table_name
+                            elif key == "colspec":
+                                colspec = value
+                                elem.attributes["data-colspec"] = colspec
 
 
 def finalize(doc):
