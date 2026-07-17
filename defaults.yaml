@@ -13,7 +13,7 @@ pdf-engine-opt:
   - '-output-directory=.'
 template: template/yuki.html
 filters:
-  - template/filter.lua
+  - template/filter.py
 metadata-files:
   - metadata.yaml
 resource-path:
