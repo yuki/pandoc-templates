@@ -3,8 +3,7 @@
 %
 % Authors:
 %   Rubén Gómez Olivencia (rugoli@gmail.com)
-%     https://twitter.com/rugoli
-%     https://github.com/yuki/yukibook.cls
+%     https://github.com/yuki/pandoc-templates/
 %
 % License:
 %   CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
@@ -487,9 +486,13 @@ explicit, % Specify section names explicitly in \titleformat with #1
     \DefTblrTemplate{contfoot-text}{default}{Continúa en la siguiente página}
 }
 \DefTblrTemplate{conthead-text}{default}{}
-\DefTblrTemplate{caption}{default}{}
 \DefTblrTemplate{conthead}{default}{}
-\DefTblrTemplate{capcont}{default}{}
+\DefTblrTemplate{firsthead,middlehead,lasthead}{default}{}
+\DefTblrTemplate{lastfoot}{default}{
+  \UseTblrTemplate{note}{default}
+  \UseTblrTemplate{remark}{default}
+  \UseTblrTemplate{capcont}{default}
+}
 
 
 % FIXME: hay que corregir el tema de las tablas.. pero para no perder, el tiempo, lo dejo así.
