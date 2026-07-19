@@ -280,9 +280,10 @@ def action(elem, doc):
                 )
 
         elif isinstance(elem,pf.Table):
-            table_name = "tblr"
+            table_name = "yukitblr"
             colspec = ""
             col_specs_in_table = ""
+            caption = ""
 
             if elem.colspec:
                 # table original colspec, made in markdown
@@ -303,10 +304,12 @@ def action(elem, doc):
 
                     col_specs_in_table += "]"
 
-            # we get "tablename=" and "colspec=" from caption, hardcoded in markdown table's content
-            table_name, colspec = get_table_attributes(elem.caption.content)
-            # the caption cane be setted because "tablename=.." and "colspec=.." are deleted
-            caption = pf.convert_text(pf.Doc(pf.Div(elem.caption.content[0])), input_format="panflute",output_format="latex")
+            # pf.debug(elem.caption.content)
+            if elem.caption and elem.caption.content:
+                # we get "tablename=" and "colspec=" from caption, hardcoded in markdown table's content
+                table_name, colspec = get_table_attributes(elem.caption.content)
+                # the caption cane be setted because "tablename=.." and "colspec=.." are deleted
+                caption = pf.convert_text(pf.Doc(pf.Div(elem.caption.content[0])), input_format="panflute",output_format="latex")
 
             if colspec == "":
                 # if not hardcoded colspec, we get from table
