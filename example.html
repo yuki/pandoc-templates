@@ -1,17 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="spanish" xml:lang="spanish" data-bs-theme="auto">
 <head>
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="author" content="Author One">
   <meta name="dcterms.date" content="2024-09-17">
   <meta name="keywords" content="nothing, nothingness">
   <title>This is the title</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css" integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     :root, [data-bs-theme=light] {
@@ -23,162 +22,144 @@
       --bs-heading-color: var(--bs-gray-100);
     }
   </style>
-  <link href="template/css/dark_mode.css" rel="stylesheet">
   <link href="template/css/template.css" rel="stylesheet">
   <link href="template/css/pygments/friendly.css" rel="stylesheet">
   <link href="template/css/pygments/github-dark.css" rel="stylesheet">
 
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-
 </head>
   <body>
+    <nav class="navbar navbar-dark px-2" id="header">
+      <button id="show" class="btn btn-outline-light d-none">
+        <i class="fa-solid fa-circle-chevron-right"></i>
+      </button>
+      <span class="navbar-brand ms-2">
+                  <span class="fs-4 d-none d-md-inline">This is the title</span>
+          <span class="fs-4 d-md-none d-xs-inline">mini-title</span>
+                      <span class="subtitle d-none d-lg-inline"> - subtitle</span>
+                        </span>
+      <span class="navbar-brand ms-auto d-none d-md-inline">
+        <a id="pdf-link2" href="" class="btn flex-row d-flex align-items-center flex-wrap text-white download-icon">
+          <i class="fa-solid fa-cloud-arrow-down"></i>
+        </a>
+      </span>
 
-    <header class="navbar navbar-expand-lg bd-navbar sticky-top" id="header" >
-      <nav id="navbar" class="container-xxl flex-wrap flex-lg-nowrap text-white" aria-label="header">
-
-        <div class="bd-navbar-toggle">
-          <button class="navbar-toggler p-2 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#TOCsidebarMenu" aria-controls="toc" aria-label="Toggle docs navigation">
-            <i class="fa-solid fa-circle-chevron-right"></i>
+      <div class="dropdown d-none d-md-block">
+        <button
+          id="theme-toggle"
+          class="btn btn-outline-light dropdown-toggle"
+          type="button"
+          aria-label="Selector de tema"
+        >
+          <i id="theme-icon" class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+        <div id="theme-menu" class="theme-menu">
+          <button class="dropdown-item" data-theme-mode="light">
+            <i class="fa-solid fa-sun"></i>
+          </button>
+          <button class="dropdown-item" data-theme-mode="dark">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+          <button class="dropdown-item" data-theme-mode="auto">
+            <i class="fa-solid fa-circle-half-stroke"></i>
           </button>
         </div>
+      </div>
 
-        <div>
-                      <span class="fs-4 d-none d-md-inline">This is the title</span>
-            <span class="fs-4 d-md-none d-xs-inline">mini-title</span>
-                          <span class="subtitle d-none d-lg-inline"> - subtitle</span>
-                              </div>
+      <button
+        id="mobile-theme-button"
+        class="btn btn-outline-light d-md-none"
+        type="button"
+      >
+        <i class="fa-solid fa-ellipsis"></i>
+      </button>
+    </nav>
 
-        <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" aria-label="Toggle navigation">
-          <i class="fa-solid fa-ellipsis text-white"></i>
+    <aside id="theme-panel" class="theme-panel">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h5 class="mb-0">This is the title</h5>
+        <button id="close-theme-panel"  type="button" class="btn-close"></button>
+      </div>
+      <div class="btn-group w-100" role="group" aria-label="Tema">
+        <button
+          type="button"
+          class="btn btn-outline-secondary flex-fill"
+          data-theme-mode="light"
+          aria-label="Claro"
+        >
+          <i class="fa-solid fa-sun"></i>
         </button>
+        <button
+          type="button"
+          class="btn btn-outline-secondary flex-fill"
+          data-theme-mode="dark"
+          aria-label="Oscuro"
+        >
+          <i class="fa-solid fa-moon"></i>
+        </button>
+        <button
+          type="button"
+          class="btn btn-outline-secondary flex-fill"
+          data-theme-mode="auto"
+          aria-label="Auto"
+        >
+          <i class="fa-solid fa-circle-half-stroke"></i>
+        </button>
+      </div>
 
-        <!-- RIGHT OFFCANVAS -->
-        <div class="offcanvas offcanvas-end flex-grow-1" tabindex="-1" id="offcanvasRight" aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true" aria-modal="true" role="dialog">
-          <div class="offcanvas-header px-4 pb-0">
-            <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">This is the title</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
-          </div>
 
-          <div class="offcanvas-body p-4 pt-0 p-lg-0">
-            <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-              <ul class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white">
-                <li class="d-lg-none me-2 text-white navbar-nav flex-row d-flex align-items-center flex-wrap">Descargar</li>
-                <li class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white">
-                  <a id="pdf-link" href="" class=" btn flex-row d-flex align-items-center flex-wrap text-white download-icon">
-                    <i class="fa-solid fa-cloud-arrow-down"></i>
-                  </a>
-                </li>
-              </ul>
+      <hr class="d-lg-none my-4 text-white-50">
+      <!-- Download -->
+      <span class="d-lg-none me-2 navbar-nav flex-row d-flex align-items-center flex-wrap">Descargar
+        <a id="pdf-link" href="" class="pdf-link btn flex-row d-flex align-items-center flex-wrap download-icon">
+          <i class="fa-solid fa-cloud-arrow-down"></i>
+        </a>
+      </span>
 
+      <hr class="d-lg-none my-4 text-white-50">
+      <!-- Author and links -->
+        <span class="d-lg-none me-2navbar-nav flex-row d-flex align-items-center flex-wrap">2024-09-17, Author One
+                      <a href="https://github.com/yuki/pandoc-templates/" class="ms-3"><i class="fa-brands fa-github"></i></a>
+                  </span>
 
-              <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
-                <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
-                <hr class="d-lg-none my-2 text-white-50">
-              </li>
+      <hr class="d-lg-none my-4 text-white-50">
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0</a>
 
-              <!-- Theme Selector -->
-              <ul class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white" id="theme-selector">
-                <div class="d-lg-none me-2 text-white navbar-nav flex-row d-flex align-items-center flex-wrap">Cambiar tema</div>
-                <li class="nav-item dropdown">
-                  <button class="btn btn-link nav-link text-white dropdown-toggle d-flex align-items-center theme-icon-active" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" href="fa-moon">
-                    <i class="fa-solid fa-moon"></i>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme" style="--bs-dropdown-min-width: 8rem;" id="theme-selector-menu">
-                    <li href="fa-sun" data-bs-theme-value="light">
-                      <button type="button" class="dropdown-item d-flex align-items-center">
-                        <i class="fa-solid fa-sun opacity-50 theme-icon"></i>
-                        Light
-                      </button>
-                    </li>
-                    <li href="fa-moon" data-bs-theme-value="dark">
-                      <button type="button" class="dropdown-item d-flex align-items-center">
-                        <i class="fa-solid fa-moon opacity-50 theme-icon"></i>
-                        Dark
-                      </button>
-                    </li>
-                    <li href="fa-circle-half-stroke" data-bs-theme-value="auto">
-                      <button type="button" class="dropdown-item d-flex align-items-center">
-                        <i class="fa-solid fa-circle-half-stroke opacity-50 theme-icon"></i>
-                        Auto
-                      </button>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-
-              <li class="d-lg-none nav-item py-2 py-lg-1 col-12 col-lg-auto">
-                <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
-                <hr class="d-lg-none my-2 text-white-50">
-              </li>
-
-              <!-- Author and links -->
-              <ul class="d-lg-none navbar-nav flex-row d-flex align-items-center flex-wrap text-white">
-                <li class="d-lg-none me-2 text-white navbar-nav flex-row d-flex align-items-center flex-wrap">2024-09-17, Author One</li>
-                <ul class="nav justify-content-end list-unstyled d-flex">
-                                      <li class="ms-3"><a class="text-white" href="https://github.com/yuki/pandoc-templates/"><i class="fa-brands fa-github"></i></a></li>
-                                  </ul>
-              </ul>
-
-              <li class="d-lg-none nav-item py-2 py-lg-1 col-12 col-lg-auto">
-                <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
-                <hr class="d-lg-none my-2 text-white-50">
-              </li>
-
-              <ul class="navbar-nav flex-row d-flex align-items-center flex-wrap text-white">
-                <li class="d-lg-none me-2 text-white navbar-nav flex-row d-flex align-items-center flex-wrap">
-                  <a  href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0</a>
-                </li>
-              </ul>
-
-            </ul>
-          </div>
+    </aside>
+    <div id="peek"></div>
+    <div id="ghost"></div>
+    <div id="layout">
+      <aside id="sidebar">
+        <div class="d-flex justify-content-between p-2 border-bottom">
+          <b></b>
+          <button id="hide" class="btn btn-sm btn-outline-secondary">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
         </div>
-      </nav>
-    </header>
-
-    <div class="container-fluid">
-      <div class="row">
-                  <div class="col-lg-2">
-            <aside class="sticky-lg-top offcanvas-lg offcanvas-start offcanvas-body" tabindex="-1" id="TOCsidebarMenu" aria-labelledby="bdsidebaroffcanvaslabel">
-              <div class="offcanvas-lg offcanvas-start show" tabindex="-1" id="bdsidebar" aria-labelledby="bdsidebaroffcanvaslabel" aria-modal="true" role="dialog">
-
-                <div class="offcanvas-header border-bottom d-lg-none">
-                  <h5 class="offcanvas-title" id="bdsidebaroffcanvaslabel">e</h5>
-                  <button type="button" class="btn-close d-lg-none" data-bs-dismiss="offcanvas" aria-label="close" data-bs-target="#TOCsidebarMenu"></button>
-                </div>
-                <div class="offcanvas-body">
-                  <nav class="" id="bd-docs-nav" aria-label="docs navigation">
-                    <div id="toc" class="pb-5">
-                      <ul>
-                      <li><a href="#pandoc-template-in-bootstrap-5" id="toc-pandoc-template-in-bootstrap-5"><span class="toc-section-number">1</span> Pandoc template in Bootstrap 5</a></li>
-                      <li><a href="#example-of-uses" id="toc-example-of-uses"><span class="toc-section-number">2</span> Example of uses</a>
-                      <ul>
-                      <li><a href="#colors" id="toc-colors"><span class="toc-section-number">2.1</span> Colors</a></li>
-                      <li><a href="#custom-boxes" id="toc-custom-boxes"><span class="toc-section-number">2.2</span> Custom boxes</a></li>
-                      </ul></li>
-                      <li><a href="#images" id="toc-images"><span class="toc-section-number">3</span> Images</a>
-                      <ul>
-                      <li><a href="#centered-image-with-caption" id="toc-centered-image-with-caption"><span class="toc-section-number">3.1</span> Centered image with caption</a></li>
-                      </ul></li>
-                      <li><a href="#columns" id="toc-columns"><span class="toc-section-number">4</span> Columns</a></li>
-                      <li><a href="#tables" id="toc-tables"><span class="toc-section-number">5</span> Tables</a>
-                      <ul>
-                      <li><a href="#table-1" id="toc-table-1"><span class="toc-section-number">5.1</span> Table 1</a></li>
-                      <li><a href="#table-2" id="toc-table-2"><span class="toc-section-number">5.2</span> Table 2</a></li>
-                      <li><a href="#table-3" id="toc-table-3"><span class="toc-section-number">5.3</span> Table 3</a></li>
-                      </ul></li>
-                      </ul>
-                    </div>
-                  </nav>
-                </div>
-              </div>
-            </aside>
-          </div>
-                <div class="col-12 col-lg-8">
-          <main class="bd-main order-1" id="main"  data-bs-spy="scroll" data-bs-target="#toc">
-            <div id="book">
+        <div id="toc" class="p-3">
+          <ul>
+          <li><a href="#pandoc-template-in-bootstrap-5" id="toc-pandoc-template-in-bootstrap-5"><span class="toc-section-number">1</span> Pandoc template in Bootstrap 5</a></li>
+          <li><a href="#example-of-uses" id="toc-example-of-uses"><span class="toc-section-number">2</span> Example of uses</a>
+          <ul>
+          <li><a href="#colors" id="toc-colors"><span class="toc-section-number">2.1</span> Colors</a></li>
+          <li><a href="#custom-boxes" id="toc-custom-boxes"><span class="toc-section-number">2.2</span> Custom boxes</a></li>
+          </ul></li>
+          <li><a href="#images" id="toc-images"><span class="toc-section-number">3</span> Images</a>
+          <ul>
+          <li><a href="#centered-image-with-caption" id="toc-centered-image-with-caption"><span class="toc-section-number">3.1</span> Centered image with caption</a></li>
+          </ul></li>
+          <li><a href="#columns" id="toc-columns"><span class="toc-section-number">4</span> Columns</a></li>
+          <li><a href="#tables" id="toc-tables"><span class="toc-section-number">5</span> Tables</a>
+          <ul>
+          <li><a href="#table-1" id="toc-table-1"><span class="toc-section-number">5.1</span> Table 1</a></li>
+          <li><a href="#table-2" id="toc-table-2"><span class="toc-section-number">5.2</span> Table 2</a></li>
+          <li><a href="#table-3" id="toc-table-3"><span class="toc-section-number">5.3</span> Table 3</a></li>
+          </ul></li>
+          </ul>
+        </div>
+      </aside>
+      <div id="divider"></div>
+      <main data-bs-spy="scroll" data-bs-target="#toc" data-bs-smooth-scroll="true">
+        <div id="book">
 
                               <div id="cover" class="fw-bold text-center">
                   <span id="title" >This is the title</span>
@@ -453,27 +434,19 @@
 </section>
 </section>
 
-            </div>
-          </main>
+        </div>
 
-          <footer id="footer">
-            <div class="justify-content-between align-items-center py-3 my-4 border-top ms-sm-auto">
-                <div class="row justify-content-between align-items-center">
-                  <div class="col-8 d-flex p-2">
-                    <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none"> </a>
-                    <span class="text-body-secondary">2024-09-17, Author One</span>
-                                          &nbsp; &nbsp;
-                      <a class="text-body-secondary" href="https://github.com/yuki/pandoc-templates/"><i class="fa-brands fa-github"></i></a>
-                                      </div>
+        <footer class="mt-4 border-top pt-3 pb-3 d-flex justify-content-between align-items-center small text-muted">
+          <span>
+            <span class="text-body-secondary">2024-09-17, Author One</span>
+                          &nbsp; &nbsp;
+              <a class="text-body-secondary" href="https://github.com/yuki/pandoc-templates/"><i class="fa-brands fa-github"></i></a>
+                      </span>
+          <a class="nav col-2 justify-content-end list-unstyled d-flex" href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0</a>
+        </footer>
 
-                  <a class="nav col-2 justify-content-end list-unstyled d-flex" href="https://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-SA 4.0</a>
-                </div>
-            </div>
-          </footer>
-        </div> <!-- col -->
-      </div> <!-- row -->
-
-    </div> <!-- container -->
+      </main>
+    </div>
 
     <!-- The Modal -->
     <div id="imgModal" class="modal" tabindex="-1">
@@ -490,9 +463,8 @@
       </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/js/all.min.js" integrity="sha512-6BTOlkauINO65nLhXhthZMtepgJSghyimIalb+crKRPhvhmsCdnIuGcVbR5/aQY2A+260iC1OPy1oCdB6pSSwQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="template/js/dark_mode.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/js/all.min.js" integrity="sha512-BivWm1+PupfLofQ5Ei/fNEC6Oq6IZiGO9WUm2ibWHZ33cj/qTX4zsBW/0SN9Myo4HEmINmr0wjuQE8eDL3rmng==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="template/js/template.js"></script>
   </body>
 </html>

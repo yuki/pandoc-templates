@@ -1,6 +1,198 @@
-html {
-  scroll-padding-top: 65px;
+:root {
+  --nav: 65px;
+  --sidebar: 280px;
+  --min: 180px;
+  --max: 520px;
 }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body.resizing {
+  user-select: none;
+  cursor: col-resize;
+}
+
+#layout {
+  display: grid;
+  grid-template-columns: var(--sidebar) 6px 1fr;
+  height: calc(100vh - var(--nav));
+  width: 100%;
+}
+
+.hidden #layout {
+  grid-template-columns: 1fr;
+}
+
+.hidden main {
+  margin: 0 auto;
+  padding-left: 15rem;
+  padding-right: 15rem;
+}
+
+nav {
+  height: var(--nav);
+}
+
+#sidebar {
+  background: var(--bs-body-bg);
+  /* border-right: 1px solid var(--templatecolor); */
+  overflow: auto;
+  transform: translateX(0);
+  transition: transform 0.2s;
+  width: 100%;
+  touch-action: pan-y;
+}
+
+.hidden #sidebar {
+  display: none;
+}
+
+#divider {
+  position: relative;
+  cursor: col-resize;
+  touch-action: none;
+  
+}
+
+.hidden #divider {
+  display: none;
+}
+
+#divider:hover::after,
+#ghost {
+  background: var(--templatecolor);
+}
+
+#divider::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ccc;
+}
+
+main {
+  overflow: auto;
+  padding: 2rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.theme-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  right: 0;
+  /* min-width: 14rem; */
+  padding: 0.5rem;
+  background: var(--bs-body-bg);
+  border: 1px solid var(--templatecolor);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  z-index: 2000;
+}
+
+.theme-menu.show {
+  display: block;
+}
+
+.theme-menu .dropdown-item {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  background: transparent;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  color: var(--bs-body-color);
+}
+
+.theme-menu .dropdown-item:hover,
+.theme-menu .dropdown-item.active {
+  background: var(--bs-tertiary-bg);
+}
+
+.theme-panel {
+  position: fixed;
+  top: var(--nav);
+  right: 0;
+  width: min(280px, 85vw);
+  height: calc(100vh - var(--nav));
+  background: var(--bs-body-bg);
+  border-left: 5px solid var(--templatecolor);
+  transform: translateX(100%);
+  transition: transform 0.2s ease;
+  z-index: 1300;
+  padding: 1rem;
+}
+
+.theme-panel select {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid var(--templatecolor);
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+body.theme-open .theme-panel {
+  transform: translateX(0);
+}
+
+#ghost {
+  position: fixed;
+  top: var(--nav);
+  bottom: 0;
+  width: 2px;
+  display: none;
+  z-index: 2000;
+}
+
+#peek {
+  position: fixed;
+  left: 0;
+  top: var(--nav);
+  bottom: 0;
+  width: 12px;
+  z-index: 1500;
+}
+
+@media (max-width: 768px) {
+  #layout {
+    grid-template-columns: 1fr;
+  }
+
+  #show {
+    display: inline-block !important;
+  }
+
+  #sidebar {
+    position: fixed;
+    top: var(--nav);
+    left: 0;
+    width: min(var(--sidebar), 85vw);
+    height: calc(100vh - var(--nav));
+    z-index: 1200;
+    transform: translateX(calc(-1 * var(--sidebar)));
+    border-right: 5px solid var(--templatecolor);
+  }
+
+  body.mobile-open #sidebar {
+    transform: translateX(0);
+  }
+
+  #divider {
+    display: none;
+  }
+}
+
+/* html {
+  scroll-padding-top: 115px;
+} */
 
 #header, #navbar {
   background-color: var(--templatecolor);
@@ -61,39 +253,12 @@ h5#modalCaption {
   padding-top: 0rem;
 }
 
-/* 
- *
- * TOC SIDEBAR & RIGHT SIDEBAR
- *
- * */
-
-#offcanvasRight {
-  background-color: var(--templatecolor);
-}
-
-.offcanvas-header {
-  border-bottom: 0.3rem solid white!important;
-  padding-bottom: 1rem!important;
-  margin-bottom: 1rem!important;
-}
-
-.offcanvas-header h5{
-  padding-top: 0;
-}
-
 
 /* 
  *
  * TOC
  *
  * */
-
-#TOCsidebarMenu {
-  border-right: 2px solid var(--templatecolor);
-  top: 4rem;
-  height: calc(100vh - 4rem);
-  overflow-y: auto;
-}
 
 .navbar ul {
   margin-top: 0em;
@@ -151,35 +316,6 @@ h5#modalCaption {
 }
 :lang(spanish) #bdsidebaroffcanvaslabel::before {
   content: "Índic";
-}
-
-/*
- *
- * Theme selector
- *
- * */
-
-#theme-selector-menu {
-  padding: 0;
-}
-
-#theme-selector li {
-  margin: 0.25rem;
-}
-
-#theme-selector li.active, #theme-selector-menu button:focus, #theme-selector-menu button:hover {
-  border-radius: 0.25rem;
-  background-color: var(--templatecolor);
-  color: var(--bs-gray-100);
-}
-
-#theme-selector li.active > button {
-  color: var(--bs-gray-100);
-}
-
-.theme-icon {
-  width: 1rem;
-  padding-right: 0.5rem;
 }
 
 /* 
