@@ -35,10 +35,10 @@ function addAnchorLink(element, href) {
 
 (() => {
   // add PDF link
-  document.getElementById("pdf-link").href = window.location.pathname
+  for (const element of document.getElementsByClassName("pdf-link")) {
+    element.href = window.location.pathname
     .replace(".html", ".pdf");
-    document.getElementById("pdf-link2").href = window.location.pathname
-    .replace(".html", ".pdf");
+  }
 
   // change TOC to improve navigation
   sidebarMenu = document.querySelector("#toc");
@@ -242,7 +242,6 @@ const root = document.documentElement,
   mobileThemeButton = document.getElementById("mobile-theme-button"),
   themePanel = document.getElementById("theme-panel"),
   closeThemePanel = document.getElementById("close-theme-panel"),
-  themeSelectMobile = document.getElementById("theme-select-mobile"),
   themeIcon = document.getElementById("theme-icon"),
   divider = document.getElementById("divider");
 const mobileQuery = window.matchMedia("(max-width: 768px)");
@@ -281,9 +280,6 @@ function applyTheme(mode) {
     button.classList.toggle("active", button.dataset.themeMode === mode);
   });
 
-  if (themeSelectMobile) {
-    themeSelectMobile.value = mode;
-  }
 
   source_theme = 'dark'
   if (mode == 'light' || mode == 'auto'){
@@ -333,13 +329,6 @@ document.querySelectorAll("[data-theme-mode]").forEach((button) => {
     themeMenu.classList.remove("show");
   });
 });
-
-if (themeSelectMobile) {
-  themeSelectMobile.addEventListener("change", (e) => {
-    applyTheme(e.target.value);
-    body.classList.remove("theme-open");
-  });
-}
 
 mediaQuery.addEventListener("change", () => {
   if ((localStorage.getItem("theme-mode") || "auto") === "auto") {
