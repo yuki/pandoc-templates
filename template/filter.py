@@ -366,6 +366,10 @@ def action(elem, doc):
             elem.attributes["data-tablename"] = table_name
             elem.attributes["data-colspec"] = colspec
 
+        elif isinstance(elem,pf.Image):
+            # this attribute can be added in Markdown with: ![](img/a.png){loading=lazy}
+            # but I don't want to change all my books.
+            elem.attributes["loading"] = "lazy";
 
 def finalize(doc):
     pass
