@@ -282,7 +282,7 @@ function applyTheme(mode) {
 
 
   source_theme = 'dark'
-  if (mode == 'light' || mode == 'auto'){
+  if (mode == 'light'){
     source_theme = 'highlight'
   }
   //change code theme
