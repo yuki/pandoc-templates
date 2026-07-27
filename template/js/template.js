@@ -1,3 +1,5 @@
+"use strict";
+
 // copied from https://www.codehim.com/text-input/roman-numeral-converter-using-javascript/
 function convertToRoman(num) {
   let decimalValue = [10, 9, 5, 4, 1];
@@ -21,7 +23,7 @@ function addAnchorLink(element, href) {
   const link = document.createElement("a");
   link.href = "#" + href;
   link.setAttribute("class", "anchor-link");
-  icon = document.createElement("i");
+  let icon = document.createElement("i");
   icon.setAttribute("class", "fa-solid fa-link");
   link.appendChild(icon);
   element.prepend(link);
@@ -41,11 +43,11 @@ function addAnchorLink(element, href) {
   }
 
   // change TOC to improve navigation
-  sidebarMenu = document.querySelector("#toc");
+  let sidebarMenu = document.querySelector("#toc");
 
   // sidebars links
   if (sidebarMenu) {
-    links = sidebarMenu.getElementsByTagName("a");
+    let links = sidebarMenu.getElementsByTagName("a");
     for (let i = 0; i < links.length; i++) {
       links[i].setAttribute("class", "nav-link");
     }
@@ -57,22 +59,22 @@ function addAnchorLink(element, href) {
   }
 
   // PARTS
-  var count = 0;
+  let count = 0;
   for (const element of document.getElementsByClassName("part")) {
     count = count + 1;
-    part_id = "part-" + count;
-    part_title = element.innerText;
+    let part_id = "part-" + count;
+    let part_title = element.innerText;
     element.setAttribute("id", part_id);
     // add roman number
     const num = document.createElement("span");
-    roman_num = convertToRoman(count);
+    let roman_num = convertToRoman(count);
     num.innerHTML = roman_num;
     num.setAttribute("class", "roman-number");
     element.parentElement.prepend(num);
     addAnchorLink(element.parentElement, element.id);
 
     // insert part into TOC
-    grandfather = element.parentElement.parentElement;
+    let grandfather = element.parentElement.parentElement;
     const part_li = document.createElement("LI");
     part_li.id = "toc-" + part_id;
     part_li.setAttribute("class", "toc_part");
@@ -81,39 +83,40 @@ function addAnchorLink(element, href) {
     link.innerHTML = roman_num + ".  " + part_title;
     part_li.appendChild(link);
 
+    let header_id = "";
     if (grandfather.tagName == "DIV") {
       // first part
       header_id = element.parentElement.nextElementSibling.id;
     } else if (grandfather.tagName == "SECTION") {
       // others parts, that can be inside HeaderX
-      el = grandfather;
+      let el = grandfather;
       while (!el.classList.contains("level1")) {
         el = el.parentNode;
       }
       el = el.nextElementSibling;
       header_id = el.id;
     }
-    a = document.getElementById("toc-" + header_id);
+    let a = document.getElementById("toc-" + header_id);
     a.parentNode.parentNode.insertBefore(part_li, a.parentNode);
   }
 
   // HEADERS NUMBERS RESET
   count = 0;
-  new_num = 0;
+  let new_num = 0;
   // we use the navbar UL's LIs, it's easier than the sections
-  for (element of document.getElementById("toc").querySelectorAll("ul > li")) {
+  for (let element of document.getElementById("toc").querySelectorAll("ul > li")) {
     if (element.classList.contains("toc_part")) {
       // the LI is a PART; we reset the count
       count = 0;
     } else {
-      link = element.firstElementChild.id.replace(/^toc-/g, "");
-      section = document.getElementById(link);
+      let link = element.firstElementChild.id.replace(/^toc-/g, "");
+      let section = document.getElementById(link);
       if (section.classList.contains("level1")) {
         count = count + 1;
         new_num = count;
       } else {
         if (section.getAttribute("data-number")) {
-          num = section.getAttribute("data-number");
+          let num = section.getAttribute("data-number");
           new_num = num.replace(/^[0-9]+\./, count + ".");
         }
       }
@@ -149,19 +152,19 @@ function addAnchorLink(element, href) {
 
   // fontaewesome icons: file and directory
   for (const element of document.getElementsByClassName("configdir")) {
-    dir = document.createElement("i");
+    let dir = document.createElement("i");
     dir.classList.add("fa-regular", "fa-folder-open");
     element.insertBefore(dir, element.firstChild);
   }
 
   for (const element of document.getElementsByClassName("configfile")) {
-    dir = document.createElement("i");
+    let dir = document.createElement("i");
     dir.classList.add("fa-regular", "fa-file");
     element.insertBefore(dir, element.firstChild);
   }
 
   // custom boxes: infobox, warnbox, errorbox ...
-  custom_boxes = [
+  const custom_boxes = [
     ["infobox", "Información", "Informazioa"],
     ["warnbox", "¡Atención!", "Adi!"],
     ["errorbox", "¡Cuidado!", "Kontuz!"],
@@ -172,33 +175,31 @@ function addAnchorLink(element, href) {
   for (const box of custom_boxes) {
     for (const element of document.getElementsByClassName(box[0])) {
       //save  the content of the box in a new div, but if it's exercisebox, we took the first child if it's the solution's links
-      solution = null;
+      let solution = null;
       if (box[0] == "exercisebox" && element.children.length > 1) {
         if (
-          element.firstElementChild.firstElementChild.classList.contains(
-            "solution",
-          )
+          element.firstElementChild.firstElementChild.classList.contains("solution",)
         ) {
           solution = element.firstElementChild.firstElementChild;
           element.removeChild(element.firstElementChild);
         }
       }
 
-      content = document.createElement("div");
+      let content = document.createElement("div");
       content.setAttribute("class", "align-self-center content");
       while (element.firstChild) {
         content.appendChild(element.firstChild);
       }
       //  create a new div with flexbox to hold the icon and the content
-      flex = document.createElement("div");
+      let flex = document.createElement("div");
       flex.setAttribute("class", "d-flex flex-row");
-      icon = document.createElement("p");
+      let icon = document.createElement("p");
       icon.setAttribute("class", "align-self-center icon");
       flex.appendChild(icon);
       flex.appendChild(content);
 
       // create a new p element with the title of the box
-      title = document.createElement("p");
+      let title = document.createElement("p");
       title.setAttribute("class", "title");
       title.innerHTML = box[1];
       const lang = document.documentElement.lang;
@@ -222,8 +223,8 @@ function addAnchorLink(element, href) {
   for (const img of document.getElementsByTagName("img")) {
     img.onclick = function () {
       // alert(this.alt)
-      var modalImg = document.getElementById("img01");
-      var captionText = document.getElementById("modalCaption");
+      let modalImg = document.getElementById("img01");
+      let captionText = document.getElementById("modalCaption");
       modalImg.src = this.src;
       captionText.innerHTML = this.alt;
       modal.show();
@@ -281,7 +282,7 @@ function applyTheme(mode) {
   });
 
 
-  source_theme = 'dark'
+  let source_theme = 'dark'
   if (mode == 'light'){
     source_theme = 'highlight'
   }

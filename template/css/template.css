@@ -27,12 +27,6 @@ body.resizing {
   grid-template-columns: 1fr;
 }
 
-.hidden main {
-  margin: 0 auto;
-  padding-left: 15rem;
-  padding-right: 15rem;
-}
-
 nav {
   height: var(--nav);
 }
@@ -159,6 +153,15 @@ body.theme-open .theme-panel {
   bottom: 0;
   width: 12px;
   z-index: 1500;
+}
+
+@media (min-width: 1320px) {
+  main {
+    overflow: auto;
+    padding: 2rem 10rem;
+    min-width: 0;
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
