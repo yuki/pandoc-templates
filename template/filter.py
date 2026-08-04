@@ -129,6 +129,7 @@ def action(elem, doc):
                 "configlink",
                 "inlineconsole",
                 "movie",
+                "youtube",
                 "footnotesize",
                 "part",
             ]

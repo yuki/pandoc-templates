@@ -472,7 +472,7 @@ figcaption{
 }
 
 .movie {
-  border: 2px solid var(--bs-warning);
+  border: 2px solid #f6c700;
   border-radius: 0.5rem;
   padding: 0.25rem 0.5rem;
 }
@@ -483,6 +483,21 @@ figcaption{
   font-style: normal;
   display: inline-block;
   content: "\f1c8";
+  padding-right: 1em;
+}
+
+.youtube {
+  border: 2px solid #ff0033;
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.youtube::before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  content: "\f167";
   padding-right: 1em;
 }
 
