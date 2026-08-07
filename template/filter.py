@@ -179,7 +179,7 @@ def action(elem, doc):
                     format="latex"
                 )
 
-            elif elem.classes and elem.classes[0] == "exercisebox":
+            elif elem.classes and (elem.classes[0] == "exercisebox" or elem.classes[0] == "citationbox"):
                 # needs 2 arguments
                 solutions = pf.RawInline(" ")
                 if has_class(elem,"solution"):

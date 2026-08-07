@@ -517,7 +517,7 @@ figcaption{
  *
  * */
 
-.infobox, .warnbox, .errorbox, .questionbox, .exercisebox, .gitbox {
+.infobox, .warnbox, .errorbox, .questionbox, .exercisebox, .citationbox, .gitbox {
   border-radius: 0.5rem;
   margin-bottom: 2em;
 }
@@ -552,6 +552,11 @@ figcaption{
   color: var(--bs-success-text-emphasis);
 }
 
+.citationbox {
+  border: 2px solid var(--bs-pink);
+  color: var(--bs-pink);
+}
+
 .gitbox {
   border: 2px solid var(--bs-purple);
   background-color: var(--bs-gray-100);
@@ -559,7 +564,7 @@ figcaption{
 }
 
 
-.infobox p.title, .warnbox p.title, .errorbox p.title, .questionbox p.title, .exercisebox p.title, .gitbox p.title    {
+.infobox p.title, .warnbox p.title, .errorbox p.title, .questionbox p.title, .exercisebox p.title, .citationbox p.title, .gitbox p.title    {
   display: block;
   border-radius: 5px 5px 0 0;
   color: var(--bs-white);
@@ -593,6 +598,10 @@ p.title a {
   background-color: var(--bs-success-text-emphasis);
 }
 
+.citationbox p.title {
+  background-color: var(--bs-pink);
+}
+
 .gitbox p.title  {
   background-color: var(--bs-purple);
 }
@@ -606,7 +615,7 @@ p.title a {
   margin: 0 2rem 0 0;
 }
 
-.infobox p.icon, .warnbox p.icon, .errorbox p.icon, .questionbox p.icon, .exercisebox p.icon, .gitbox p.icon  {
+.infobox p.icon, .warnbox p.icon, .errorbox p.icon, .questionbox p.icon, .exercisebox p.icon, .citationbox p.icon, .gitbox p.icon  {
   font-family: FontAwesome;
   font-weight: normal;
   font-style: normal;
@@ -633,6 +642,10 @@ p.title a {
 
 .exercisebox p.icon::before {
   content: "\f013";
+}
+
+.citationbox p.icon::before {
+  content: "\f10e";
 }
 
 .gitbox p.icon::before {

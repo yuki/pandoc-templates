@@ -170,13 +170,14 @@ function addAnchorLink(element, href) {
     ["errorbox", "¡Cuidado!", "Kontuz!"],
     ["questionbox", "Pregunta", "Galdera"],
     ["exercisebox", "Ejercicio", "Ariketa"],
+    ["citationbox", "Cita", "Aipamena"],
     ["gitbox", "GitHub", "GitHub"],
   ];
   for (const box of custom_boxes) {
     for (const element of document.getElementsByClassName(box[0])) {
       //save  the content of the box in a new div, but if it's exercisebox, we took the first child if it's the solution's links
       let solution = null;
-      if (box[0] == "exercisebox" && element.children.length > 1) {
+      if ((box[0] == "exercisebox" || box[0] == "citationbox") && element.children.length > 1) {
         if (
           element.firstElementChild.firstElementChild.classList.contains("solution",)
         ) {
@@ -208,7 +209,7 @@ function addAnchorLink(element, href) {
         title.innerHTML = box[2];
       }
 
-      if (box[0] == "exercisebox" && solution) {
+      if ((box[0] == "exercisebox" || box[0] == "citationbox") && solution) {
         //add the solution link to the title
         title.innerHTML = title.innerHTML + " " + solution.innerHTML;
       }

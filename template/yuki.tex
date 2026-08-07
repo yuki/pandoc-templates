@@ -333,6 +333,7 @@ explicit, % Specify section names explicitly in \titleformat with #1
 \definecolor{error-color}{HTML}{9e0000}
 \definecolor{inline-bg-color}{HTML}{404040}
 \definecolor{inline-code-color}{HTML}{d63384}
+\definecolor{citation-color}{HTML}{d63384}
 
 \RequirePackage[fixed, style=regular]{fontawesome7}
 
@@ -364,12 +365,14 @@ explicit, % Specify section names explicitly in \titleformat with #1
   \def\errorname{Kontuz!}
   \def\questionname{Galdera}
   \def\exercisename{Ariketa}
+  \def\citationname{Aipamena}
 }{
   \def\infoname{Información}
   \def\warnname{¡Atención!}
   \def\errorname{¡Cuidado!}
   \def\questionname{Pregunta}
   \def\exercisename{Ejercicio}
+  \def\citationname{Cita}
 }
 
 
@@ -401,6 +404,12 @@ explicit, % Specify section names explicitly in \titleformat with #1
 
 \newenvironment{exercisebox}[1]{
   \begin{custombox}{teal}{teal!4!white}{\exercisename { \hypersetup{allcolors=white} #1}}{\faGear}
+}{
+  \end{custombox}
+}
+
+\newenvironment{citationbox}[1]{
+  \begin{custombox}{citation-color}{red!4!white}{\citationname { \hypersetup{allcolors=white} #1}}{\faQuoteRight}
 }{
   \end{custombox}
 }
