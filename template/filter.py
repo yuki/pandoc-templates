@@ -6,6 +6,8 @@ import copy
 import os
 import re
 
+# variable global para la anchura de las columnas
+column_widths = []
 
 # return True if has class "solution". For exercisebox
 def has_class(elem,class_name):
@@ -207,39 +209,33 @@ def action(elem, doc):
                     format="latex"
                 )
 
-            elif elem.classes and elem.classes[0] == "column":
-                # FOR COLUMNS
-                # https://superuser.com/questions/1682413/two-columns-pdf-from-markdown-with-pandoc-and-lua-script
-                width = 1.0
-                if elem.attributes and elem.attributes.get("width"):
-                    width = percent_to_float(elem.attributes["width"])
-                return pf.RawBlock(
-                    "\\begin{minipage}{" + str(width) + "\\linewidth}\n"
-                    + "\\setlength{\\parskip}{1.2em}\n"
-                    + pf.convert_text(elem, input_format="panflute", output_format="latex")
-                    + "\n\\end{minipage}",
-                    format="latex"
-                )
             elif elem.classes and elem.classes[0] == "columns":
-                # merge consecutive minipage blocks to avoid extra blank space
+                columns = 0 # how many columns are
+                column_widths.clear() # clear the list of column widths
+                columnsep = "1cm" # set default column separation
+                if elem.attributes and elem.attributes.get("columnsep"):
+                    columnsep = elem.attributes["columnsep"]
+
                 blocks = []
                 for child in elem.content:
-                    # FIXME:  this if does nothing
-                    if hasattr(child, "t") and child.t == "Para":
-                        blocks.append(child)
-                    else:
-                        blocks.append(child)
+                    if child.attributes and child.attributes.get("width"):
+                        column_widths.append(percent_to_float(child.attributes["width"]))
+                    columns += 1
+                    blocks.append(child)
 
                 merged_text = ""
                 for idx, child in enumerate(blocks):
                     if idx > 0:
-                        merged_text += "\\hfill\n"
-                    merged_text += pf.convert_text(child, input_format="panflute", output_format="latex")
+                        merged_text += "\n\\switchcolumn\n"
+                    text = pf.convert_text(child, input_format="panflute", output_format="latex")
+                    merged_text += text
 
                 return pf.RawBlock(
-                    "\\vspace{5pt}\n"
+                    "\\columnratio{"+','.join([str(s) for s in column_widths])+"}\n"
+                    + "\\setlength{\\columnsep}{"+columnsep+"}\n"
+                    + "\\begin{paracol}{"+str(columns)+"}\n"
                     + merged_text
-                    + "\\vspace{5pt}\n",
+                    + "\n\\end{paracol}\n",
                     format="latex"
                 )
 

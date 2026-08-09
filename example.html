@@ -262,27 +262,38 @@
 </section>
 <section id="columns" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Columns</h1>
-<p>Example of how to get columns style (with minipage in LaTeX-PDF).</p>
+<p>Example of how to create columns using “<a href="https://ctan.org/pkg/paracol">paracol</a>”. By default the column separator is 1cm.</p>
 <div class="columns">
-<div class="column" style="width:38%;">
+<div class="column" style="width:50%;">
 <figure>
 <img src="img/cover.png" style="width:100.0%" data-framed="true" loading="lazy" alt="this is a dragon" />
 <figcaption aria-hidden="true">this is a dragon</figcaption>
 </figure>
-</div><div class="column" style="width:52%;">
+</div><div class="column" style="width:50%;">
 <p>Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum.</p>
 </div>
 </div>
-<p>With 3 columns</p>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p>Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum.</p>
-</div><div class="column" style="width:30%;">
+<p>You can change the colsep adding an attribute:</p>
+<div class="columns" data-columnsep="2cm">
+<div class="column" style="width:50%;">
 <figure>
 <img src="img/cover.png" style="width:100.0%" data-framed="true" loading="lazy" alt="this is a dragon" />
 <figcaption aria-hidden="true">this is a dragon</figcaption>
 </figure>
-</div><div class="column" style="width:30%;">
+</div><div class="column" style="width:50%;">
+<p>Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum.</p>
+</div>
+</div>
+<p>You can add more columns.</p>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p>Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum.</p>
+</div><div class="column" style="width:33%;">
+<figure>
+<img src="img/cover.png" style="width:100.0%" data-framed="true" loading="lazy" alt="this is a dragon" />
+<figcaption aria-hidden="true">this is a dragon</figcaption>
+</figure>
+</div><div class="column" style="width:33%;">
 <p>Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum. Lorem Ipsum comenzó como un latín revuelto y sin sentido derivado del texto de Cicerón del siglo I aC De Finibus Bonorum et Malorum.</p>
 </div>
 </div>

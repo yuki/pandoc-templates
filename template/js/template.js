@@ -163,6 +163,12 @@ function addAnchorLink(element, href) {
     element.insertBefore(dir, element.firstChild);
   }
 
+  for (const element of document.getElementsByClassName("columns")) {
+    if (element.dataset.columnsep) {
+      element.style.columnGap = element.dataset.columnsep;
+    }
+  }
+
   // custom boxes: infobox, warnbox, errorbox ...
   const custom_boxes = [
     ["infobox", "Información", "Informazioa"],
