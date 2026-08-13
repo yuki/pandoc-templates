@@ -55,6 +55,22 @@ def escape_html(text):
         .replace('"', "&quot;")
     )
 
+def escape_latex(text):
+    text = text or ""
+    return (
+        text
+        .replace("\\", "\\textbackslash{}")
+        .replace("{", "\\{")
+        .replace("}", "\\}")
+        .replace("$", "\\$")
+        .replace("&", "\\&")
+        .replace("#", "\\#")
+        .replace("_", "\\_")
+        .replace("%", "\\%")
+        .replace("^", "\\textasciicircum{}")
+        .replace("~", "\\textasciitilde{}")
+    )
+
 # return Image cmd for Image and Figure
 # FIXME: this should be done in other way?
 def get_img_cmd(image):
@@ -151,7 +167,7 @@ def action(elem, doc):
                 return pf.RawInline(
                     "{\\color{inline-code-color}\\fakeverb{"
                     # +  pf.convert_text(pf.Doc(pf.Para(elem)), input_format="panflute",output_format="latex")
-                    + pf.stringify(elem)
+                    + escape_latex(pf.stringify(elem))
                     +"}}",
                     format="latex"
                 )
