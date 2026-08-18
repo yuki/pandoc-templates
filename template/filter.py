@@ -67,8 +67,8 @@ def escape_latex(text):
         .replace("#", "\\#")
         .replace("_", "\\_")
         .replace("%", "\\%")
-        .replace("^", "\\textasciicircum{}")
-        .replace("~", "\\textasciitilde{}")
+        # .replace("^", "\\textasciicircum{}")
+        # .replace("~", "\\textasciitilde{}")
     )
 
 # return Image cmd for Image and Figure
