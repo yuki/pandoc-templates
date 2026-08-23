@@ -41,6 +41,13 @@ nav {
   touch-action: pan-y;
 }
 
+#hide-toc {
+  position: sticky;
+  top: 0;
+  background: var(--bs-body-bg);
+  border-bottom: 1px solid var(--templatecolor)
+}
+
 .hidden #sidebar {
   display: none;
 }
@@ -761,4 +768,80 @@ table caption {
   background-color: var(--templatecolor)!important;
   color: white!important;
   text-align:center
+}
+
+
+/* Para imprimir */
+@page {
+  size: A4;
+  margin: 1.5cm;
+}
+
+@media print {
+  html, body {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+
+  #header,
+  #sidebar,
+  #divider,
+  #peek,
+  #ghost,
+  #show,
+  #hide,
+  #theme-panel,
+  #theme-menu,
+  #mobile-theme-button,
+  .theme-panel,
+  .theme-menu,
+  .pdf-link,
+  .dropdown,
+  .btn,
+  .navbar,
+  nav {
+    display: none !important;
+  }
+
+  #layout {
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    grid-template-columns: none !important;
+  }
+
+  main {
+    display: block !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+  }
+
+  #book {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  figure,
+  table,
+  img,
+  .mycode,
+  .infobox,
+  .warnbox,
+  .errorbox,
+  .questionbox,
+  .exercisebox,
+  .citationbox,
+  .gitbox {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: underline !important;
+  }
 }

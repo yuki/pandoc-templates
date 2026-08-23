@@ -36,6 +36,8 @@ function addAnchorLink(element, href) {
 }
 
 (() => {
+  const lang = document.documentElement.lang;
+
   // add PDF link
   for (const element of document.getElementsByClassName("pdf-link")) {
     element.href = window.location.pathname
@@ -56,6 +58,13 @@ function addAnchorLink(element, href) {
     for (let i = 0; i < links.length; i++) {
       links[i].setAttribute("class", "nav");
     }
+  }
+  // change TOC title
+  let toctitle = document.querySelector("#toctitle");
+  if (lang == "basque") {
+    toctitle.innerHTML = "Aurkibidea";
+  } else {
+    toctitle.innerHTML = "Índice";
   }
 
   // PARTS
@@ -209,7 +218,6 @@ function addAnchorLink(element, href) {
       let title = document.createElement("p");
       title.setAttribute("class", "title");
       title.innerHTML = box[1];
-      const lang = document.documentElement.lang;
       if (lang == "basque") {
         // kontuz!
         title.innerHTML = box[2];
