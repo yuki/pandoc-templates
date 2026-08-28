@@ -13,11 +13,11 @@ There are two templates, the first one to generate HTML and the other to create 
 
 ## Pandoc filter
 
-Because I have created custom boxes/styles that doesn't have by default, I have created a filter to parse the initial markdown file to create the final HTML and LaTeX (to create the PDF).
+Because I have created custom boxes/styles that doesn't exists by default, I have created a filter to parse the initial markdown file to create the final HTML and LaTeX (to create the PDF).
 
 - [template/filter.py](template.filter.py): the Python filter. It needs [Panflute package](https://scorreia.com/software/panflute/index.html) that makes Pandoc filters easy to use. Python is easier than Lua and Panflute allows some features (like **pf.convert_text**) that Lua filters cannot made by default.
 
-- [template/filter.py](template.filter.lua): **DEPRECATED in 2026-07-17**. This was the original filter, but was very difficult to add new features, and because Lua isn't very friendly, I created the Python version. In near future I'll delete this file.
+- [template/filter.lua](template.filter.lua): **DEPRECATED in 2026-07-17**. This was the original filter, but was very difficult to add new features, and because Lua isn't very friendly, I created the Python version. In near future I'll delete this file.
 
 
 ## HTML template
@@ -27,11 +27,9 @@ The template is [template/yuki.html](template/yuki.html), and it uses some files
 - Font Awesome 7.0 CSS from CDN
   - External CSS and Javascript from CDN
 - Custom CSS
-  - **template/css/dark_mode.css**: CSS inspired from Bootstrap web page.
   - **template/css/template.css**: custom CSS to create my own custom-boxes, tables, ...
   - **template/css/pygments/**: Two [Pygments Styles](https://pygments.org/styles/) ("github-dark" and "friendly") for the sourceCode.
 - Custom Javscript
-  - **template/js/dark_mode.js**: inspired from Bootstrap web page and adapted for my own template
   - **template/js/template.js**: custom javascript to adapt generated HTML and to add custom properties.
 
 ## LaTeX template
@@ -44,20 +42,20 @@ The template is [template/yuki.tex](template/yuki.tex), which is a modification 
 # How to use the templates
 Copy the **template/yuki.html** and **template/yuki.tex** files into your **~/.pandoc/templates/** directory. Or you can use those templates cloning this repository.
 
-To use custom features (like **mycode**, **infobox**, **configdir**, columns and tables ...) see the 1.md and 2.md markdown files.
+To use custom features (like **mycode**, **infobox**, **configdir**, columns and tables ...) see the 1.md and 2.md markdown files in raw format, to see how to use each feature.
 
 In this repository there are few files to create an example HTML and PDF file:
 - **1.md**: Contains examples of custom captions, boxes, ...
 - **2.md**: Columns and tables examples.
 - **book.sh**: It concatenates the previous files and adds "parts".
-- **metadata.yaml**: metadata file to add author, date, title...
+- **metadata.yaml**: metadata file to add author, title...
 - **defaults.yaml**: file which contains the default configuration used to create the generated HTML and PDF.
 
 ## HTML
 To create the HTML file:
 
 ```
-./book.sh | pandoc -o "example.html" -d defaults.yaml
+./book.sh | pandoc -o "example.html" -d defaults.yaml --verbose
 ```
 
 If you want to create an embeded HTML file use the extra parameter `--embed-resources=true`.
@@ -66,7 +64,7 @@ If you want to create an embeded HTML file use the extra parameter `--embed-reso
 
 To create the PDF file: 
 ```
-./book.sh | pandoc -o "example.pdf" -d defaults.yaml --template=template/yuki.tex 
+./book.sh | pandoc -o "example.pdf" -d defaults.yaml --template=template/yuki.tex --verbose
 ```
 
 The `--template=template/yuki.tex` is needed because in the `defaults.yaml` the default filter is HTML file. Change the path if you have moved to other path.

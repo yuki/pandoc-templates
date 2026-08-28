@@ -5,6 +5,7 @@ import json
 import copy
 import os
 import re
+from datetime import datetime
 
 # variable global para la anchura de las columnas
 column_widths = []
@@ -134,8 +135,8 @@ def rows_to_latex(rows):
 
 
 def prepare(doc):
-    pass
-
+    # set metadata's date
+    doc.metadata['date'] = str(datetime.today().strftime('%Y-%m-%d'))
 
 def action(elem, doc):
     if doc.format == 'latex':
