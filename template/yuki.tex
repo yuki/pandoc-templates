@@ -314,8 +314,10 @@ explicit, % Specify section names explicitly in \titleformat with #1
 \RequirePackage[shortcuts]{extdash}
 
 \RequirePackage{enumitem}
-\setlist{topsep=-5pt}
-\providecommand{\tightlist}{} % modified from Pandoc LaTeX template
+% \setlist{topsep=-5pt}
+% \providecommand{\tightlist}{} % modified from Pandoc LaTeX template
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{5pt}\setlength{\parskip}{5pt}}
 
 % to include other files sections by tags
 \usepackage{catchfilebetweentags}
