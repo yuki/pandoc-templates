@@ -96,24 +96,6 @@ def get_img_cmd(image):
     return imgcmd
 
 
-def get_table_attributes(caption):
-    # get table attributes from the caption
-    table_name = colspec = ""
-    for item in caption:
-        for child in item.content:
-            if hasattr(child, "text"):
-                # delete "{}" fromt text
-                child.text = child.text.replace("{", "")
-                child.text = child.text.replace("}", "")
-                for pair in re.findall(r"(\w+)=(\S+)", child.text):
-                    child.text = ""
-                    key, value = pair
-                    if key == "tablename":
-                        table_name = value
-                    elif key == "colspec":
-                        colspec = value
-    return table_name, colspec
-
 
 def rows_to_latex(rows):
     output = ""
@@ -318,11 +300,12 @@ def action(elem, doc):
 
                     col_specs_in_table += "]"
 
-            # pf.debug(elem.caption.content)
+            if elem.attributes and elem.attributes.get("tablename"):
+                table_name = elem.attributes["tablename"]
+            if elem.attributes and elem.attributes.get("colspec"):
+                colspec = elem.attributes["colspec"]
+
             if elem.caption and elem.caption.content:
-                # we get "tablename=" and "colspec=" from caption, hardcoded in markdown table's content
-                table_name, colspec = get_table_attributes(elem.caption.content)
-                # the caption cane be setted because "tablename=.." and "colspec=.." are deleted
                 caption = pf.convert_text(pf.Doc(pf.Div(elem.caption.content[0])), input_format="panflute",output_format="latex")
 
             if colspec == "":
@@ -375,8 +358,12 @@ def action(elem, doc):
 
         elif isinstance(elem,pf.Table):
             caption = elem.caption
-            table_name = colspec = ""
-            table_name, colspec = get_table_attributes(elem.caption.content)
+            table_name = "yukitblr"
+            colspec = ""
+            if elem.attributes and elem.attributes.get("tablename"):
+                table_name = elem.attributes["tablename"]
+            if elem.attributes and elem.attributes.get("colspec"):
+                colspec = elem.attributes["colspec"]
             elem.attributes["data-tablename"] = table_name
             elem.attributes["data-colspec"] = colspec
 
