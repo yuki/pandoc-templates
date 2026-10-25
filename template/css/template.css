@@ -698,6 +698,15 @@ dd {
   grid-column-start: 2;
 }
 
+ul.task-list li {
+  list-style: none;
+  margin-left: -1.5rem;
+}
+
+ul.task-list li label input{
+  margin-right: 1rem;
+}
+
 
 /* 
  *
